@@ -16,4 +16,8 @@ typedef struct {
 
 }Reserva;
 
+Reserva crearReserva(int id, char fecha[11], int dniCliente, int numeroHabitacion, int numeroPlazaParking);
+void imprimirReserva(Reserva r);
+
+
 #endif
