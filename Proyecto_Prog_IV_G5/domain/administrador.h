@@ -9,14 +9,15 @@ typedef struct {
 
 
 	int dni;
-	char nombre[20];
+	char * nombre;
 	int edad;
-	char correo[30];
+	char * correo;
 	enum funcionAdministrador funcion;
 
 
 }Administrador;
 
+Administrador crearAdministrador(int dni, char*nombre,int edad, char*correo, enum funcionAdministrador funcion);
 
 
 

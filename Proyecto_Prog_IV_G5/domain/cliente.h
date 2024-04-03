@@ -6,12 +6,16 @@
 typedef struct{
 
 	int dni;
-	char nombre[20];
+	char* nombre;
 	int edad;
-	char correo[30];
+	char *correo;
 
 
 }Cliente;
 
+
+Cliente crearCliente(int dni, char*nombre,int edad ,char*correo);
+
+void imprimirCliente(Cliente c);
 
 #endif
