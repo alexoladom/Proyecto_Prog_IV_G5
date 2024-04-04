@@ -10,7 +10,6 @@ void mostrarMenuPrincipal() {
 
     printf("¡Bienvenido al Hotel!\n");
     fflush(stdout);
-
     printf("1. Cliente\n");
     fflush(stdout);
     printf("2. Administrador\n");
@@ -62,6 +61,7 @@ void menuCliente() {
     printf("Seleccione una opción: ");
     fflush(stdout);
     scanf("%d", &opcion);
+
     switch(opcion) {
         case 1:
             iniciarSesionCliente();
@@ -107,6 +107,7 @@ void iniciarSesionCliente() {//Funcion semifuncional hasta que haya bases de dat
 void registrarseCliente() {//Funcion semifuncional hasta que haya bases de datos o ficheros
 	char nomUser[50];
     int contra;
+
     printf("Registrando nuevo cliente...\n");
     fflush(stdout);
     printf("Introduce tu nuevo usuario: ");
@@ -115,6 +116,7 @@ void registrarseCliente() {//Funcion semifuncional hasta que haya bases de datos
     printf("Introduce tu contraseña: ");
     fflush(stdout);
     scanf("%d", &contra);
+
     printf("Registro exitoso.\n");
 
     iniciarSesionCliente();
@@ -154,7 +156,8 @@ void iniciarSesionAdmin() {//Funcion semifuncional hasta que haya bases de datos
     fflush(stdout);
     printf("Introduce tu usuario de Trabajador: ");
     fflush(stdout);
-    scanf("%s", &nomUser);
+    scanf("%c", &nomUser);
+
     if(strcmp(nomUser, "Jorge") == 0){
     	printf("Introduce tu contraseña: ");
     	fflush(stdout);
@@ -263,6 +266,8 @@ void menuCompra(){
 void listadoClientes(){
 	//Por inplementar, será una lista con informacion de los clientes y la habitacion y parking que tienen
 }
+
+
 void menuHabitaciones() {
     int opcion;
 
@@ -365,6 +370,7 @@ void cancelarReserva(){
 	//Por inplementar, dará opcion a cancelar una reserva
 }
 
+
 //Parte del menu de las habitaciones////////////////
 void verHabitacionesReservadas() {
     //Por inplementar, para mostrar las habitaciones reservadas
@@ -385,6 +391,7 @@ void verEstadoLimpiezaHabitaciones() {
 void menuEditarInformacionHabitaciones() {
     //Por inplementar, para editar la información de las habitaciones
 }
+
 
 //Parte del menu del parking////////////
 void verPlazasParking() {
