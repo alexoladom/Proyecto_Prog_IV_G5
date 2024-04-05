@@ -8,8 +8,9 @@
 
 sqlite3 conectarDB();
 
-void imprimirClientes(sqlite3*db);
-void imprimirReservas(sqlite3*db);
+void imprimirClientes(sqlite3*db); //DONE
+void añadirCliente(Cliente c);
+void imprimirReservas(sqlite3*db); //DONE
 void borrarReserva(sqlite3*db,int numero);
 void imprimirHabitaciones(sqlite3*db);
 void borrarHabitacion(sqlite3*db,int numero);
