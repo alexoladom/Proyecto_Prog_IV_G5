@@ -23,7 +23,7 @@ Cliente crearCliente(int dni, char*nombre,int edad ,char*correo){
 
 void imprimirCliente(Cliente c){
 
-	printf("Cliente %i, nombre: %s, edad: %i, correo: %s", c.dni,c.nombre,c.edad,c.correo);
+	printf("Cliente %i, nombre: %s, edad: %i, correo: %s\n", c.dni,c.nombre,c.edad,c.correo);
 
 
 }

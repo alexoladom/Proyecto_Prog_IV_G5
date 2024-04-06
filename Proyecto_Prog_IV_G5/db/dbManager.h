@@ -9,13 +9,14 @@
 sqlite3 conectarDB();
 
 void imprimirClientes(sqlite3*db); //DONE
-void añadirCliente(Cliente c);
+void anadirCliente(Cliente c,sqlite3*db);//DONE
 void imprimirReservas(sqlite3*db); //DONE
-void borrarReserva(sqlite3*db,int numero);
-void imprimirHabitaciones(sqlite3*db);
-void borrarHabitacion(sqlite3*db,int numero);
-void añadirHabitacion(sqlite3*db,Habitacion h);
-void imprimirPlazasParking(sqlite3*db);
+void anadirReserva(Reserva r, sqlite3* db); //DONE
+void borrarReserva(sqlite3*db,int numero); //DONE
+void imprimirHabitaciones(sqlite3*db); //DONE
+void borrarHabitacion(sqlite3*db,int numero); //DONE
+void anadirHabitacion(sqlite3*db,Habitacion h);//DONE
+void imprimirPlazasParking(sqlite3*db);//DONE
 
 
 #endif
