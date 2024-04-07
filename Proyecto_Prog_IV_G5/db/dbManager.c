@@ -7,7 +7,6 @@
 #include "../domain/habitacion.h"
 #include "../domain/plazaParking.h"
 
-
 sqlite3* conectarDB(){
 	sqlite3 * db;
 	int result1 = sqlite3_open("db/dbProgIV.sqlite", &db);
@@ -137,7 +136,6 @@ void imprimirHabitaciones(sqlite3 * db){
 				printf("%s\n", sqlite3_errmsg(db));
 			}
 
-			printf("SQL query prepared (SELECT)\n");
 
 			int numero;
 			int piso;
@@ -183,9 +181,6 @@ void imprimirHabitaciones(sqlite3 * db){
 				printf("Error finalizing statement (SELECT)\n");
 				printf("%s\n", sqlite3_errmsg(db));
 			}
-
-			printf("Prepared statement finalized (SELECT)\n");
-
 }
 
 void imprimirPlazasParking(sqlite3*db){
@@ -199,8 +194,6 @@ void imprimirPlazasParking(sqlite3*db){
 					printf("Error preparing statement (SELECT)\n");
 					printf("%s\n", sqlite3_errmsg(db));
 				}
-
-				printf("SQL query prepared (SELECT)\n");
 
 				int numero;
 				char zona;
@@ -233,8 +226,6 @@ void imprimirPlazasParking(sqlite3*db){
 					printf("%s\n", sqlite3_errmsg(db));
 				}
 
-				printf("Prepared statement finalized (SELECT)\n");
-
 };
 
 
@@ -257,7 +248,6 @@ void anadirCliente(Cliente c, sqlite3*db){
 				printf("%s\n", sqlite3_errmsg(db));
 			}
 
-			printf("SQL query prepared (Insert)\n");
 
 			result = sqlite3_step(stmt1);
 				if (result != SQLITE_DONE) {
@@ -270,8 +260,7 @@ void anadirCliente(Cliente c, sqlite3*db){
 					printf("%s\n", sqlite3_errmsg(db));
 				}
 
-				printf("Prepared statement finalized (INSERT)\n");
-
+				printf("Cliente añadido con éxito");
 }
 
 void anadirReserva(Reserva r, sqlite3* db){
@@ -293,7 +282,6 @@ void anadirReserva(Reserva r, sqlite3* db){
 					printf("%s\n", sqlite3_errmsg(db));
 				}
 
-				printf("SQL query prepared (Insert)\n");
 
 				result = sqlite3_step(stmt1);
 					if (result != SQLITE_DONE) {
@@ -306,7 +294,7 @@ void anadirReserva(Reserva r, sqlite3* db){
 						printf("%s\n", sqlite3_errmsg(db));
 					}
 
-					printf("Prepared statement finalized (INSERT)\n");
+					printf("Reserva añadida con éxito\n");
 
 
 }
@@ -331,7 +319,6 @@ void anadirHabitacion(sqlite3*db,Habitacion h){
 						printf("%s\n", sqlite3_errmsg(db));
 					}
 
-					printf("SQL query prepared (Insert)\n");
 
 					result = sqlite3_step(stmt1);
 						if (result != SQLITE_DONE) {
@@ -344,7 +331,7 @@ void anadirHabitacion(sqlite3*db,Habitacion h){
 							printf("%s\n", sqlite3_errmsg(db));
 						}
 
-						printf("Prepared statement finalized (INSERT)\n");
+						printf("Habitacion añadida con éxito\n");
 
 
 }
@@ -362,7 +349,6 @@ void borrarReserva(sqlite3*db,int numero){
 			printf("%s\n", sqlite3_errmsg(db));
 		}
 
-		printf("SQL query prepared (Insert)\n");
 
 		result = sqlite3_step(stmt1);
 			if (result != SQLITE_DONE) {
@@ -375,7 +361,7 @@ void borrarReserva(sqlite3*db,int numero){
 				printf("%s\n", sqlite3_errmsg(db));
 			}
 
-			printf("Prepared statement finalized (INSERT)\n");
+			printf("Reserva %i borrada con exito\n", numero);
 
 }
 
@@ -391,7 +377,6 @@ void borrarHabitacion(sqlite3*db,int numero){
 			printf("%s\n", sqlite3_errmsg(db));
 		}
 
-		printf("SQL query prepared (Insert)\n");
 
 		result = sqlite3_step(stmt1);
 			if (result != SQLITE_DONE) {
@@ -404,20 +389,10 @@ void borrarHabitacion(sqlite3*db,int numero){
 				printf("%s\n", sqlite3_errmsg(db));
 			}
 
-			printf("Prepared statement finalized (INSERT)\n");
+			printf("Habitacion %i borrada con éxito\n", numero);
 
 
 }
 
 
 
-int main(){
-
-	sqlite3 * db = conectarDB();
-
-	imprimirClientes(db);
-	imprimirReservas(db);
-	imprimirHabitaciones(db);
-	imprimirPlazasParking(db);
-
-}

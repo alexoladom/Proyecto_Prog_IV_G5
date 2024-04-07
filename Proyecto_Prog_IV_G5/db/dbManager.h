@@ -2,7 +2,14 @@
 
 #ifndef dbManager_h
 #define dbManager_h
-
+#include <stdio.h>
+#include "sqlite3.h"
+#include <string.h>
+#include "stdbool.h"
+#include "../domain/cliente.h"
+#include "../domain/reserva.h"
+#include "../domain/habitacion.h"
+#include "../domain/plazaParking.h"
 
 
 

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "MenuPrincipal.h"
+#include "../db/dbManager.h"
+#include "../db/sqlite3.h"
 
 
 
@@ -105,6 +107,8 @@ void iniciarSesionCliente() {//Funcion semifuncional hasta que haya bases de dat
 }
 
 void registrarseCliente() {//Funcion semifuncional hasta que haya bases de datos o ficheros
+
+	//TODO falta crear un cliente y solicitar todos los datos (edad,correo...)
 	char nomUser[50];
     int contra;
 
@@ -175,31 +179,65 @@ void iniciarSesionAdmin() {//Funcion semifuncional hasta que haya bases de datos
 void menuTrabajo(){
 	int opcion;
 
+	//TODO arreglar problema del db
+	sqlite3 * db;
 	printf("Este es el menu de trabajo");
 	fflush(stdout);
 	printf("1. Ver lista de clientes\n");
 	fflush(stdout);
-    printf("2. Gestionar reservas de habitaciones\n");
+    printf("2. Ver reservas\n");
     fflush(stdout);
-    printf("3. Gestionar reservas de plazas de parking\n");
+    printf("3. Borrar reservas\n");
     fflush(stdout);
-    printf("4. Cerrar\n");
+    printf("4. Ver habitaciones\n");
+
+    //TODO implementa el menu para crear una nueva habitacion
+
+    fflush(stdout);
+    printf("5. Añadir habitaciones\n");
+    fflush(stdout);
+    printf("6. Borrar habitaciones\n");
+    fflush(stdout);
+    printf("7. Ver plazas de parking\n");
+    fflush(stdout);
+    printf("8. Cerrar\n");
     fflush(stdout);
     printf("Seleccione una opción: ");
     fflush(stdout);
     scanf("%d", &opcion);
-
+    int numero;
+    int id;
     switch(opcion) {
     	case 1:
-    		listadoClientes();
+    		imprimirClientes(db);
     		break;
         case 2:
-        	menuHabitaciones();
+        	imprimirReservas(db);
         	break;
         case 3:
-        	menuPlazaParking();
+
+        	imprimirReservas(db);
+        	printf("Introduzca el numero de reserva que desea borrar: \n");
+            scanf("%d", &id);
+            borrarReserva(db,id);
         	break;
         case 4:
+        	imprimirHabitaciones(db);
+        	break;
+        case 5:
+        	//TODO menu para añadir habitaciones
+        	break;
+        case 6:
+
+        	imprimirHabitaciones(db);
+        	printf("Introduzca el numero de habitacion que desea borrar: \n");
+        	scanf("%d", &numero);
+        	borrarHabitacion(db,numero);
+        	break;
+        case 7:
+        	imprimirPlazasParking(db);
+        	break;
+        case 8:
         	printf("Vuelva pronto\n");
         	fflush(stdout);
             break;
@@ -353,6 +391,7 @@ void menuPlazaParking() {
     }
 }
 
+
 //Parte del menu de compra del cliente///////////////
 void reservarHabitacion(){
 	//Por inplementar, funcion que reserva una habitacion dado su codigo y algun campo más
@@ -402,4 +441,6 @@ void editarInformacionPlazasParking() {
     //Por inplementar, para editar la información de las plazas de parking
 }
 
-
+void main(){
+	mostrarMenuPrincipal();
+}
