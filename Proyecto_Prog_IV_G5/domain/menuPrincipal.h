@@ -1,6 +1,6 @@
 #ifndef MENUPRINCIPAL_H
 #define MENUPRINCIPAL_H
-#include "../db/sqlite3.h"
+#include "../db/dbManager.h"
 //void main();
 //void mostrarMenuPrincipal();
 void menuCliente(sqlite3 * db);
