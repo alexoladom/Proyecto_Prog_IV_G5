@@ -7,7 +7,7 @@
 
 void mostrarMenuPrincipal(sqlite3 * db) {////////////////////////////////////Esta
     int opcion;
-    int numerin;
+    char * opc = malloc(2*sizeof(char));
 
     printf("¡Bienvenido al Hotel!\n");
     fflush(stdout);
@@ -19,24 +19,15 @@ void mostrarMenuPrincipal(sqlite3 * db) {////////////////////////////////////Est
     fflush(stdout);
     printf("Seleccione una opción: ");
     fflush(stdout);
-    scanf("%d", &opcion);
+    fgets(opc, 2, stdin);
+    sscanf(&opc[0], "%i", &opcion);
 
     switch (opcion) {
         case 1:
             menuCliente(db);
             break;
         case 2:
-        	printf("Introduce el codigo de acceso admin: ");
-        	fflush(stdout);
-        	scanf("%d", &numerin);
-        	if(numerin == 123){
-        		menuAdministrador(db);
-        	}else{
-        		printf("El numero de acceso no es correcto.");
-        		fflush(stdout);
-        		mostrarMenuPrincipal(db);
-        		break;
-        	}
+        	menuAdministrador(db);
             break;
         case 3:
             printf("Vuelva pronto\n");
@@ -65,7 +56,7 @@ void menuCliente(sqlite3 * db) {////////////////////////////////////Esta
 
     switch(opcion) {
         case 1:
-            iniciarSesionCliente(db);
+            iniciarSesion(db);
             break;
         case 2:
             registrarseCliente(db);
@@ -81,30 +72,29 @@ void menuCliente(sqlite3 * db) {////////////////////////////////////Esta
     }
 }
 
-void iniciarSesionCliente(sqlite3 * db) {////////////////////////////////////esta
-	char nomUser[50];
-	int contra;
+void iniciarSesion(sqlite3 * db) {////////////////////////////////////esta
+	int dni;
+	char contra[20];
 
     printf("Iniciando sesión como cliente...\n");
     fflush(stdout);
-    printf("Introduce tu usuario: ");
+    printf("Introduce tu dni: ");
     fflush(stdout);
-    scanf("%s", nomUser);
-    if(comprobarDni(db, nomUser)==1){
+    scanf("%i", &dni);
+    if((comprobarDni(db,dni))==1){
     	printf("Introduce tu contraseña: ");
     	fflush(stdout);
-        scanf("%i", contra);
-        if(comprobarContra(db, contra, nomUser)){
-
+        scanf("%s", contra);
+        if(comprobarContra(db, dni, contra)){
         }else{
            	printf("Contraseña incorrecta");
            	fflush(stdout);
-           	iniciarSesionCliente(db);
+           	iniciarSesion(db);
         }
     }else{
     	printf("Nombre de ususario incorrecto");
     	fflush(stdout);
-    	iniciarSesionCliente(db);
+    	iniciarSesion(db);
     }
 }
 
@@ -125,11 +115,11 @@ void registrarseCliente(sqlite3 * db) {////////////////////////////////////esta
 
     printf("Introduce tu edad: \n");
     fflush(stdout);
-    scanf("%i", edad);
+    scanf("%i", &edad);
 
     printf("Introduce tu dni sin la letra: \n");
     fflush(stdout);
-    scanf("%i", dni);
+    scanf("%i", &dni);
 
     printf("Introduce tu correo: \n");
     fflush(stdout);
@@ -145,13 +135,14 @@ void registrarseCliente(sqlite3 * db) {////////////////////////////////////esta
 
     printf("Registro exitoso.\n");
 
-    iniciarSesionCliente(db);
+    iniciarSesion(db);
     Cliente c ={dni, nomUser, edad, correo};
     imprimirCliente(c);
 }
 
 void menuAdministrador(sqlite3 * db) {////////////////////////////////////Esta
 	int opcion;
+	char opc[2];
 
 	    printf("1. Iniciar sesión\n");
 	    fflush(stdout);
@@ -159,7 +150,8 @@ void menuAdministrador(sqlite3 * db) {////////////////////////////////////Esta
 	    fflush(stdout);
 	    printf("Seleccione una opción: ");
 	    fflush(stdout);
-	    scanf("%d", &opcion);
+	    fgets(opc, 2, stdin);
+	    sscanf(opc, "%i", &opcion);
 
 	    switch(opcion) {
 	        case 1:
@@ -177,30 +169,31 @@ void menuAdministrador(sqlite3 * db) {////////////////////////////////////Esta
 }
 
 void iniciarSesionAdmin(sqlite3 * db) {////////////////////////////////////esta
-	char nomAdmin[50];
-	int contra;
+	int dni;
+	char dnic[10];
+	char contra[20];
 
-    printf("Iniciando sesión como administrador...\n");
-    fflush(stdout);
-    printf("Introduce tu usuario de Trabajador: ");
-    fflush(stdout);
-    scanf("%c", &nomAdmin);
-    if(comprobarDni(db, nomAdmin)==1){
-        	printf("Introduce tu contraseña: ");
-        	fflush(stdout);
-            scanf("%i", contra);
-            if(comprobarContra(db, contra, nomAdmin)){
-
-            }else{
-               	printf("Contraseña incorrecta");
-               	fflush(stdout);
-               	iniciarSesionAdmin(db);
-            }
-        }else{
-        	printf("Nombre de trabajador incorrecto");
-        	fflush(stdout);
-        	iniciarSesionAdmin(db);
-        }
+	    printf("Iniciando sesión como administrador...\n");
+	    fflush(stdout);
+	    printf("Introduce tu dni: ");
+	    fflush(stdout);
+	    fgets(dnic, 9, stdin);
+	    sscanf(dnic, "%i", &dni);
+	    if((comprobarDni(db,dni))==1){
+	    	printf("Introduce tu contraseña: ");
+	    	fflush(stdout);
+	    	fgets(contra, 2, stdin);
+	        if(comprobarContra(db, dni, contra)){
+	        }else{
+	           	printf("Contraseña incorrecta");
+	           	fflush(stdout);
+	           	iniciarSesionAdmin(db);
+	        }
+	    }else{
+	    	printf("Nombre de ususario incorrecto");
+	    	fflush(stdout);
+	    	iniciarSesionAdmin(db);
+	    }
 }
 
 void menuTrabajo(sqlite3 * db){////////////////////////////////////Esta
@@ -284,11 +277,11 @@ void menuAnadirHabitacion(sqlite3 * db){//////////////////esta
 
 	printf("Introduce el numero de la habitación: \n");
 	fflush(stdout);
-	scanf("%i", numero);
+	scanf("%i", &numero);
 
 	printf("Introduce el piso de la habitación: \n");
 	fflush(stdout);
-	scanf("%i", piso);
+	scanf("%i", &piso);
 
 	printf("Introduce el tipo de la habitación: \n");
 	fflush(stdout);
@@ -298,7 +291,7 @@ void menuAnadirHabitacion(sqlite3 * db){//////////////////esta
 	fflush(stdout);
 	printf("3. Habitación Suite");
 	fflush(stdout);
-	scanf("%i", opcion);
+	scanf("%i", &opcion);
 	if (opcion == 1){
 		tipo = simple;
 	}else if(opcion == 2){
@@ -313,11 +306,11 @@ void menuAnadirHabitacion(sqlite3 * db){//////////////////esta
 
 	printf("Introduce la capacidad de la habitación: \n");
 	fflush(stdout);
-	scanf("%i", capacidad);
+	scanf("%i", &capacidad);
 
 	printf("Introduce el precio de la habitación: \n");
 	fflush(stdout);
-	scanf("%f", precio);
+	scanf("%f", &precio);
 
 	Habitacion h ={numero, piso, tipo, capacidad, precio, false};
 	imprimirHabitacion(h);
@@ -504,10 +497,6 @@ void menuAnadirHabitacion(sqlite3 * db){//////////////////esta
 //    //Por inplementar, para mostrar el estado de limpieza de las habitaciones
 //}
 //
-//void menuEditarInformacionHabitaciones() {
-//    //Por inplementar, para editar la información de las habitaciones
-//}
-//
 //
 ////Parte del menu del parking////////////
 //void verPlazasParking() {
@@ -518,13 +507,6 @@ void menuAnadirHabitacion(sqlite3 * db){//////////////////esta
 //    //Por inplementar, para editar la información de las plazas de parking
 //}
 
-
-
-void main(){
-//	mostrarMenuPrincipal();
-	sqlite3* db;
-	db = conectarDB();
-}
 
 //void menuHabitaciones() {
 //    int opcion;

@@ -3,10 +3,11 @@
 #include "../db/dbManager.h"
 //void main();
 //void mostrarMenuPrincipal();
+void mostrarMenuPrincipal(sqlite3 * db);
 void menuCliente(sqlite3 * db);
 void menuAdministrador(sqlite3 * db);
 
-void iniciarSesionCliente(sqlite3 * db);
+void iniciarSesion(sqlite3 * db);
 void registrarseCliente(sqlite3 * db);
 void iniciarSesionAdmin(sqlite3 * db);
 
