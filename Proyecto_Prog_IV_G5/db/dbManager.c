@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "stdbool.h"
-#include "sqlite3.h"
 #include "../domain/cliente.h"
 #include "../domain/reserva.h"
 #include "../domain/habitacion.h"
 #include "../domain/plazaParking.h"
+#include "dbManager.h"
 
 #define OK 1
 #define NOT_OK 0

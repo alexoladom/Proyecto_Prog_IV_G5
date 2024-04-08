@@ -16,7 +16,7 @@
 
 
 
-sqlite3 conectarDB();
+sqlite3* conectarDB();
 
 void imprimirClientes(sqlite3*db); //DONE
 void anadirCliente(Cliente c,sqlite3*db);//DONE

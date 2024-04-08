@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "MenuPrincipal.h"
+#include "menuPrincipal.h"
 #include "../db/dbManager.h"
 
 
@@ -507,7 +507,8 @@ void menuAnadirHabitacion(sqlite3 * db){//////////////////
 
 void main(){
 //	mostrarMenuPrincipal();
-//	sqlite3 * db = conectarDB();
+	sqlite3* db;
+	db = conectarDB();
 }
 
 //void menuHabitaciones() {
@@ -644,5 +645,3 @@ void main(){
 //void editarInformacionPlazasParking() {
 //    //Por inplementar, para editar la información de las plazas de parking
 //}
-
-
