@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "MenuPrincipal.h"
 #include "../db/dbManager.h"
-#include "../db/sqlite3.h"
 
 
 
@@ -191,9 +190,10 @@ void iniciarSesionAdmin(sqlite3 * db) {////////////////////////////////////
 
 void menuTrabajo(sqlite3 * db){////////////////////////////////////Esta
 	int opcion;
-
 	//TODO arreglar problema del db
 	printf("Este es el menu de trabajo\n");
+	fflush(stdout);
+	printf("Este es el menu de trabajo");
 	fflush(stdout);
 	printf("1. Ver lista de clientes\n");
 	fflush(stdout);
@@ -504,7 +504,145 @@ void menuAnadirHabitacion(sqlite3 * db){//////////////////
 //}
 
 
+
 void main(){
 //	mostrarMenuPrincipal();
 //	sqlite3 * db = conectarDB();
 }
+
+//void menuHabitaciones() {
+//    int opcion;
+//
+//    printf("Menú de Habitaciones:\n");
+//    fflush(stdout);
+//    printf("1. Ver habitaciones reservadas\n");
+//    fflush(stdout);
+//    printf("2. Ver habitaciones disponibles\n");
+//    fflush(stdout);
+//    printf("3. Ver habitaciones ocupadas\n");
+//    fflush(stdout);
+//    printf("4. Ver estado de limpieza de habitaciones\n");
+//    fflush(stdout);
+//    printf("5. Editar información de habitaciones\n");
+//    fflush(stdout);
+//    printf("6. Volver al menú de trabajo\n");
+//    fflush(stdout);
+//    printf("Seleccione una opción: ");
+//    fflush(stdout);
+//    scanf("%d", &opcion);
+//
+//    switch(opcion) {
+//        case 1:
+//            verHabitacionesReservadas();
+//            break;
+//        case 2:
+//            verHabitacionesDisponibles();
+//            break;
+//        case 3:
+//            verHabitacionesOcupadas();
+//            break;
+//        case 4:
+//            verEstadoLimpiezaHabitaciones();
+//            break;
+//        case 5:
+//            menuEditarInformacionHabitaciones();
+//            break;
+//        case 6:
+//            printf("Volviendo al menú de trabajo...\n");
+//            fflush(stdout);
+//            menuTrabajo(db);
+//            break;
+//        default:
+//            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
+//            fflush(stdout);
+//            menuHabitaciones();
+//            break;
+//    }
+//}
+//
+//void menuPlazaParking() {
+//    int opcion;
+//
+//    printf("Menú de Plazas de Parking:\n");
+//    fflush(stdout);
+//    printf("1. Ver Plazas\n");
+//    fflush(stdout);
+//    printf("2. Editar Información de Plazas de Parking\n");
+//    fflush(stdout);
+//    printf("3. Volver al Menú de Trabajo\n");
+//    fflush(stdout);
+//    printf("Seleccione una opción: ");
+//    fflush(stdout);
+//    scanf("%d", &opcion);
+//
+//    switch(opcion) {
+//        case 1:
+//            verPlazasParking();
+//            break;
+//        case 2:
+//            editarInformacionPlazasParking();
+//            break;
+//        case 3:
+//            printf("Volviendo al Menú de Trabajo...\n");
+//            menuTrabajo(db);
+//            fflush(stdout);
+//            break;
+//        default:
+//            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
+//            fflush(stdout);
+//            menuPlazaParking();
+//            break;
+//    }
+//}
+//
+//
+////Parte del menu de compra del cliente///////////////
+//void reservarHabitacion(){
+//	//Por inplementar, funcion que reserva una habitacion dado su codigo y algun campo más
+//}
+//void reservarParking(){
+//	//Por inplementar, funcion que reserva unaplaza de parking dado su codigo y algun campo más
+//}
+//void verEstadoReserva(){
+//	//Por inplementar, devolverá la info de lo que se ha reservado, si lo hay
+//}
+//void modificarReserva(){
+//	//Por inplementar, dará opción cambiar el dia o la duracion de la reserva
+//}
+//void cancelarReserva(){
+//	//Por inplementar, dará opcion a cancelar una reserva
+//}
+//
+//
+////Parte del menu de las habitaciones////////////////
+//void verHabitacionesReservadas() {
+//    //Por inplementar, para mostrar las habitaciones reservadas
+//}
+//
+//void verHabitacionesDisponibles() {
+//    //Por inplementar, para mostrar las habitaciones disponibles
+//}
+//
+//void verHabitacionesOcupadas() {
+//    //Por inplementar, para mostrar las habitaciones ocupadas
+//}
+//
+//void verEstadoLimpiezaHabitaciones() {
+//    //Por inplementar, para mostrar el estado de limpieza de las habitaciones
+//}
+//
+//void menuEditarInformacionHabitaciones() {
+//    //Por inplementar, para editar la información de las habitaciones
+//}
+//
+//
+////Parte del menu del parking////////////
+//void verPlazasParking() {
+//    //Por inplementar, para mostrar las plazas de parking
+//}
+//
+//void editarInformacionPlazasParking() {
+//    //Por inplementar, para editar la información de las plazas de parking
+//}
+
+

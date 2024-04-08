@@ -7,6 +7,9 @@
 #include "../domain/habitacion.h"
 #include "../domain/plazaParking.h"
 
+#define OK 1
+#define NOT_OK 0
+
 sqlite3* conectarDB(){
 	sqlite3 * db;
 	int result1 = sqlite3_open("db/dbProgIV.sqlite", &db);
@@ -18,7 +21,98 @@ sqlite3* conectarDB(){
 	return db;
 }
 
+int comprobarDni(sqlite3* db, int dni){
+	sqlite3_stmt *stmt;
 
+		char sql[] = "select dni from contraseñas";
+
+		int result3 = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
+		if (result3 != SQLITE_OK) {
+			printf("Error preparing statement (SELECT)\n");
+			printf("%s\n", sqlite3_errmsg(db));
+		}
+		int dni2;
+		int result;
+		do {
+			result = sqlite3_step(stmt) ;
+			if (result == SQLITE_ROW) {
+				dni2 = sqlite3_column_int(stmt, 0);
+				if (dni2==dni){
+					return OK;
+				}
+			}
+		} while (result == SQLITE_ROW);
+
+		printf("\n");
+		printf("\n");
+		result = sqlite3_finalize(stmt);
+		if (result != SQLITE_OK) {
+			printf("Error finalizing statement (SELECT)\n");
+			printf("%s\n", sqlite3_errmsg(db));
+		}
+		return NOT_OK;
+}
+
+int comprobarContra(sqlite3* db, int dni, char*contrasena){
+	sqlite3_stmt *stmt;
+
+			char sql[] = "select contra from contraseñas where dni=?";
+
+			int result3 = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
+			sqlite3_bind_int(stmt, 1, dni);
+
+			if (result3 != SQLITE_OK) {
+				printf("Error preparing statement (SELECT)\n");
+				printf("%s\n", sqlite3_errmsg(db));
+			}
+			char contra[20];
+			int result;
+			result = sqlite3_step(stmt) ;
+			if (result == SQLITE_ROW) {
+				strcpy(contra,(char*)sqlite3_column_text(stmt, 0));
+				if (strcmp(contra,contrasena)==0){
+					return OK;
+				}
+			}
+			printf("\n");
+			printf("\n");
+			result = sqlite3_finalize(stmt);
+			if (result != SQLITE_OK) {
+				printf("Error finalizing statement (SELECT)\n");
+				printf("%s\n", sqlite3_errmsg(db));
+			}
+			return NOT_OK;
+
+}
+
+void anadirDniContra(sqlite3* db, int dni, char* contra){
+	sqlite3_stmt *stmt1;
+
+	char sql1[] = "insert into contraseñas (dni,contra) values (?,?) ";
+
+	int result = sqlite3_prepare_v2(db, sql1, -1, &stmt1, NULL) ;
+	sqlite3_bind_int(stmt1, 1, dni);
+	sqlite3_bind_text(stmt1, 2, contra, strlen(contra),SQLITE_STATIC);
+
+
+
+	if (result != SQLITE_OK) {
+		printf("Error preparing statement (Insert)\n");
+		printf("%s\n", sqlite3_errmsg(db));
+	}
+
+
+	result = sqlite3_step(stmt1);
+	if (result != SQLITE_DONE) {
+		printf("Error inserting new data into cliente table\n");
+	}
+
+	result = sqlite3_finalize(stmt1);
+	if (result != SQLITE_OK) {
+		printf("Error finalizing statement (INSERT)\n");
+		printf("%s\n", sqlite3_errmsg(db));
+	}
+}
 void imprimirClientes(sqlite3*db){
 
 	sqlite3_stmt *stmt;
