@@ -90,8 +90,9 @@ void iniciarSesionCliente(sqlite3 * db) {////////////////////////////////////
     printf("Introduce tu usuario: ");
     fflush(stdout);
     scanf("%s", nomUser);
-
-
+    printf("Introduce tu contraseña: ");
+    fflush(stdout);
+    scanf("%i", contra);
 }
 
 void registrarseCliente(sqlite3 * db) {////////////////////////////////////
