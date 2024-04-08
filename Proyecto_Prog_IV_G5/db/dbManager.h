@@ -11,6 +11,9 @@
 #include "../domain/habitacion.h"
 #include "../domain/plazaParking.h"
 
+#define OK 1
+#define NOT_OK 0
+
 
 
 sqlite3 conectarDB();
@@ -24,6 +27,8 @@ void imprimirHabitaciones(sqlite3*db); //DONE
 void borrarHabitacion(sqlite3*db,int numero); //DONE
 void anadirHabitacion(sqlite3*db,Habitacion h);//DONE
 void imprimirPlazasParking(sqlite3*db);//DONE
-
+int comprobarContra(sqlite3* db, int dni, char*contrasena);
+int comprobarDni(sqlite3* db, int dni);//DONE
+void anadirDniContra(sqlite3* db, int dni, char* contra);
 
 #endif

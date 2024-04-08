@@ -202,9 +202,8 @@ void iniciarSesionAdmin() {////////////////////////////////////
 
 void menuTrabajo(){////////////////////////////////////
 	int opcion;
-
+	sqlite3* db;
 	//TODO arreglar problema del db
-	sqlite3 * db;
 	printf("Este es el menu de trabajo");
 	fflush(stdout);
 	printf("1. Ver lista de clientes\n");
@@ -465,7 +464,3 @@ void editarInformacionPlazasParking() {
     //Por inplementar, para editar la información de las plazas de parking
 }
 
-void main(){
-//	mostrarMenuPrincipal();
-	registrarseCliente();
-}
