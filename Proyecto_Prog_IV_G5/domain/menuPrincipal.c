@@ -90,9 +90,25 @@ void iniciarSesionCliente(sqlite3 * db) {////////////////////////////////////
     printf("Introduce tu usuario: ");
     fflush(stdout);
     scanf("%s", nomUser);
+    if(nomUser){//Falta aplicar el metodo
+
+    }else{
+    	printf("Nombre de ususario incorrecto");
+    	fflush(stdout);
+    	inicioSesionCliente(db);
+    	break;
+    }
     printf("Introduce tu contraseña: ");
     fflush(stdout);
     scanf("%i", contra);
+    if(contra){//Falta aplicar el metodo
+
+    }else{
+    	printf("Contraseña incorrecta");
+    	fflush(stdout);
+    	inicioSesionCliente(db);
+    	break;
+    }
 }
 
 void registrarseCliente(sqlite3 * db) {////////////////////////////////////
@@ -170,6 +186,8 @@ void iniciarSesionAdmin(sqlite3 * db) {////////////////////////////////////
 	int contra;
 
     printf("Iniciando sesión como administrador...\n");
+    fflush(stdout);
+    printf("Nombre usuario: Jorge, Contra:123, para poder acceder\n");/////
     fflush(stdout);
     printf("Introduce tu usuario de Trabajador: ");
     fflush(stdout);
