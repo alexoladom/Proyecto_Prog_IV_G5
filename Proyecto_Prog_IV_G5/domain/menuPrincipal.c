@@ -90,24 +90,22 @@ void iniciarSesionCliente(sqlite3 * db) {////////////////////////////////////
     printf("Introduce tu usuario: ");
     fflush(stdout);
     scanf("%s", nomUser);
-    if(nomUser){//Falta aplicar el metodo
+    if(comprobarDni(nomUser)){//Falta aplicar el metodo
 
     }else{
     	printf("Nombre de ususario incorrecto");
     	fflush(stdout);
     	inicioSesionCliente(db);
-    	break;
     }
     printf("Introduce tu contraseña: ");
     fflush(stdout);
     scanf("%i", contra);
-    if(contra){//Falta aplicar el metodo
+    if(comprobarContra(contra)){//Falta aplicar el metodo
 
     }else{
     	printf("Contraseña incorrecta");
     	fflush(stdout);
     	inicioSesionCliente(db);
-    	break;
     }
 }
 
