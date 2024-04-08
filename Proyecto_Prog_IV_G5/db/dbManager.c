@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "sqlite3.h"
 #include <string.h>
 #include "stdbool.h"
+#include "sqlite3.h"
 #include "../domain/cliente.h"
 #include "../domain/reserva.h"
 #include "../domain/habitacion.h"
@@ -393,6 +393,7 @@ void borrarHabitacion(sqlite3*db,int numero){
 
 
 }
+
 
 
 

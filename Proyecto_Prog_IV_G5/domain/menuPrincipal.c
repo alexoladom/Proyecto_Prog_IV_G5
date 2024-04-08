@@ -6,7 +6,7 @@
 
 
 
-void mostrarMenuPrincipal() {////////////////////////////////////
+void mostrarMenuPrincipal(sqlite3 * db) {////////////////////////////////////Esta
     int opcion;
     int numerin;
 
@@ -24,18 +24,18 @@ void mostrarMenuPrincipal() {////////////////////////////////////
 
     switch (opcion) {
         case 1:
-            menuCliente();
+            menuCliente(db);
             break;
         case 2:
         	printf("Introduce el codigo de acceso admin: ");
         	fflush(stdout);
         	scanf("%d", &numerin);
         	if(numerin == 123){
-        		menuAdministrador();
+        		menuAdministrador(db);
         	}else{
         		printf("El numero de acceso no es correcto.");
         		fflush(stdout);
-        		mostrarMenuPrincipal();
+        		mostrarMenuPrincipal(db);
         		break;
         	}
             break;
@@ -46,12 +46,12 @@ void mostrarMenuPrincipal() {////////////////////////////////////
         default:
             printf("Opción no válida. Por favor, ingrese una opción válida.\n");
             fflush(stdout);
-            mostrarMenuPrincipal();
+            mostrarMenuPrincipal(db);
             break;
     }
 }
 
-void menuCliente() {////////////////////////////////////
+void menuCliente(sqlite3 * db) {////////////////////////////////////Esta
 	int opcion;
 
 	printf("1. Iniciar sesión\n");
@@ -66,23 +66,23 @@ void menuCliente() {////////////////////////////////////
 
     switch(opcion) {
         case 1:
-            iniciarSesionCliente();
+            iniciarSesionCliente(db);
             break;
         case 2:
-            registrarseCliente();
+            registrarseCliente(db);
             break;
         case 3:
-            mostrarMenuPrincipal();
+            mostrarMenuPrincipal(db);
             break;
         default:
             printf("Opción no válida. Por favor, ingrese una opción válida.\n");
             fflush(stdout);
-            menuCliente();
+            menuCliente(db);
             break;
     }
 }
 
-void iniciarSesionCliente() {////////////////////////////////////
+void iniciarSesionCliente(sqlite3 * db) {////////////////////////////////////
 	char nomUser[50];
 	int contra;
 
@@ -92,21 +92,10 @@ void iniciarSesionCliente() {////////////////////////////////////
     fflush(stdout);
     scanf("%s", nomUser);
 
-    if (strcmp(nomUser, "Jorge") == 0) {
-        printf("Introduce tu contraseña: ");
-        fflush(stdout);
-        scanf("%d", &contra);
-        if (contra == 123) {
-            menuCompra();
-        } else {
-            printf("Contraseña incorrecta.\n");
-        }
-    } else {
-        printf("Usuario incorrecto.\n");
-    }
+
 }
 
-void registrarseCliente() {////////////////////////////////////
+void registrarseCliente(sqlite3 * db) {////////////////////////////////////
 
 	//TODO falta crear un cliente y solicitar todos los datos (edad,correo...)
 	char nomUser[50];
@@ -145,12 +134,12 @@ void registrarseCliente() {////////////////////////////////////
 
     printf("Registro exitoso.\n");
 
-    iniciarSesionCliente();
+    iniciarSesionCliente(db);
     Cliente c ={dni, nomUser, edad, correo};
     imprimirCliente(c);
 }
 
-void menuAdministrador() {////////////////////////////////////
+void menuAdministrador(sqlite3 * db) {////////////////////////////////////Esta
 	int opcion;
 
 	    printf("1. Iniciar sesión\n");
@@ -163,20 +152,20 @@ void menuAdministrador() {////////////////////////////////////
 
 	    switch(opcion) {
 	        case 1:
-	            iniciarSesionAdmin();
+	            iniciarSesionAdmin(db);
 	            break;
 	        case 2:
-	            mostrarMenuPrincipal();
+	            mostrarMenuPrincipal(db);
 	            break;
 	        default:
 	            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
 	            fflush(stdout);
-	            menuAdministrador();
+	            menuAdministrador(db);
 	            break;
 	    }
 }
 
-void iniciarSesionAdmin() {////////////////////////////////////
+void iniciarSesionAdmin(sqlite3 * db) {////////////////////////////////////
 	char nomUser[50];
 	int contra;
 
@@ -191,7 +180,7 @@ void iniciarSesionAdmin() {////////////////////////////////////
     	fflush(stdout);
     	scanf("%d", &contra);
     	if(contra == 123){
-    		menuTrabajo();
+    		menuTrabajo(db);
     	}else {
             printf("Contraseña incorrecta.\n");
         }
@@ -200,12 +189,11 @@ void iniciarSesionAdmin() {////////////////////////////////////
     }
 }
 
-void menuTrabajo(){////////////////////////////////////
+void menuTrabajo(sqlite3 * db){////////////////////////////////////Esta
 	int opcion;
 
 	//TODO arreglar problema del db
-	sqlite3 * db;
-	printf("Este es el menu de trabajo");
+	printf("Este es el menu de trabajo\n");
 	fflush(stdout);
 	printf("1. Ver lista de clientes\n");
 	fflush(stdout);
@@ -214,9 +202,6 @@ void menuTrabajo(){////////////////////////////////////
     printf("3. Borrar reservas\n");
     fflush(stdout);
     printf("4. Ver habitaciones\n");
-
-    //TODO implementa el menu para crear una nueva habitacion
-
     fflush(stdout);
     printf("5. Añadir habitaciones\n");
     fflush(stdout);
@@ -239,7 +224,6 @@ void menuTrabajo(){////////////////////////////////////
         	imprimirReservas(db);
         	break;
         case 3:
-
         	imprimirReservas(db);
         	printf("Introduzca el numero de reserva que desea borrar: \n");
             scanf("%d", &id);
@@ -249,10 +233,9 @@ void menuTrabajo(){////////////////////////////////////
         	imprimirHabitaciones(db);
         	break;
         case 5:
-        	//TODO menu para añadir habitaciones
+        	menuAnadirHabitacion(db);
         	break;
         case 6:
-
         	imprimirHabitaciones(db);
         	printf("Introduzca el numero de habitacion que desea borrar: \n");
         	scanf("%d", &numero);
@@ -268,204 +251,260 @@ void menuTrabajo(){////////////////////////////////////
         default:
         	printf("Opción no válida. Por favor, ingrese una opción válida.\n");
         	fflush(stdout);
-        	menuTrabajo();
+        	menuTrabajo(db);
         	break;
    	}
 }
 
-void menuCompra(){
+void menuAnadirHabitacion(sqlite3 * db){//////////////////
+	int numero;
+	int piso;
+	float precio;
+	int capacidad;
 	int opcion;
+	enum tipoHabitacion tipo;
 
-	    printf("Bienvenido al menú del Cliente:\n");
-	    fflush(stdout);
-	    printf("1. Reservar habitación\n");
-	    fflush(stdout);
-	    printf("2. Reservar plaza de parking\n");
-	    fflush(stdout);
-	    printf("3. Ver estado de reserva\n");
-	    fflush(stdout);
-	    printf("4. Modificar reserva\n");
-	    fflush(stdout);
-	    printf("5. Cancelar reserva\n");
-	    fflush(stdout);
-	    printf("6. Volver al menú principal\n");
-	    fflush(stdout);
-	    printf("Seleccione una opción: ");
-	    fflush(stdout);
-	    scanf("%d", &opcion);
+	printf("Este es el menu de añadir habitación\n");
+	fflush(stdout);
 
-	    switch(opcion) {
-	        case 1:
-	            reservarHabitacion();
-	            break;
-	        case 2:
-	            reservarParking();
-	            break;
-	        case 3:
-	            verEstadoReserva();
-	            break;
-	        case 4:
-	            modificarReserva();
-	            break;
-	        case 5:
-	            cancelarReserva();
-	            break;
-	        case 6:
-	            printf("Volviendo al menú principal...\n");
-	            fflush(stdout);
-	            mostrarMenuPrincipal();
-	            break;
-	        default:
-	            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
-	            fflush(stdout);
-	            menuCompra();
-	            break;
-	    }
+	printf("Introduce el numero de la habitación: \n");
+	fflush(stdout);
+	scanf("%i", numero);
+
+	printf("Introduce el piso de la habitación: \n");
+	fflush(stdout);
+	scanf("%i", piso);
+
+	printf("Introduce el tipo de la habitación: \n");
+	fflush(stdout);
+	printf("1. Habitación Simple");
+	fflush(stdout);
+	printf("2. Habitación Doble");
+	fflush(stdout);
+	printf("3. Habitación Suite");
+	fflush(stdout);
+	scanf("%i", opcion);
+	if (opcion == 1){
+		tipo = simple;
+	}else if(opcion == 2){
+		tipo = doble;
+	}else if(opcion == 3){
+		tipo = suite;
+	}else{
+		printf("El tipo de habitacion introducido es incorrecto");
+		fflush(stdout);
+		tipo = simple;
+	}
+
+	printf("Introduce la capacidad de la habitación: \n");
+	fflush(stdout);
+	scanf("%i", capacidad);
+
+	printf("Introduce el precio de la habitación: \n");
+	fflush(stdout);
+	scanf("%f", precio);
+
+	Habitacion h ={numero, piso, tipo, capacidad, precio, false};
+	imprimirHabitacion(h);
+	menuTrabajo(db);
+
 
 }
 
-//Parte del menu del trabajador///////////////
-void listadoClientes(){
-	//Por inplementar, será una lista con informacion de los clientes y la habitacion y parking que tienen
-}
+//void menuCompra(){
+//	int opcion;
+//
+//	    printf("Bienvenido al menú del Cliente:\n");
+//	    fflush(stdout);
+//	    printf("1. Reservar habitación\n");
+//	    fflush(stdout);
+//	    printf("2. Reservar plaza de parking\n");
+//	    fflush(stdout);
+//	    printf("3. Ver estado de reserva\n");
+//	    fflush(stdout);
+//	    printf("4. Modificar reserva\n");
+//	    fflush(stdout);
+//	    printf("5. Cancelar reserva\n");
+//	    fflush(stdout);
+//	    printf("6. Volver al menú principal\n");
+//	    fflush(stdout);
+//	    printf("Seleccione una opción: ");
+//	    fflush(stdout);
+//	    scanf("%d", &opcion);
+//
+//	    switch(opcion) {
+//	        case 1:
+//	            reservarHabitacion();
+//	            break;
+//	        case 2:
+//	            reservarParking();
+//	            break;
+//	        case 3:
+//	            verEstadoReserva();
+//	            break;
+//	        case 4:
+//	            modificarReserva();
+//	            break;
+//	        case 5:
+//	            cancelarReserva();
+//	            break;
+//	        case 6:
+//	            printf("Volviendo al menú principal...\n");
+//	            fflush(stdout);
+//	            mostrarMenuPrincipal();
+//	            break;
+//	        default:
+//	            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
+//	            fflush(stdout);
+//	            menuCompra();
+//	            break;
+//	    }
+//
+//}
+//
+////Parte del menu del trabajador///////////////
+//void listadoClientes(){
+//	//Por inplementar, será una lista con informacion de los clientes y la habitacion y parking que tienen
+//}
+//
+//
+//void menuHabitaciones() {
+//    int opcion;
+//
+//    printf("Menú de Habitaciones:\n");
+//    fflush(stdout);
+//    printf("1. Ver habitaciones reservadas\n");
+//    fflush(stdout);
+//    printf("2. Ver habitaciones disponibles\n");
+//    fflush(stdout);
+//    printf("3. Ver habitaciones ocupadas\n");
+//    fflush(stdout);
+//    printf("4. Ver estado de limpieza de habitaciones\n");
+//    fflush(stdout);
+//    printf("5. Editar información de habitaciones\n");
+//    fflush(stdout);
+//    printf("6. Volver al menú de trabajo\n");
+//    fflush(stdout);
+//    printf("Seleccione una opción: ");
+//    fflush(stdout);
+//    scanf("%d", &opcion);
+//
+//    switch(opcion) {
+//        case 1:
+//            verHabitacionesReservadas();
+//            break;
+//        case 2:
+//            verHabitacionesDisponibles();
+//            break;
+//        case 3:
+//            verHabitacionesOcupadas();
+//            break;
+//        case 4:
+//            verEstadoLimpiezaHabitaciones();
+//            break;
+//        case 5:
+//            menuEditarInformacionHabitaciones();
+//            break;
+//        case 6:
+//            printf("Volviendo al menú de trabajo...\n");
+//            fflush(stdout);
+//            menuTrabajo();
+//            break;
+//        default:
+//            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
+//            fflush(stdout);
+//            menuHabitaciones();
+//            break;
+//    }
+//}
+//
+//void menuPlazaParking() {
+//    int opcion;
+//
+//    printf("Menú de Plazas de Parking:\n");
+//    fflush(stdout);
+//    printf("1. Ver Plazas\n");
+//    fflush(stdout);
+//    printf("2. Editar Información de Plazas de Parking\n");
+//    fflush(stdout);
+//    printf("3. Volver al Menú de Trabajo\n");
+//    fflush(stdout);
+//    printf("Seleccione una opción: ");
+//    fflush(stdout);
+//    scanf("%d", &opcion);
+//
+//    switch(opcion) {
+//        case 1:
+//            verPlazasParking();
+//            break;
+//        case 2:
+//            editarInformacionPlazasParking();
+//            break;
+//        case 3:
+//            printf("Volviendo al Menú de Trabajo...\n");
+//            menuTrabajo();
+//            fflush(stdout);
+//            break;
+//        default:
+//            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
+//            fflush(stdout);
+//            menuPlazaParking();
+//            break;
+//    }
+//}
+//
+//
+////Parte del menu de compra del cliente///////////////
+//void reservarHabitacion(){
+//	//Por inplementar, funcion que reserva una habitacion dado su codigo y algun campo más
+//}
+//void reservarParking(){
+//	//Por inplementar, funcion que reserva unaplaza de parking dado su codigo y algun campo más
+//}
+//void verEstadoReserva(){
+//	//Por inplementar, devolverá la info de lo que se ha reservado, si lo hay
+//}
+//void modificarReserva(){
+//	//Por inplementar, dará opción cambiar el dia o la duracion de la reserva
+//}
+//void cancelarReserva(){
+//	//Por inplementar, dará opcion a cancelar una reserva
+//}
+//
+//
+////Parte del menu de las habitaciones////////////////
+//void verHabitacionesReservadas() {
+//    //Por inplementar, para mostrar las habitaciones reservadas
+//}
+//
+//void verHabitacionesDisponibles() {
+//    //Por inplementar, para mostrar las habitaciones disponibles
+//}
+//
+//void verHabitacionesOcupadas() {
+//    //Por inplementar, para mostrar las habitaciones ocupadas
+//}
+//
+//void verEstadoLimpiezaHabitaciones() {
+//    //Por inplementar, para mostrar el estado de limpieza de las habitaciones
+//}
+//
+//void menuEditarInformacionHabitaciones() {
+//    //Por inplementar, para editar la información de las habitaciones
+//}
+//
+//
+////Parte del menu del parking////////////
+//void verPlazasParking() {
+//    //Por inplementar, para mostrar las plazas de parking
+//}
+//
+//void editarInformacionPlazasParking() {
+//    //Por inplementar, para editar la información de las plazas de parking
+//}
 
-
-void menuHabitaciones() {
-    int opcion;
-
-    printf("Menú de Habitaciones:\n");
-    fflush(stdout);
-    printf("1. Ver habitaciones reservadas\n");
-    fflush(stdout);
-    printf("2. Ver habitaciones disponibles\n");
-    fflush(stdout);
-    printf("3. Ver habitaciones ocupadas\n");
-    fflush(stdout);
-    printf("4. Ver estado de limpieza de habitaciones\n");
-    fflush(stdout);
-    printf("5. Editar información de habitaciones\n");
-    fflush(stdout);
-    printf("6. Volver al menú de trabajo\n");
-    fflush(stdout);
-    printf("Seleccione una opción: ");
-    fflush(stdout);
-    scanf("%d", &opcion);
-
-    switch(opcion) {
-        case 1:
-            verHabitacionesReservadas();
-            break;
-        case 2:
-            verHabitacionesDisponibles();
-            break;
-        case 3:
-            verHabitacionesOcupadas();
-            break;
-        case 4:
-            verEstadoLimpiezaHabitaciones();
-            break;
-        case 5:
-            menuEditarInformacionHabitaciones();
-            break;
-        case 6:
-            printf("Volviendo al menú de trabajo...\n");
-            fflush(stdout);
-            menuTrabajo();
-            break;
-        default:
-            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
-            fflush(stdout);
-            menuHabitaciones();
-            break;
-    }
-}
-
-void menuPlazaParking() {
-    int opcion;
-
-    printf("Menú de Plazas de Parking:\n");
-    fflush(stdout);
-    printf("1. Ver Plazas\n");
-    fflush(stdout);
-    printf("2. Editar Información de Plazas de Parking\n");
-    fflush(stdout);
-    printf("3. Volver al Menú de Trabajo\n");
-    fflush(stdout);
-    printf("Seleccione una opción: ");
-    fflush(stdout);
-    scanf("%d", &opcion);
-
-    switch(opcion) {
-        case 1:
-            verPlazasParking();
-            break;
-        case 2:
-            editarInformacionPlazasParking();
-            break;
-        case 3:
-            printf("Volviendo al Menú de Trabajo...\n");
-            menuTrabajo();
-            fflush(stdout);
-            break;
-        default:
-            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
-            fflush(stdout);
-            menuPlazaParking();
-            break;
-    }
-}
-
-
-//Parte del menu de compra del cliente///////////////
-void reservarHabitacion(){
-	//Por inplementar, funcion que reserva una habitacion dado su codigo y algun campo más
-}
-void reservarParking(){
-	//Por inplementar, funcion que reserva unaplaza de parking dado su codigo y algun campo más
-}
-void verEstadoReserva(){
-	//Por inplementar, devolverá la info de lo que se ha reservado, si lo hay
-}
-void modificarReserva(){
-	//Por inplementar, dará opción cambiar el dia o la duracion de la reserva
-}
-void cancelarReserva(){
-	//Por inplementar, dará opcion a cancelar una reserva
-}
-
-
-//Parte del menu de las habitaciones////////////////
-void verHabitacionesReservadas() {
-    //Por inplementar, para mostrar las habitaciones reservadas
-}
-
-void verHabitacionesDisponibles() {
-    //Por inplementar, para mostrar las habitaciones disponibles
-}
-
-void verHabitacionesOcupadas() {
-    //Por inplementar, para mostrar las habitaciones ocupadas
-}
-
-void verEstadoLimpiezaHabitaciones() {
-    //Por inplementar, para mostrar el estado de limpieza de las habitaciones
-}
-
-void menuEditarInformacionHabitaciones() {
-    //Por inplementar, para editar la información de las habitaciones
-}
-
-
-//Parte del menu del parking////////////
-void verPlazasParking() {
-    //Por inplementar, para mostrar las plazas de parking
-}
-
-void editarInformacionPlazasParking() {
-    //Por inplementar, para editar la información de las plazas de parking
-}
 
 void main(){
 //	mostrarMenuPrincipal();
-	registrarseCliente();
+//	sqlite3 * db = conectarDB();
 }
