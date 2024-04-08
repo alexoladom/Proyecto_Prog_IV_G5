@@ -6,7 +6,7 @@
 
 
 
-void mostrarMenuPrincipal() {
+void mostrarMenuPrincipal() {////////////////////////////////////
     int opcion;
     int numerin;
 
@@ -51,7 +51,7 @@ void mostrarMenuPrincipal() {
     }
 }
 
-void menuCliente() {
+void menuCliente() {////////////////////////////////////
 	int opcion;
 
 	printf("1. Iniciar sesión\n");
@@ -82,7 +82,7 @@ void menuCliente() {
     }
 }
 
-void iniciarSesionCliente() {//Funcion semifuncional hasta que haya bases de datos o ficheros
+void iniciarSesionCliente() {////////////////////////////////////
 	char nomUser[50];
 	int contra;
 
@@ -106,27 +106,51 @@ void iniciarSesionCliente() {//Funcion semifuncional hasta que haya bases de dat
     }
 }
 
-void registrarseCliente() {//Funcion semifuncional hasta que haya bases de datos o ficheros
+void registrarseCliente() {////////////////////////////////////
 
 	//TODO falta crear un cliente y solicitar todos los datos (edad,correo...)
 	char nomUser[50];
     int contra;
+    int edad;
+    char correo[50];
+    int dni;
+    char nombre[50];
 
     printf("Registrando nuevo cliente...\n");
     fflush(stdout);
-    printf("Introduce tu nuevo usuario: ");
+
+    printf("Introduce tu nuevo usuario: \n");
     fflush(stdout);
-    scanf("%s", nomUser);
-    printf("Introduce tu contraseña: ");
+    scanf("%c", nomUser);
+
+    printf("Introduce tu edad: \n");
+    fflush(stdout);
+    scanf("%i", edad);
+
+    printf("Introduce tu dni sin la letra: \n");
+    fflush(stdout);
+    scanf("%i", dni);
+
+    printf("Introduce tu correo: \n");
+    fflush(stdout);
+    scanf("%c", correo);
+
+    printf("Introduce tu nombre: \n");
+    fflush(stdout);
+    scanf("%c", nombre);
+
+    printf("Introduce tu contraseña: \n");
     fflush(stdout);
     scanf("%d", &contra);
 
     printf("Registro exitoso.\n");
 
     iniciarSesionCliente();
+    Cliente c ={dni, nomUser, edad, correo};
+    imprimirCliente(c);
 }
 
-void menuAdministrador() {
+void menuAdministrador() {////////////////////////////////////
 	int opcion;
 
 	    printf("1. Iniciar sesión\n");
@@ -152,7 +176,7 @@ void menuAdministrador() {
 	    }
 }
 
-void iniciarSesionAdmin() {//Funcion semifuncional hasta que haya bases de datos o ficheros
+void iniciarSesionAdmin() {////////////////////////////////////
 	char nomUser[50];
 	int contra;
 
@@ -176,7 +200,7 @@ void iniciarSesionAdmin() {//Funcion semifuncional hasta que haya bases de datos
     }
 }
 
-void menuTrabajo(){
+void menuTrabajo(){////////////////////////////////////
 	int opcion;
 
 	//TODO arreglar problema del db
@@ -442,5 +466,6 @@ void editarInformacionPlazasParking() {
 }
 
 void main(){
-	mostrarMenuPrincipal();
+//	mostrarMenuPrincipal();
+	registrarseCliente();
 }
