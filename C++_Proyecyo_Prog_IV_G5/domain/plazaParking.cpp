@@ -1,6 +1,8 @@
 #include "plazaParking.h"
 
 
+int PlazaParking::numPlazaParkings=0;
+
 PlazaParking::PlazaParking(){
 	this->numero=-1;
 	this->zona="A";

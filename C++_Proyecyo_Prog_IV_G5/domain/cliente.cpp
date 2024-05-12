@@ -1,6 +1,6 @@
 #include "cliente.h"
 
-
+	int Cliente::numClientes=0;
 	Cliente::Cliente(){
 
 		this->dni=-1;

@@ -12,7 +12,10 @@ private:
 	int edad;
 	string correo;
 
+
+
 public:
+	static int numClientes;
 	Cliente();
 	Cliente(int dni, string nombre, int edad, string correo);
 

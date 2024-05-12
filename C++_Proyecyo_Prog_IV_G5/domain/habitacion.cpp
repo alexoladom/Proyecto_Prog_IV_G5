@@ -1,6 +1,7 @@
 #include "habitacion.h"
 
 
+int Habitacion::numHabitaciones=0;
 Habitacion::Habitacion(){
 	this->numero=-1;
 	this->piso=0;
@@ -71,6 +72,8 @@ enum tipoHabitacion Habitacion::getTipo()  {
 void Habitacion::setTipo(enum tipoHabitacion tipo) {
 	this->tipo = tipo;
 }
+
+
 
 void Habitacion::imprimirHabitacion(){
 	cout<<"Habitacion (nº "<<numero<<", piso "<<piso

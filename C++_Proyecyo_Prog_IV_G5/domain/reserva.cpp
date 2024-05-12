@@ -1,5 +1,7 @@
 #include "reserva.h"
 
+
+int Reserva::numReservas=0;
 Reserva::Reserva(){
 	this->id=-1;
 	this->fecha="";
@@ -56,6 +58,7 @@ Reserva::Reserva(int id,string fecha, int dniCliente,int numeroHabitacion,int nu
 	this->numeroHabitacion=numeroHabitacion;
 	this->numeroPlazaParking=numeroPlazaParking;
 }
+
 
 void Reserva::imprimirReserva(){
 	cout<<"Reserva("<<id<<", "<<fecha

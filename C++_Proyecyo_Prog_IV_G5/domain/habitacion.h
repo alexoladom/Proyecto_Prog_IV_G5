@@ -17,6 +17,7 @@ private:
 	bool ocupado;
 
 public:
+	static int numHabitaciones;
 	Habitacion();
 	Habitacion(int numero,
 	int piso,
@@ -40,6 +41,8 @@ public:
 	void setPrecio(float precio);
 	enum tipoHabitacion getTipo() ;
 	void setTipo(enum tipoHabitacion tipo);
+	void setNumHabitaciones(int num);
+	int getNumHabitaciones();
 };
 
 

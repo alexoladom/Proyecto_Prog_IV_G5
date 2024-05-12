@@ -319,61 +319,61 @@ void menuAnadirHabitacion(sqlite3 * db){//////////////////esta
 
 }
 
-//void menuCompra(){
-//	int opcion;
-//
-//	    printf("Bienvenido al menú del Cliente:\n");
-//	    fflush(stdout);
-//	    printf("1. Reservar habitación\n");
-//	    fflush(stdout);
-//	    printf("2. Reservar plaza de parking\n");
-//	    fflush(stdout);
-//	    printf("3. Ver estado de reserva\n");
-//	    fflush(stdout);
-//	    printf("4. Modificar reserva\n");
-//	    fflush(stdout);
-//	    printf("5. Cancelar reserva\n");
-//	    fflush(stdout);
-//	    printf("6. Volver al menú principal\n");
-//	    fflush(stdout);
-//	    printf("Seleccione una opción: ");
-//	    fflush(stdout);
-//	    scanf("%d", &opcion);
-//
-//	    switch(opcion) {
-//	        case 1:
-//	            reservarHabitacion();
-//	            break;
-//	        case 2:
-//	            reservarParking();
-//	            break;
-//	        case 3:
-//	            verEstadoReserva();
-//	            break;
-//	        case 4:
-//	            modificarReserva();
-//	            break;
-//	        case 5:
-//	            cancelarReserva();
-//	            break;
-//	        case 6:
-//	            printf("Volviendo al menú principal...\n");
-//	            fflush(stdout);
-//	            mostrarMenuPrincipal();
-//	            break;
-//	        default:
-//	            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
-//	            fflush(stdout);
-//	            menuCompra();
-//	            break;
-//	    }
-//
-//}
-//
-////Parte del menu del trabajador///////////////
-//void listadoClientes(){
-//	//Por inplementar, será una lista con informacion de los clientes y la habitacion y parking que tienen
-//}
+void menuCompra(){
+	int opcion;
+
+	    printf("Bienvenido al menú del Cliente:\n");
+	    fflush(stdout);
+	    printf("1. Reservar habitación\n");
+	    fflush(stdout);
+	    printf("2. Reservar plaza de parking\n");
+	    fflush(stdout);
+	    printf("3. Ver estado de reserva\n");
+	    fflush(stdout);
+	    printf("4. Modificar reserva\n");
+	    fflush(stdout);
+	    printf("5. Cancelar reserva\n");
+	    fflush(stdout);
+	    printf("6. Volver al menú principal\n");
+	    fflush(stdout);
+	    printf("Seleccione una opción: ");
+	    fflush(stdout);
+	    scanf("%d", &opcion);
+
+	    switch(opcion) {
+	        case 1:
+	            reservarHabitacion();
+	            break;
+	        case 2:
+	            reservarParking();
+	            break;
+	        case 3:
+	            verEstadoReserva();
+	            break;
+	        case 4:
+	            modificarReserva();
+	            break;
+	        case 5:
+	            cancelarReserva();
+	            break;
+	        case 6:
+	            printf("Volviendo al menú principal...\n");
+	            fflush(stdout);
+	            mostrarMenuPrincipal();
+	            break;
+	        default:
+	            printf("Opción no válida. Por favor, ingrese una opción válida.\n");
+	            fflush(stdout);
+	            menuCompra();
+	            break;
+	    }
+
+}
+
+//Parte del menu del trabajador///////////////
+void listadoClientes(){
+	//Por inplementar, será una lista con informacion de los clientes y la habitacion y parking que tienen
+}
 //
 //
 //void menuHabitaciones() {

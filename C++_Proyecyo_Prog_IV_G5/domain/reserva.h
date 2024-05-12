@@ -12,8 +12,8 @@ private:
 	int dniCliente;
 	int numeroHabitacion;
 	int numeroPlazaParking;
-
 public:
+	static int numReservas;
 	Reserva();
 	Reserva(int id, string fecha, int dniCliente, int numeroHabitacion, int numeroPlazaParking);
 	void imprimirReserva();
@@ -28,6 +28,8 @@ public:
 	void setNumeroHabitacion(int numeroHabitacion);
 	int getNumeroPlazaParking() ;
 	void setNumeroPlazaParking(int numeroPlazaParking);
+
+
 };
 
 #endif

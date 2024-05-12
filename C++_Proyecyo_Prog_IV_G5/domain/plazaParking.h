@@ -14,6 +14,7 @@ private:
 
 
 public:
+	static int numPlazaParkings;
 	PlazaParking();
 	PlazaParking(int numero, string zona, bool ocupado);
 	void imprimirPlazaParking();
@@ -23,6 +24,8 @@ public:
 	void setOcupado(bool ocupado);
 	string getZona();
 	void setZona(string &zona);
+	void setNumPlazaParkings(int num);
+	int getNumPlazaParking();
 };
 
 
