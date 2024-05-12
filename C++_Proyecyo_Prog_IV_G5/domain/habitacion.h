@@ -7,6 +7,7 @@ using namespace std;
 
 enum tipoHabitacion {simple, doble, suite};
 
+
 class Habitacion{
 private:
 	int numero;

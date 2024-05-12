@@ -41,5 +41,7 @@ void PlazaParking::setZona( string &zona) {
 }
 
 void PlazaParking::imprimirPlazaParking(){
-	cout<<"PlazaParking ("<<numero<<", zona "<<zona<<", "<<ocupado;
+	char ocupadoc[][10]={"Libre","Ocupado"};
+
+	cout<<"PlazaParking ("<<numero<<", zona "<<zona<<", "<<ocupadoc[ocupado]<<")\n";
 }

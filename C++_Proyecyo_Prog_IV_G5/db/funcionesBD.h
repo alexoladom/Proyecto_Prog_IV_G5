@@ -13,23 +13,23 @@ extern "C" {
 
 sqlite3* conectarDB();
 
-Cliente* getListaClientes(sqlite3*db); //DONE
-int comprobarDni(sqlite3* db, int dni);//DONE
-int comprobarContra(sqlite3* db, int dni, char*contrasena);
-int anadirDniContra(sqlite3* db, int dni, char* contra);
-int anadirCliente(Cliente &c,sqlite3*db);//DONE
+Cliente* getListaClientes(sqlite3*db); //DONE	Checked
+int comprobarDni(sqlite3* db, int dni);//DONE	Checked
+int comprobarContra(sqlite3* db, int dni, char*contrasena);//DONE	Checked
+int anadirDniContra(sqlite3* db, int dni, char* contra);//DONE	Checked
+int anadirCliente(Cliente &c,sqlite3*db);//DONE	Cheked
 
-Reserva* getListaReservas(sqlite3*db); //DONE
-int anadirReserva(Reserva &r, sqlite3* db); //DONE
-int borrarReserva(sqlite3*db,int numero); //DONE
+Reserva* getListaReservas(sqlite3*db); //DONE	Checked
+int anadirReserva(Reserva &r, sqlite3* db); //DONE	Checked
+int borrarReserva(sqlite3*db,int numero); //DONE	Checked
 
-Habitacion* getListaHabitaciones(sqlite3*db); //
-int borrarHabitacion(sqlite3*db,int numero); //
-int anadirHabitacion(sqlite3*db,Habitacion &h);//
+Habitacion* getListaHabitaciones(sqlite3*db); //DONE	Checked
+int borrarHabitacion(sqlite3*db,int numero); //DONE	Checked
+int anadirHabitacion(sqlite3*db,Habitacion &h);//DONE	Checked
 
-PlazaParking* getListaPlazasParking(sqlite3*db);//
-int anadirPlazaParking(sqlite3*db,PlazaParking &p);
-int borrarPlazaParking(sqlite3*db, int numero);
+PlazaParking* getListaPlazasParking(sqlite3*db);//DONE	Checked
+int anadirPlazaParking(sqlite3*db,PlazaParking &p);//DONE	Checked
+int borrarPlazaParking(sqlite3*db, int numero);//DONE	Checked
 
 
 
