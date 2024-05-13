@@ -54,12 +54,3 @@
 
 		cout<<"Ciliente ( DNI: "<<dni<<", "<<nombre<<", "<<edad<<"años, "<<correo<<")\n";
 	}
-
-	string Cliente::toString(){
-
-		string dni = to_string(this->dni);
-		string edad = to_string(this->edad);
-		string ret = "Cliente (DNI: "+dni+", "+nombre+", "+edad+" años, "+correo+")\n";
-
-		return ret;
-	}

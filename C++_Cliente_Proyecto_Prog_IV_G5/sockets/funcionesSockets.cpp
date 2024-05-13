@@ -3,6 +3,9 @@
 #define OK 1
 #define NOT_OK 0;
 
+#include "iostream"
+using namespace std;
+
 #define SERVER_IP "127.0.0.3"
 #define SERVER_PORT 6000
 
@@ -67,6 +70,7 @@ int recibirMensaje(SOCKET& comm_socket,char recvBuff[]){
 int enviarMensaje(SOCKET& comm_socket,char sendBuff[]){
 
 	send(comm_socket, sendBuff, sizeof(char)*512, 0);
+	cout<<"Mensaje enviado.\n";
 
 	return OK;
 }
@@ -74,6 +78,8 @@ int enviarMensaje(SOCKET& comm_socket,char sendBuff[]){
 void cerrarConexion(SOCKET& comm_socket){
 	closesocket(comm_socket);
 	WSACleanup();
+	cout<<"Socket cerrado\n";
+
 }
 
 
