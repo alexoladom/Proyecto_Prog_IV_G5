@@ -52,5 +52,5 @@
 
 	void Cliente::imprimir(){
 
-		cout<<"Ciliente ("<<dni<<", "<<nombre<<", "<<edad<<", "<<correo<<")\n";
+		cout<<"Ciliente ( DNI: "<<dni<<", "<<nombre<<", "<<edad<<"años, "<<correo<<")\n";
 	}

@@ -62,6 +62,6 @@ Reserva::Reserva(int id,string fecha, int dniCliente,int numeroHabitacion,int nu
 
 void Reserva::imprimirReserva(){
 	cout<<"Reserva("<<id<<", "<<fecha
-	<<", cliente "<<dniCliente<<", habitacion "
-	<<numeroHabitacion<<", parking "<<numeroPlazaParking;
+	<<", cliente "<<dniCliente<<", habitacion nº"
+	<<numeroHabitacion<<", parking nº"<<numeroPlazaParking<<")\n";
 }

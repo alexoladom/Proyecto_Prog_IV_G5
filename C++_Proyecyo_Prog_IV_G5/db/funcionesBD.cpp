@@ -9,7 +9,7 @@
 
 sqlite3* conectarDB(){
 	sqlite3 * db;
-	int result1 = sqlite3_open("db/C++dbProgIV.sqlite", &db); // @suppress("Invalid arguments")
+	int result1 = sqlite3_open("db/C++dbProgIV.sqlite", &db);
 	if (result1 != SQLITE_OK) {
 		printf("Error opening database\n");
 	}else{
@@ -387,6 +387,39 @@ int borrarReserva(sqlite3*db,int numero){
 
 		Reserva::numReservas--;
 		return OK;
+}
+
+int modificarReserva(sqlite3* db, Reserva &r){
+	sqlite3_stmt *stmt1;
+
+	char sql1[] = "update reserva set fecha=?, numeroHabitacion=?, numeroPlazaParking=? where id = ?";
+
+	int result = sqlite3_prepare_v2(db, sql1, -1, &stmt1, NULL) ;// @suppress("Invalid arguments")
+	sqlite3_bind_text(stmt1, 1, r.getFecha().c_str(), strlen( r.getFecha().c_str()),SQLITE_STATIC);// @suppress("Invalid arguments")
+	sqlite3_bind_int(stmt1, 2,r.getNumeroHabitacion());// @suppress("Invalid arguments")
+	sqlite3_bind_int(stmt1, 3,r.getNumeroPlazaParking());// @suppress("Invalid arguments")
+	sqlite3_bind_int(stmt1, 4,r.getId());// @suppress("Invalid arguments")
+
+	if (result != SQLITE_OK) {
+		printf("Error preparing statement (Update)\n");
+		printf("%s\n", sqlite3_errmsg(db));// @suppress("Invalid arguments")
+		return NOT_OK;
+	}
+	result = sqlite3_step(stmt1);// @suppress("Invalid arguments")
+	if (result != SQLITE_DONE) {
+		printf("Error actualizando reserva %i table\n", r.getId());
+		return NOT_OK;
+	}
+
+	result = sqlite3_finalize(stmt1);// @suppress("Invalid arguments")
+	if (result != SQLITE_OK) {
+		printf("Error finalizing statement (Update)\n");
+		printf("%s\n", sqlite3_errmsg(db));// @suppress("Invalid arguments")
+		return NOT_OK;
+	}
+
+
+	return OK;
 }
 
 /*

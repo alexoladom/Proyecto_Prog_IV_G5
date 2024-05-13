@@ -3,7 +3,7 @@
 
 int main(){
 
-	conectarDB();
+	sqlite3* bd=conectarDB();
 
 
 }

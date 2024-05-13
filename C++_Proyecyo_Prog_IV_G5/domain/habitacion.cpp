@@ -80,8 +80,8 @@ void Habitacion::imprimirHabitacion(){
 	char tipos[][10]={"Simple","Doble","Suite"};
 	char ocupadoc[][10]={"Libre","Ocupado"};
 	cout<<"Habitacion (nº "<<numero<<", piso "<<piso
-	<<", "<<tipos[tipo]<<", capacidad "<<capacidad<<", "
-	<<precio<<", "<<ocupadoc[ocupado]<<")\n";
+	<<", "<<tipos[tipo]<<", "<<capacidad<<"camas , "
+	<<precio<<"€, "<<ocupadoc[ocupado]<<")\n";
 }
 
 
