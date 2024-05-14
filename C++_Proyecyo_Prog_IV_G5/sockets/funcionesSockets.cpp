@@ -90,8 +90,6 @@ int recibirMensaje(SOCKET& comm_socket,char recvBuff[]){
 	int bytes = recv(comm_socket, recvBuff, sizeof(char)*512, 0);
 
 	if (bytes > 0) {
-		printf("Recibiendo el mensaje... \n");
-		printf("Datos recibidos: %s \n", recvBuff);
 		return OK;
 	}
 	return NOT_OK;
@@ -101,7 +99,6 @@ int recibirMensaje(SOCKET& comm_socket,char recvBuff[]){
 int enviarMensaje(SOCKET& comm_socket,char sendBuff[]){
 
 	send(comm_socket, sendBuff, sizeof(char)*512, 0);
-	cout<<"Mensaje enviado.\n";
 
 	return OK;
 }
