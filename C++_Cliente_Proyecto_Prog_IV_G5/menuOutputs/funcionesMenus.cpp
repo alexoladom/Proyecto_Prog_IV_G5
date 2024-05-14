@@ -11,6 +11,25 @@ void mostrarMenuPrincipal(){
 	cout<<"2.- Aministrador\n";
 	cout<<"3.- Salir\n";
 	cout<<"SELECIONE UNA OPCION:\n";
+
+	int opcion;
+	    cin >> opcion;
+
+	    switch(opcion) {
+	        case 1:
+	        	mostrarMenuInicioCliente();
+	            break;
+	        case 2:
+	        	mostrarMenuInicioAdmin();
+	            break;
+	        case 3:
+	            cout << "Saliendo del programa...\n";
+	            break;
+	        default:
+	            cout << "Opción no válida. Por favor, seleccione una opción válida.\n";
+	            mostrarMenuPrincipal();
+	            break;
+	    }
 }
 
 //Parte del cliente

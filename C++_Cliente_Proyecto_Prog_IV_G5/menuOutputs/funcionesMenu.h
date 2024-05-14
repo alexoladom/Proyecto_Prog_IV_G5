@@ -5,11 +5,17 @@
 
 void mostrarMenuPrincipal();
 void mostrarMenuInicioCliente();
+void mostrarMenuInicioSesionCliente
+void mostrarMenuRegistroCliente
+void mostrarMenuCliente
+void mostrarMenuCrearReserva
+void mostrarReservarHabitacion
+void mostrarReservarPlazaParking
+void mostrarMenuModificarReserva
 void mostrarMenuInicioAdmin();
-void mostrarMenuPrincipalAdmin();
-void mostrarMenuPrincipalCliente();
-
-
-
+void mostrarMenuInicioSesionAdmin
+void mostrarMenuAdmin
+void mostrarMenuAñadirHabitacion
+void mostrarMenuAñadirPlazaParking
 
 #endif
