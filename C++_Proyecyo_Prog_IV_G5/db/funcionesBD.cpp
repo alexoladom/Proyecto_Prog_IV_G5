@@ -9,7 +9,7 @@
 
 sqlite3* conectarDB(){
 	sqlite3 * db;
-	int result1 = sqlite3_open("db/C++dbProgIV.sqlite", &db); // @suppress("Invalid arguments")
+	int result1 = sqlite3_open("db/C++dbProgIV.sqlite", &db);
 	if (result1 != SQLITE_OK) {
 		printf("Error opening database\n");
 	}else{
