@@ -22,6 +22,7 @@ int anadirCliente(Cliente &c,sqlite3*db);//DONE	Cheked
 Reserva* getListaReservas(sqlite3*db); //DONE	Checked
 int anadirReserva(Reserva &r, sqlite3* db); //DONE	Checked
 int borrarReserva(sqlite3*db,int numero); //DONE	Checked
+int modificarReserva(sqlite3* db, Reserva &r);
 
 Habitacion* getListaHabitaciones(sqlite3*db); //DONE	Checked
 int borrarHabitacion(sqlite3*db,int numero); //DONE	Checked

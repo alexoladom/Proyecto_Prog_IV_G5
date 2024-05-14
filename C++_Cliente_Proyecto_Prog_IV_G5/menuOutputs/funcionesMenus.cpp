@@ -4,7 +4,7 @@
 using namespace std;
 
 
-void mostrarMenuprincipal(){
+void mostrarMenuPrincipal(){
 	cout<<"--------------------------\n";
 	cout<<"¡BIENVENIDO AL HOTEL!\n";
 	cout<<"1.- Cliente\n";
