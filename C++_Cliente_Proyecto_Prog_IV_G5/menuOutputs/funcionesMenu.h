@@ -13,4 +13,7 @@ void mostrarMenuInicioAdmin();
 
 void mostrarMenuPrincipalAdmin();
 
+int iniciarSesion();
+
+
 #endif
