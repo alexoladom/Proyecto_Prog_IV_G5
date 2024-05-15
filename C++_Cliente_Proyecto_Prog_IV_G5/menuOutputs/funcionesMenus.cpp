@@ -69,9 +69,93 @@ void mostrarMenuPrincipalAdmin(){
 
 }
 
+int iniciarSesion(){//0 bien; 1 mal
+	int contra;
+	string nombreUser;
+
+	cout <<"Introduce el nombre de usuario: ";
+	cin >> nombreUser; //Falta hacerlo a tu manera en todos los cin
+	cout <<"\nIntroduce tu contraseña: ";
+	cin >> contra;
+
+	string nombreBD = nombreUser;//Falta comprobar de alguna manera
+	int contrasena = contra;
+
+	if (nombreUser != nombreBD) {//Parte sin acabar
+		if (contrasena(nombreBD) == contra) {
+			cout << "Inicio de sesión exitoso.\n";
+			return 0;
+		} else {
+			cout << "Contraseña incorrecta. Inténtalo de nuevo.\n";
+			return 1;
+		}
+	} else {
+		cout << "Usuario no encontrado. Inténtalo de nuevo.\n";
+		return 1;
+	}
+
+}
+
+Cliente registrarse(){ //Cliente: int dni;string nombre;int edad;string correo;
+	Cliente c = null;
+
+	string nombre;
+	string apellido;
+	string nombreCompleto;
+	string nombreUser;
+	string correo;
+	int dni;
+	int edad;
+	int contra;
+	int contra2;
+
+
+	cout <<"Introduce tu nombre: ";
+	cin >> nombre;
+	cout <<"\nIntrocuce tus apellidos: ";
+	cin >> apellido;
+	cout <<"\nIntroduce tu dni: ";
+	cin >> dni;
+	cout <<"\nIntroduce tu edad: ";
+	cin >> edad;
+	cout <<"\nIntroduce tu correo: ";
+	cin >> correo;
+	cout <<"\nIntroduce tu nombre de usuario: ";
+	cin >> nombreUser;
+	cout <<"\nIntroduce tu contraseña: ";
+	cin >> contra;
+	cout <<"\nConfirma tu contraseña: ";
+	cin >> contra2;
+	if(contra != contra2){
+		cout << "Error confirmando la contraseña";
+		registrarse();
+	}
+	nombreCompleto = nombre + " " + apellido;
+	c = new Cliente(dni, nombreCompleto, edad, correo);
+
+
+	return c;
+}
+
+//Reserva crearReserva(){
+//
+//}
+
+Habitacion anadirHabitacion(){ //Habitacion: int numero;int piso;enum tipoHabitacion tipo;int capacidad;float precio;bool ocupado;
+	habitacion h = null;
 
 
 
+	return h;
+}
+
+PlazaParking anadirPlazaParking(){ //Plaza: int numero;string zona;bool ocupado;
+	plazaParking p = null;
+
+
+
+	return p;
+}
 
 
 
