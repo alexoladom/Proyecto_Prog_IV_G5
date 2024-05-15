@@ -3,6 +3,30 @@
 #include "iostream"
 using namespace std;
 
+//Para el inicio sesion del cliente
+struct Credenciales {
+    string nombreUsuario;
+    string contrasena;
+};
+
+Credenciales credencialesCliente;
+
+//Para el registro del cliente
+struct DatosCliente {
+    string nombre;
+    string apellido;
+    string correoElectronico;
+    string contrasena;
+};
+
+DatosCliente datosCliente;
+
+void ingresarCredenciales() {
+    cout << "Por favor, ingrese su nombre de usuario: ";
+    cin >> credencialesCliente.nombreUsuario;
+    cout << "Por favor, ingrese su contraseña: ";
+    cin >> credencialesCliente.contrasena;
+}
 
 void mostrarMenuPrincipal(){
 	cout<<"--------------------------\n";
@@ -13,23 +37,23 @@ void mostrarMenuPrincipal(){
 	cout<<"SELECIONE UNA OPCION:\n";
 
 	int opcion;
-	    cin >> opcion;
+	cin >> opcion;
 
-	    switch(opcion) {
-	        case 1:
-	        	mostrarMenuInicioCliente();
-	            break;
-	        case 2:
-	        	mostrarMenuInicioAdmin();
-	            break;
-	        case 3:
-	            cout << "Saliendo del programa...\n";
-	            break;
-	        default:
-	            cout << "Opción no válida. Por favor, seleccione una opción válida.\n";
-	            mostrarMenuPrincipal();
-	            break;
-	    }
+	switch(opcion) {
+        case 1:
+        	mostrarMenuInicioCliente();
+            break;
+        case 2:
+        	mostrarMenuInicioAdmin();
+            break;
+        case 3:
+            cout << "Saliendo del programa...\n";
+            break;
+        default:
+            cout << "Opción no válida. Por favor, seleccione una opción válida.\n";
+            mostrarMenuPrincipal();
+            break;
+    }
 }
 
 //Parte del cliente
@@ -40,14 +64,54 @@ void mostrarMenuInicioCliente(){
 	cout<<"2.- Registrarse\n";
 	cout<<"3.- Volver al menú principal\n";
 	cout<<"SELECIONE UNA OPCION:\n";
+
+	int opcion;
+	cin >> opcion;
+
+	switch(opcion) {
+		case 1:
+			mostrarMenuInicioSesionCliente();
+	        break;
+	    case 2:
+	    	mostrarMenuRegistroCliente();
+	        break;
+	    case 3:
+	    	mostrarMenuPrincipal();
+	        break;
+	    default:
+	        cout << "Opción no válida. Por favor, seleccione una opción válida.\n";
+	        mostrarMenuInicioCliente();
+	        break;
+	}
 }
 
 void mostrarMenuInicioSesionCliente(){
     cout<<"----------------------\n";
     cout<<"MENU INICIO SESION CLIENTE\n";
-    cout<<"1.- Ingresar credenciales\n";
+    cout<<"1.- Ingresar credenciales del usuario\n";
     cout<<"2.- Volver al menú principal\n";
     cout<<"SELECCIONE UNA OPCION: \n";
+
+    int opcion;
+    cin >> opcion;
+
+   		switch(opcion) {
+   			case 1:
+    			ingresarCredenciales();
+    			//Verificación
+    			cout << "Credenciales ingresadas:\n";
+    			cout << "Nombre de usuario: " << credencialesCliente.nombreUsuario << endl;
+                cout << "Contraseña: " << credencialesCliente.contrasena << endl;
+                mostrarMenuCliente();
+    	        break;
+    	    case 2:
+    	       	mostrarMenuPrincipal();
+    	       	break;
+    	    default:
+    	        cout << "Opción no válida. Por favor, seleccione una opción válida.\n";
+    	        mostrarMenuInicioSesionCliente();
+    	        break;
+    	}
 }
 
 void mostrarMenuRegistroCliente(){
@@ -56,16 +120,44 @@ void mostrarMenuRegistroCliente(){
     cout<<"Por favor, ingrese los datos solicitados:\n";
 
     cout<<"Nombre: ";
+    cin >> datosCliente.nombre;
 
     cout<<"Apellido: ";
+    cin >> datosCliente.apellido;
 
     cout<<"Correo electrónico: ";
+    cin >> datosCliente.correoElectronico;
 
     cout<<"Contraseña: ";
+    cin >> datosCliente.contrasena;
 
     cout<<"Confirmar contraseña: ";
+    cin >> datosCliente.contrasena;
 
     cout<<"Presione 1 para registrar, 2 para cancelar: ";
+
+    int opcion;
+    cin >> opcion;
+
+   	switch(opcion) {
+		case 1:
+			//Funcion de almacenar
+			cout << "Registrando al cliente...\n";
+			cout << "Datos del cliente registrados:\n";
+			cout << "Nombre: " << datosCliente.nombre << endl;
+			cout << "Apellido: " << datosCliente.apellido << endl;
+			cout << "Correo electrónico: " << datosCliente.correoElectronico << endl;
+			mostrarMenuInicioSesionCliente();
+			break;
+		case 2:
+			cout << "Cancelando registro...\n";
+			mostrarMenuPrincipal();
+			break;
+		default:
+			cout << "Opción no válida. Registro cancelado.\n";
+			mostrarMenuRegistroCliente();
+			break;
+    }
 }
 
 void mostrarMenuCliente(){
@@ -76,8 +168,30 @@ void mostrarMenuCliente(){
     cout<<"3.- Volver al menú principal\n";
     cout<<"4.- Cerrar\n";
     cout<<"SELECCIONE UNA OPCION:\n";
+    int opcion;
+    cin >> opcion;
+
+    switch(opcion) {
+    	case 1:
+    		mostrarMenuCrearReserva();
+            break;
+    	case 2:
+    		mostrarMenuModificarReserva();
+    		break;
+    	case 3:
+    		mostrarMenuPrincipal();
+            break;
+        case 4:
+            cout << "Cerrando...\n";
+            break;
+        default:
+            cout << "Opción no válida. Registro cancelado.\n";
+            mostrarMenuCliente();
+            break;
+    }
 }
 
+//Falta
 void mostrarMenuCrearReserva(){
     cout<<"--------------------------------\n";
     cout<<"MENU CREAR RESERVA\n";
@@ -93,6 +207,7 @@ void mostrarMenuCrearReserva(){
     cout<<"SELECCIONE UNA OPCION:\n";
 }
 
+//Falta
 void mostrarReservarHabitacion() {
 	cout<<"---------------------------------\n";
 	cout<<"MENU RESERVA HABITACION\n";
@@ -105,6 +220,7 @@ void mostrarReservarHabitacion() {
 	cout<<"SELECCIONE UNA OPCION:\n";
 }
 
+//Falta
 void mostrarReservarPlazaParking() {
 	cout<<"---------------------------------\n";
 	cout<<"MENU RESERVA PLAZA DE PARKING\n";
@@ -117,6 +233,7 @@ void mostrarReservarPlazaParking() {
 	cout<<"SELECCIONE UNA OPCION:\n";
 }
 
+//Falta
 void mostrarMenuModificarReserva(){
     cout<<"---------------------------------\n";
     cout<<"MENU MODIFICAR RESERVA\n";
@@ -134,7 +251,7 @@ void mostrarMenuModificarReserva(){
 }
 
 //Parde del Administrador
-void mostrarMenuInicioAdmin(){
+void mostrarMenuInicioAdmin(){//Viene del menu principal
 	cout<<"----------------------\n";
 	cout<<"MENU INICIO ADMINISTRADOR\n";
 	cout<<"1.- Iniciar sesión\n";
@@ -171,6 +288,7 @@ void mostrarMenuAdmin(){
 	cout<<"SELECCIONE UNA OPCION:\n";
 }
 
+//Falta
 void mostrarMenuAñadirHabitacion() {
 	cout<<"---------------------------------\n";
 	cout<<"MENU AÑADIR HABITACION\n";
@@ -191,6 +309,7 @@ void mostrarMenuAñadirHabitacion() {
 	cout<<"SELECCIONE UNA OPCION:\n";
 }
 
+//Falta
 void mostrarMenuAñadirPlazaParking() {
 	cout<<"---------------------------------\n";
 	cout<<"MENU AÑADIR PLAZA DE PARKING\n";
@@ -207,5 +326,9 @@ void mostrarMenuAñadirPlazaParking() {
 
 
 
-
+//Main que luego se borrara
+int main() {
+	mostrarMenuPrincipal();
+    return 0;
+}
 
