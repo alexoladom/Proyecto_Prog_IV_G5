@@ -4,18 +4,31 @@
 
 
 void mostrarMenuPrincipal();
+
 void mostrarMenuInicioCliente();
+
 void mostrarMenuInicioSesionCliente();
+
 void mostrarMenuRegistroCliente();
-void mostrarMenuCliente();
+
+void mostrarMenuPrincipalCliente();
+
 void mostrarMenuCrearReserva();
+
 void mostrarReservarHabitacion();
+
 void mostrarReservarPlazaParking();
+
 void mostrarMenuModificarReserva();
+
 void mostrarMenuInicioAdmin();
+
 void mostrarMenuInicioSesionAdmin();
-void mostrarMenuAdmin();
-void mostrarMenuAñadirHabitacion();
-void mostrarMenuAñadirPlazaParking();
+
+void mostrarMenuPrincipalAdmin();
+
+void mostrarMenuAnadirHabitacion();
+
+void mostrarMenuAnadirPlazaParking();
 
 #endif
