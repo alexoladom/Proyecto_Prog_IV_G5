@@ -381,13 +381,32 @@ void mostrarMenuModificarReserva(){
 }
 
 //Parde del Administrador
-void mostrarMenuInicioAdmin(){//Viene del menu principal
+void mostrarMenuInicioAdmin(){
 	cout<<"----------------------\n";
 	cout<<"MENU INICIO ADMINISTRADOR\n";
 	cout<<"1.- Iniciar sesión\n";
 	cout<<"2.- Volver al menú principal\n";
+	cout<<"3.- Cerrar\n";
 	cout<<"SELECCIONE UNA OPCION: \n";
 
+	int opcion;
+	cin >> opcion;
+
+	switch(opcion) {
+		case 1:
+			mostrarMenuInicioSesionAdmin();
+			break;
+		case 2:
+			mostrarMenuPrincipal();
+			break;
+		case 3:
+			cout << "Cerrando...\n";
+			break;
+		default:
+			cout << "Opción no válida. Registro cancelado.\n";
+			mostrarMenuInicioAdmin();
+			break;
+	}
 }
 
 void mostrarMenuInicioSesionAdmin(){
@@ -395,10 +414,35 @@ void mostrarMenuInicioSesionAdmin(){
     cout<<"INICIO SESION ADMINISTRADOR\n";
     cout<<"Por favor, ingrese sus datos:\n";
     cout<<"Nombre de usuario del administrador: ";
+    string fechaLlegada;
+    cin >> fechaLlegada;
 
     cout<<"Contraseña: ";
+    int contrasena;
+    cin >> contrasena;
 
     cout<<"Presione 1 para iniciar sesión, 2 para cancelar: ";
+
+    int opcion;
+	cin >> opcion;
+
+	switch(opcion) {
+		case 1:
+			if(){//Verificar datos
+				mostrarMenuAdmin();
+			}else{
+				cout<<"Datos incorrectos\n";
+			}
+			break;
+		case 2:
+			cout << "Cancelando...\n";
+			mostrarMenuPrincipal();
+			break;
+		default:
+			cout << "Opción no válida. Registro cancelado.\n";
+			mostrarMenuInicioSesionAdmin();
+			break;
+	}
 }
 
 void mostrarMenuAdmin(){
@@ -416,6 +460,54 @@ void mostrarMenuAdmin(){
 	cout<<"10.- Volver al menu principal\n";
 	cout<<"11.- Cerrar\n";
 	cout<<"SELECCIONE UNA OPCION:\n";
+
+	int opcion;
+	cin >> opcion;
+
+	switch(opcion) {
+		case 1:
+			cout << "Visualizando lista...\n";
+			//MetodoVisualizarList();
+			break;
+		case 2:
+			cout << "Viendo reservas...\n";
+			//MetodoVerReservas();
+			break;
+		case 3:
+			//MetodoBorrarReserva();
+			break;
+		case 4:
+			cout << "Viendo habitaciones";
+			//MetodoVerHabitaciones();
+			break;
+		case 5:
+			mostrarMenuAñadirHabitacion();
+			break;
+		case 6:
+			//MetodoBorrarHabitacion();
+			break;
+		case 7:
+			cout << "Viendo plazas de parking";
+			//MetodoVisualizarPlazasParking();
+			break;
+		case 8:
+			mostrarMenuAñadirPlazaParking();
+			break;
+		case 9:
+			//MetodoBorrarPlazaParking();
+			break;
+		case 10:
+			cout << "Volviendo al menu principal...\n";
+			mostrarMenuPrincipal();
+			break;
+		case 11:
+			cout << "Cerrando...";
+			break;
+		default:
+			cout << "Opción no válida. Registro cancelado.\n";
+			mostrarMenuAdmin();
+			break;
+	}
 }
 
 //Falta
