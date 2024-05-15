@@ -17,7 +17,13 @@ int main(int argc, char **argv) {
 	struct sockaddr_in server;
 	char sendBuff[512], recvBuff[512];
 	Cliente* arrayClientes;
+	boolean arrayClientesInicializado=false;
 	Reserva* arrayReservas;
+	boolean arrayReservasInicializado=false;
+	Habitacion* arrayHabitaciones;
+	boolean arrayHabitacionesInicializado=false;
+	PlazaParking* arrayPlazaParking;
+	boolean arrayPlazaParkingInicializado=false;
 	/*
 		 * Inicializacion y conexion de sockets
 		 *
@@ -195,6 +201,8 @@ int main(int argc, char **argv) {
 					arrayClientes[var].imprimir();
 				}
 
+				arrayClientesInicializado=true;
+
 				mostrarMenuPrincipalAdmin();
 				getline(cin,opcion);
 				continue;
@@ -208,6 +216,8 @@ int main(int argc, char **argv) {
 				for (int var = 0; var < Reserva::numReservas; ++var) {
 					arrayReservas[var].imprimirReserva();
 				}
+
+				arrayReservasInicializado=true;
 				mostrarMenuPrincipalAdmin();
 				getline(cin,opcion);
 				continue;
