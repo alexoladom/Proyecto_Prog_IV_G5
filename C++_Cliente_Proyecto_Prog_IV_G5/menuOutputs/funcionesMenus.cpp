@@ -76,6 +76,7 @@ void mostrarMenuInicioCliente(){
 	    	mostrarMenuRegistroCliente();
 	        break;
 	    case 3:
+	    	cout << "Volviendo al menu principal...\n";
 	    	mostrarMenuPrincipal();
 	        break;
 	    default:
@@ -105,6 +106,7 @@ void mostrarMenuInicioSesionCliente(){
             mostrarMenuCliente();
    	        break;
        case 2:
+    	   cout << "Volviendo al menu principal...\n";
    	       	mostrarMenuPrincipal();
    	       	break;
        default:
@@ -180,6 +182,7 @@ void mostrarMenuCliente(){
     		mostrarMenuModificarReserva();
     		break;
     	case 3:
+    		cout << "Volviendo al menu principal...\n";
     		mostrarMenuPrincipal();
             break;
         case 4:
@@ -212,6 +215,7 @@ void mostrarMenuCrearReserva(){
 			mostrarReservarPlazaParking();
 			break;
 		case 3:
+			cout << "Volviendo al menu principal...\n";
 			mostrarMenuPrincipal();
 			break;
 		case 4:
@@ -258,6 +262,7 @@ void mostrarReservarHabitacion() {
             break;
         }
         case 3:
+        	cout << "Volviendo al menu principal...\n";
             mostrarMenuPrincipal();
             break;
         case 4:
@@ -304,6 +309,7 @@ void mostrarReservarPlazaParking() {
             break;
         }
         case 3:
+        	cout << "Volviendo al menu principal...\n";
             mostrarMenuPrincipal();
             break;
         case 4:
@@ -368,6 +374,7 @@ void mostrarMenuModificarReserva(){
 			break;
 		}
 		case 3:
+			cout << "Volviendo al menu principal...\n";
 			mostrarMenuPrincipal();
 			break;
 		case 4:
@@ -397,6 +404,7 @@ void mostrarMenuInicioAdmin(){
 			mostrarMenuInicioSesionAdmin();
 			break;
 		case 2:
+			cout << "Volviendo al menu principal...\n";
 			mostrarMenuPrincipal();
 			break;
 		case 3:
@@ -514,36 +522,88 @@ void mostrarMenuAdmin(){
 void mostrarMenuAñadirHabitacion() {
 	cout<<"---------------------------------\n";
 	cout<<"MENU AÑADIR HABITACION\n";
-	cout<<"1.- Numero de la habitacion: \n";
+	cout<<"Numero de la habitacion: ";
+    int numero;
+	cin >> numero;
 
-	cout<<"2.- Piso de la habitacion: \n";
+	cout<<"\nPiso de la habitacion: ";
+	int piso;
+	cin >> piso;
 
-	cout<<"3.- Tipo de la habitación: \n";
+	cout<<"\nTipo de la habitación: ";
+	string tipo;
+	cin >> tipo;
 
-	cout<<"4.- Capacidad de la habitacion: \n";
+	cout<<"\nCapacidad de la habitacion: ";
+	int cantidad;
+	cin >> cantidad;
 
-	cout<<"5.- Precio de la habitacion: \n";
+	cout<<"\nPrecio de la habitacion: ";
+	double precio;
+	cin >> precio;
 
-	cout<<"6.- Habitacion ocupada: \n";
+	cout<<"\nHabitacion ocupada: ";
+	bool ocupado;
+	cin >> ocupado;
 
-	cout<<"7.- Volver al menu principal\n";
-	cout<<"8.- Cerrar\n";
+	cout<<"1.- Volver al menu principal\n";
+	cout<<"2.- Cerrar\n";
 	cout<<"SELECCIONE UNA OPCION:\n";
+
+	int opcion;
+	cin >> opcion;
+
+	switch(opcion) {
+		case 1:
+			cout << "Volviendo al menu principal...\n";
+			mostrarMenuPrincipal();
+			break;
+		case 2:
+			cout << "Cerrando...\n";
+			break;
+		default:
+			cout << "Opción no válida. Registro cancelado.\n";
+			mostrarMenuAñadirHabitacion();
+			break;
+	}
 }
 
 //Falta
 void mostrarMenuAñadirPlazaParking() {
 	cout<<"---------------------------------\n";
 	cout<<"MENU AÑADIR PLAZA DE PARKING\n";
-	cout<<"1.- Numero de la plaza de parking: \n";
+	cout<<"Numero de la plaza de parking: ";
+	int plaza;
+	cin >> plaza;
 
-	cout<<"2.- Zona de la plaza de parking: \n";
+	cout<<"\nZona de la plaza de parking: ";
+	string zona;
+	cin >> zona;
 
-	cout<<"3.- Plaza de parking ocupada: \n";
+	cout<<"\nPlaza de parking ocupada: ";
+	bool ocupada;
+	cin >> ocupada;
 
-	cout<<"4.- Volver al menu principal\n";
-	cout<<"5.- Cerrar\n";
+	cout<<"1.- Volver al menu principal\n";
+	cout<<"2.- Cerrar\n";
 	cout<<"SELECCIONE UNA OPCION:\n";
+
+	int opcion;
+	cin >> opcion;
+
+	switch(opcion) {
+		case 1:
+			cout << "Volviendo al menu principal...\n";
+			mostrarMenuPrincipal();
+			break;
+		case 2:
+			cout << "Cerrando...\n";
+			break;
+		default:
+			cout << "Opción no válida. Registro cancelado.\n";
+			mostrarMenuAñadirPlazaParking();
+			break;
+	}
 }
 
 
