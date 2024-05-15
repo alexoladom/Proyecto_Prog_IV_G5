@@ -369,7 +369,7 @@ void mostrarMenuModificarReserva(){
 			//metodoListarPlazasParkingLibres();
 			cout << "Ingrese el número de la plaza de parking que desea: ";
 			cin >> numPlazaParkingAhora;
-			cout << "Reservando plaza de parking " << numPlazaParking << " desde " << fechaLlegada << " hasta " << fechaSalida << endl;
+			cout << "Reservando plaza de parking " << numPlazaParkingAhora << " desde " << fechaLlegada << " hasta " << fechaSalida << endl;
 			//Falta implementar el metodo para reservar la plaza de parking
 			break;
 		}
@@ -518,7 +518,6 @@ void mostrarMenuAdmin(){
 	}
 }
 
-//Falta
 void mostrarMenuAñadirHabitacion() {
 	cout<<"---------------------------------\n";
 	cout<<"MENU AÑADIR HABITACION\n";
@@ -568,7 +567,6 @@ void mostrarMenuAñadirHabitacion() {
 	}
 }
 
-//Falta
 void mostrarMenuAñadirPlazaParking() {
 	cout<<"---------------------------------\n";
 	cout<<"MENU AÑADIR PLAZA DE PARKING\n";
