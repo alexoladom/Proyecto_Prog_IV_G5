@@ -59,8 +59,6 @@ int recibirMensaje(SOCKET& comm_socket,char recvBuff[]){
 	int bytes = recv(comm_socket, recvBuff, sizeof(char)*512, 0);
 
 	if (bytes > 0) {
-		printf("Recibiendo el mensaje... \n");
-		printf("Datos recibidos: %s \n", recvBuff);
 		return OK;
 	}
 	return NOT_OK;
@@ -70,8 +68,6 @@ int recibirMensaje(SOCKET& comm_socket,char recvBuff[]){
 int enviarMensaje(SOCKET& comm_socket,char sendBuff[]){
 
 	send(comm_socket, sendBuff, sizeof(char)*512, 0);
-	cout<<"Mensaje enviado.\n";
-
 	return OK;
 }
 
@@ -82,6 +78,117 @@ void cerrarConexion(SOCKET& comm_socket){
 
 }
 
+Cliente * getListaClientes(SOCKET& s,struct sockaddr_in &server){
+
+	char sendBuff[512], recvBuff[512];
+	strcpy(sendBuff,"ENVIAR LISTA CLIENTES");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD DE LISTA DE CLIENTES\n";
+		return 0;
+	}
+
+	if(recibirMensaje(s,recvBuff)!=OK){
+		cerr<<"ERROR RECIBIENDO LISTA DE CLIENTES\n";
+		return 0;
+	}
+
+	cout<<"----------------------------\n";
+	cout<<"LISTA DE CLIENTES\n";
+	int numClientes =stoi(recvBuff);
+	Cliente::numClientes=numClientes;
+	Cliente* arrayClientes =new Cliente[numClientes];
+	int dni;
+	char nombre[20];
+	int edad;
+	char correo[50];
+
+	for (int var = 0; var < numClientes; ++var) {
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO DNI DE CLIENTE Nº"<<var<<"\n";
+			return 0;
+		}
+		dni=stoi(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO NOMBRE DE CLIENTE Nº"<<var<<"\n";
+			return 0;
+		}
+		strcpy(nombre,recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO EDAD DE CLIENTE Nº"<<var<<"\n";
+			return 0;
+		}
+		edad=stoi(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO CORREO DE CLIENTE Nº"<<var<<"\n";
+			return 0;
+		}
+		strcpy(correo,recvBuff);
+		Cliente c(dni,nombre,edad,correo);
+		arrayClientes[var]=c;
+
+	}
+	return arrayClientes;
+
+}
+
+Reserva* getListaReservas(SOCKET& s,struct sockaddr_in &server){
+	char sendBuff[512], recvBuff[512];
+
+	strcpy(sendBuff,"ENVIAR LISTA RESERVAS");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD DE LISTA DE RESERVAS\n";
+		return 0;
+	}
+
+	if(recibirMensaje(s,recvBuff)!=OK){
+		cerr<<"ERROR RECIBIENDO LISTA DE RESERVAS\n";
+		return 0;
+	}
+
+	cout<<"----------------------------\n";
+	cout<<"LISTA DE RESERVAS\n";
+
+	int numReservas =stoi(recvBuff);
+	Reserva::numReservas=numReservas;
+	Reserva* arrayReservas =new Reserva[numReservas];
+	int id;
+	char fecha[20];
+	int dniCliente;
+	int numeroHabitacion;
+	int numeroPlazaParking;
+
+	for (int var = 0; var < numReservas; ++var) {
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO ID DE LA RESERVA Nº"<<var<<"\n";
+			return 0;
+		}
+		id=stoi(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO FECHA DE LA RESERVA Nº"<<var<<"\n";
+			return 0;
+		}
+		strcpy(fecha,recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO DNI CLIENTE DE LA RESERVA Nº"<<var<<"\n";
+			return 0;
+		}
+		dniCliente=stoi(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO NUMERO HABITACION DE LA RESERVA Nº"<<var<<"\n";
+			return 0;
+		}
+		numeroHabitacion=stoi(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO NUMERO PLAZAPARKING DE LA RESERVA Nº"<<var<<"\n";
+			return 0;
+		}
+		numeroPlazaParking= stoi(recvBuff);
+		Reserva r (id,fecha,dniCliente,numeroHabitacion,numeroPlazaParking);
+		arrayReservas[var]=r;
+
+	}
+	return arrayReservas;
+}
 
 
 
