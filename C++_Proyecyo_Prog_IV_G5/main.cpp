@@ -68,6 +68,8 @@ int main(int argc, char **argv) {
 		}
 
 		if (strcmp(recvBuff, "ENVIAR LISTA CLIENTES") == 0){
+			//Para actualizar el numero de clientes
+			getListaClientes(bd);
 			Cliente * arrayClientes= new Cliente[Cliente::numClientes];
 
 			arrayClientes = getListaClientes(bd);
@@ -103,6 +105,7 @@ int main(int argc, char **argv) {
 			}
 
 		}else if (strcmp(recvBuff, "ENVIAR LISTA RESERVAS") == 0){
+			getListaReservas(bd);
 			Reserva * arrayReservas= new Reserva[Reserva::numReservas];
 
 			arrayReservas = getListaReservas(bd);
@@ -149,44 +152,50 @@ int main(int argc, char **argv) {
 
 		}else if (strcmp(recvBuff, "ENVIAR LISTA HABITACIONES") == 0){
 
+			getListaHabitaciones(bd);
 			Habitacion * arrayHabitaciones= new Habitacion[Habitacion::numHabitaciones];
 
 			arrayHabitaciones = getListaHabitaciones(bd);
 
-			//Primero se envia el numero de reservas que hay
+			//Primero se envia el numero de habitaciones que hay
 
-			strcpy(sendBuff,to_string(Reserva::numReservas).c_str());
+			strcpy(sendBuff,to_string(Habitacion::numHabitaciones).c_str());
 
 			if(enviarMensaje(comm_socket,sendBuff)!=OK){
 				return 0;
 			}
 
-			//Ahora se envian las reservas atributo por atributo
+			//Ahora se envian las habitaciones atributo por atributo
 
-			for (int var = 0; var < Reserva::numReservas; ++var) {
-				strcpy(sendBuff,to_string(arrayReservas[var].getId()).c_str());
+			for (int var = 0; var < Habitacion::numHabitaciones; ++var) {
+				strcpy(sendBuff,to_string(arrayHabitaciones[var].getNumero()).c_str());
 				if(enviarMensaje(comm_socket,sendBuff)!=OK){
-					cerr<<"ERROR ENVIANDO ID DE LA RESERVA Nº"<<var<<"\n";
+					cerr<<"ERROR ENVIANDO NUMERO DE LA HABITACION Nº"<<var<<"\n";
 					return 0;
 				}
-				strcpy(sendBuff,arrayReservas[var].getFecha().c_str());
+				strcpy(sendBuff,to_string(arrayHabitaciones[var].getPiso()).c_str());
 				if(enviarMensaje(comm_socket,sendBuff)!=OK){
-					cerr<<"ERROR ENVIANDO FECHA DE LA RESERVA Nº"<<var<<"\n";
+					cerr<<"ERROR ENVIANDO PISO DE LA HABITACION Nº"<<var<<"\n";
 					return 0;
 				}
-				strcpy(sendBuff,to_string(arrayReservas[var].getDniCliente()).c_str());
+				strcpy(sendBuff,to_string(arrayHabitaciones[var].getTipo()).c_str());
 				if(enviarMensaje(comm_socket,sendBuff)!=OK){
-					cerr<<"ERROR ENVIANDO DNI CLIENTE DE LA RESERVA Nº"<<var<<"\n";
+					cerr<<"ERROR ENVIANDO TIPO DE LA HABITACION Nº"<<var<<"\n";
 					return 0;
 				}
-				strcpy(sendBuff,to_string(arrayReservas[var].getNumeroHabitacion()).c_str());
+				strcpy(sendBuff,to_string(arrayHabitaciones[var].getCapacidad()).c_str());
 				if(enviarMensaje(comm_socket,sendBuff)!=OK){
-					cerr<<"ERROR ENVIANDO NUMERO HABITACION DE LA RESERVA Nº"<<var<<"\n";
+					cerr<<"ERROR ENVIANDO CAPACIDAD DE LA HABITACION Nº"<<var<<"\n";
 					return 0;
 				}
-				strcpy(sendBuff,to_string(arrayReservas[var].getNumeroHabitacion()).c_str());
+				strcpy(sendBuff,to_string(arrayHabitaciones[var].getPrecio()).c_str());
 				if(enviarMensaje(comm_socket,sendBuff)!=OK){
-					cerr<<"ERROR ENVIANDO NUMERO PLAZAPARKING DE LA RESERVA Nº"<<var<<"\n";
+					cerr<<"ERROR ENVIANDO PRECIO DE LA HABITACION Nº"<<var<<"\n";
+					return 0;
+				}
+				strcpy(sendBuff,to_string(arrayHabitaciones[var].isOcupado()).c_str());
+				if(enviarMensaje(comm_socket,sendBuff)!=OK){
+					cerr<<"ERROR ENVIANDO OCUPACION DE LA HABITACION Nº"<<var<<"\n";
 					return 0;
 				}
 
