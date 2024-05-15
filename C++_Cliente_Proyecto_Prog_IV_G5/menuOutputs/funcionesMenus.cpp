@@ -95,23 +95,23 @@ void mostrarMenuInicioSesionCliente(){
     int opcion;
     cin >> opcion;
 
-   		switch(opcion) {
-   			case 1:
-    			ingresarCredenciales();
-    			//Verificación
-    			cout << "Credenciales ingresadas:\n";
-    			cout << "Nombre de usuario: " << credencialesCliente.nombreUsuario << endl;
-                cout << "Contraseña: " << credencialesCliente.contrasena << endl;
-                mostrarMenuCliente();
-    	        break;
-    	    case 2:
-    	       	mostrarMenuPrincipal();
-    	       	break;
-    	    default:
-    	        cout << "Opción no válida. Por favor, seleccione una opción válida.\n";
-    	        mostrarMenuInicioSesionCliente();
-    	        break;
-    	}
+   	switch(opcion) {
+   		case 1:
+   			ingresarCredenciales();
+   			//Verificación
+   			cout << "Credenciales ingresadas:\n";
+   			cout << "Nombre de usuario: " << credencialesCliente.nombreUsuario << endl;
+            cout << "Contraseña: " << credencialesCliente.contrasena << endl;
+            mostrarMenuCliente();
+   	        break;
+       case 2:
+   	       	mostrarMenuPrincipal();
+   	       	break;
+       default:
+   	        cout << "Opción no válida. Por favor, seleccione una opción válida.\n";
+    	    mostrarMenuInicioSesionCliente();
+    	    break;
+    }
 }
 
 void mostrarMenuRegistroCliente(){
@@ -168,6 +168,7 @@ void mostrarMenuCliente(){
     cout<<"3.- Volver al menú principal\n";
     cout<<"4.- Cerrar\n";
     cout<<"SELECCIONE UNA OPCION:\n";
+
     int opcion;
     cin >> opcion;
 
@@ -191,63 +192,192 @@ void mostrarMenuCliente(){
     }
 }
 
-//Falta
 void mostrarMenuCrearReserva(){
     cout<<"--------------------------------\n";
     cout<<"MENU CREAR RESERVA\n";
-    cout<<"Por favor, ingrese los detalles de la reserva:\n";
-    cout<<"Fecha de llegada (DD/MM/AAAA): ";
-
-    cout<<"Fecha de salida (DD/MM/AAAA): ";
-
     cout<<"1.- Reservar Habitación\n";
     cout<<"2.- Reservar Plaza de parking\n";
     cout<<"3.- Volver al menú principal\n";
     cout<<"4.- Cerrar\n";
     cout<<"SELECCIONE UNA OPCION:\n";
+
+    int opcion;
+    cin >> opcion;
+
+    switch(opcion) {
+		case 1:
+			mostrarReservarHabitacion();
+			break;
+		case 2:
+			mostrarReservarPlazaParking();
+			break;
+		case 3:
+			mostrarMenuPrincipal();
+			break;
+		case 4:
+			cout << "Cerrando...\n";
+			break;
+		default:
+			cout << "Opción no válida. Registro cancelado.\n";
+			mostrarMenuCrearReserva();
+			break;
+	}
 }
 
-//Falta
 void mostrarReservarHabitacion() {
-	cout<<"---------------------------------\n";
-	cout<<"MENU RESERVA HABITACION\n";
-	cout<<"1.- Mostrar numero de habitaciones libres\n";
+    cout<<"---------------------------------\n";
+    cout<<"MENU RESERVA HABITACION\n";
+    cout<<"Por favor, ingrese los detalles de la reserva:\n";
+    cout<<"Fecha de llegada (DD/MM/AAAA): ";
+    string fechaLlegada;
+    cin >> fechaLlegada;
 
-	cout<<"2.- Numero de la habitacion: \n";
+    cout<<"Fecha de salida (DD/MM/AAAA): ";
+    string fechaSalida;
+    cin >> fechaSalida;
 
-	cout<<"3.- Volver al menu principal\n";
-	cout<<"4.- Cerrar\n";
-	cout<<"SELECCIONE UNA OPCION:\n";
+    cout<<"1.- Mostrar numeros de habitaciones libres\n";
+    cout<<"2.- Numero de la habitacion: \n";
+    cout<<"3.- Volver al menu principal\n";
+    cout<<"4.- Cerrar\n";
+    cout<<"SELECCIONE UNA OPCION:\n";
+
+    int opcion;
+    cin >> opcion;
+
+    switch(opcion) {
+        case 1:
+            //metodoListarHabitaciones();
+            break;
+        case 2: {
+            int numHabitacion;
+            cout << "Ingrese el número de la habitación: ";
+            cin >> numHabitacion;
+            cout << "Reservando habitación " << numHabitacion << " desde " << fechaLlegada << " hasta " << fechaSalida << endl;
+            //Falta implementar el metodo para reservar la habitacion
+            break;
+        }
+        case 3:
+            mostrarMenuPrincipal();
+            break;
+        case 4:
+            cout << "Cerrando...\n";
+            break;
+        default:
+            cout << "Opción no válida. Registro cancelado.\n";
+            mostrarReservarHabitacion();
+            break;
+    }
 }
 
-//Falta
 void mostrarReservarPlazaParking() {
-	cout<<"---------------------------------\n";
-	cout<<"MENU RESERVA PLAZA DE PARKING\n";
-	cout<<"1.- Mostrar numero de plazas de parking libres\n";
+    cout<<"---------------------------------\n";
+    cout<<"MENU RESERVA PLAZA DE PARKING\n";
+    cout<<"Por favor, ingrese los detalles de la reserva:\n";
+    cout<<"Fecha de llegada (DD/MM/AAAA): ";
+    string fechaLlegada;
+    cin >> fechaLlegada;
 
-	cout<<"2.- Numero de la plaza de parking: \n";
+    cout<<"Fecha de salida (DD/MM/AAAA): ";
+    string fechaSalida;
+    cin >> fechaSalida;
 
-	cout<<"3.- Volver al menu principal\n";
-	cout<<"4.- Cerrar\n";
-	cout<<"SELECCIONE UNA OPCION:\n";
+    cout<<"1.- Mostrar numero de plazas de parking libres\n";
+    cout<<"2.- Numero de la plaza de parking: \n";
+    cout<<"3.- Volver al menu principal\n";
+    cout<<"4.- Cerrar\n";
+    cout<<"SELECCIONE UNA OPCION:\n";
+
+    int opcion;
+    cin >> opcion;
+
+    switch(opcion) {
+        case 1:
+            //metodoListarPlazasParkingLibres();
+            break;
+        case 2: {
+            int numPlazaParking;
+            cout << "Ingrese el número de la plaza de parking: ";
+            cin >> numPlazaParking;
+            cout << "Reservando plaza de parking " << numPlazaParking << " desde " << fechaLlegada << " hasta " << fechaSalida << endl;
+            //Falta implementar el metodo para reservar la plaza de parking
+            break;
+        }
+        case 3:
+            mostrarMenuPrincipal();
+            break;
+        case 4:
+            cout << "Cerrando...\n";
+            break;
+        default:
+            cout << "Opción no válida. Registro cancelado.\n";
+            mostrarReservarPlazaParking();
+            break;
+    }
 }
 
-//Falta
 void mostrarMenuModificarReserva(){
     cout<<"---------------------------------\n";
     cout<<"MENU MODIFICAR RESERVA\n";
     cout<<"Por favor, seleccione la reserva que desea modificar:\n";
+    int numeroReserva;
+    cin >> numeroReserva;
     //Falta como hacerlo
     cout<<"Fecha de llegada: DD/MM/AAAA\n";
+    string fechaLlegada;
+    cin >> fechaLlegada;
 
     cout<<"Fecha de salida: DD/MM/AAAA\n";
+    string fechaSalida;
+    cin >> fechaSalida;
 
-    cout<<"1.- Reservar Habitación\n";
-    cout<<"2.- Reservar Plaza de parking\n";
+    cout<<"1.- Modificar Habitación\n";
+    cout<<"2.- Modificar Plaza de parking\n";
     cout<<"3.- Volver al menú principal\n";
     cout<<"4.- Cerrar\n";
     cout<<"SELECCIONE UNA OPCION:\n";
+    int opcion;
+	cin >> opcion;
+
+	switch(opcion) {
+		case 1:
+			int numHabitacionAntes;
+			int numHabitacionAhora;
+			cout << "Ingrese el número de la habitación que tenia: ";
+			cin >> numHabitacionAntes;
+			//Checkear si es verdad
+			//Liberar habitacion antes
+			//metodoListarHabitacionLibres();
+			cout << "Ingrese el número de la habitación que desea: ";
+			cin >> numHabitacionAhora;
+			cout << "Reservando habitación " << numHabitacionAhora << " desde " << fechaLlegada << " hasta " << fechaSalida << endl;
+			//Falta implementar el metodo para reservar la habitacion
+			break;
+		case 2: {
+			int numPlazaParkingAntes;
+			int numPlazaParkingAhora;
+			cout << "Ingrese el número de la plaza de parking que tenias antes: ";
+			cin >> numPlazaParkingAntes;
+			//Checkear si es verdad
+			//Liberar plaza antes
+			//metodoListarPlazasParkingLibres();
+			cout << "Ingrese el número de la plaza de parking que desea: ";
+			cin >> numPlazaParkingAhora;
+			cout << "Reservando plaza de parking " << numPlazaParking << " desde " << fechaLlegada << " hasta " << fechaSalida << endl;
+			//Falta implementar el metodo para reservar la plaza de parking
+			break;
+		}
+		case 3:
+			mostrarMenuPrincipal();
+			break;
+		case 4:
+			cout << "Cerrando...\n";
+			break;
+		default:
+			cout << "Opción no válida. Registro cancelado.\n";
+			mostrarMenuModificarReserva();
+			break;
+	}
 }
 
 //Parde del Administrador
