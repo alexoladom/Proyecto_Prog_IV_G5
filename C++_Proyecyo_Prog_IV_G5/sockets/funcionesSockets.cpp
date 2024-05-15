@@ -103,6 +103,49 @@ int enviarMensaje(SOCKET& comm_socket,char sendBuff[]){
 	return OK;
 }
 
+
+
+int enviarListaReservas(SOCKET& comm_socket,sqlite3* bd){
+	char sendBuff[512];
+
+	//Para actualizar el numero de clientes
+	getListaClientes(bd);
+	Cliente * arrayClientes= new Cliente[Cliente::numClientes];
+
+	arrayClientes = getListaClientes(bd);
+
+	//Primero se envia el numero de clientes que hay
+
+	strcpy(sendBuff,to_string(Cliente::numClientes).c_str());
+
+	if(enviarMensaje(comm_socket,sendBuff)!=OK){
+		return 0;
+	}
+
+	//Ahora se envian los clientes atributo por atributo
+
+	for (int var = 0; var < Cliente::numClientes; ++var) {
+		strcpy(sendBuff,to_string(arrayClientes[var].getDni()).c_str());
+		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			return NOT_OK;
+		}
+		strcpy(sendBuff,arrayClientes[var].getNombre().c_str());
+		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			return NOT_OK;
+		}
+		strcpy(sendBuff,to_string(arrayClientes[var].getEdad()).c_str());
+		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			return NOT_OK;
+		}
+		strcpy(sendBuff,arrayClientes[var].getCorreo().c_str());
+		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			return NOT_OK;
+		}
+
+	}
+	return OK;
+}
+
 void cerrarConexion(SOCKET& comm_socket){
 	closesocket(comm_socket);
 	WSACleanup();

@@ -105,49 +105,9 @@ int main(int argc, char **argv) {
 			}
 
 		}else if (strcmp(recvBuff, "ENVIAR LISTA RESERVAS") == 0){
-			getListaReservas(bd);
-			Reserva * arrayReservas= new Reserva[Reserva::numReservas];
-
-			arrayReservas = getListaReservas(bd);
-
-			//Primero se envia el numero de reservas que hay
-
-			strcpy(sendBuff,to_string(Reserva::numReservas).c_str());
-
-			if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			if(enviarListaReservas(comm_socket,bd)!=OK){
+				cerr<<"ERROR ENVIANDO LISTA DE RESERVAS";
 				return 0;
-			}
-
-			//Ahora se envian las reservas atributo por atributo
-
-			for (int var = 0; var < Reserva::numReservas; ++var) {
-				strcpy(sendBuff,to_string(arrayReservas[var].getId()).c_str());
-				if(enviarMensaje(comm_socket,sendBuff)!=OK){
-					cerr<<"ERROR ENVIANDO ID DE LA RESERVA Nº"<<var<<"\n";
-					return 0;
-				}
-				strcpy(sendBuff,arrayReservas[var].getFecha().c_str());
-				if(enviarMensaje(comm_socket,sendBuff)!=OK){
-					cerr<<"ERROR ENVIANDO FECHA DE LA RESERVA Nº"<<var<<"\n";
-					return 0;
-				}
-				strcpy(sendBuff,to_string(arrayReservas[var].getDniCliente()).c_str());
-				if(enviarMensaje(comm_socket,sendBuff)!=OK){
-					cerr<<"ERROR ENVIANDO DNI CLIENTE DE LA RESERVA Nº"<<var<<"\n";
-					return 0;
-				}
-				strcpy(sendBuff,to_string(arrayReservas[var].getNumeroHabitacion()).c_str());
-				if(enviarMensaje(comm_socket,sendBuff)!=OK){
-					cerr<<"ERROR ENVIANDO NUMERO HABITACION DE LA RESERVA Nº"<<var<<"\n";
-					return 0;
-				}
-				strcpy(sendBuff,to_string(arrayReservas[var].getNumeroHabitacion()).c_str());
-				if(enviarMensaje(comm_socket,sendBuff)!=OK){
-					cerr<<"ERROR ENVIANDO NUMERO PLAZAPARKING DE LA RESERVA Nº"<<var<<"\n";
-					return 0;
-				}
-
-
 			}
 
 		}else if (strcmp(recvBuff, "ENVIAR LISTA HABITACIONES") == 0){
@@ -200,6 +160,42 @@ int main(int argc, char **argv) {
 				}
 
 
+			}
+
+		}else if(strcmp(recvBuff, "COMPROBAR DNI") == 0){
+
+			if(recibirMensaje(comm_socket,recvBuff)!=OK){
+				cout<<"ERROR RECIBIENDO DNI PARA COMPROBACION\n";
+				return 0;
+			}
+			int dni = stoi(recvBuff);
+			if(comprobarDni(bd,dni)!=OK){
+				strcpy(sendBuff,"DNI NO EXISTENTE");
+				enviarMensaje(comm_socket,sendBuff);
+			}else{
+				strcpy(sendBuff,"DNI EXISTENTE");
+				enviarMensaje(comm_socket,sendBuff);
+			}
+
+		}else if(strcmp(recvBuff, "COMPROBAR CONTRASEÑA") == 0){
+			if(recibirMensaje(comm_socket,recvBuff)!=OK){
+				cout<<"ERROR RECIBIENDO DNI PARA COMPROBACION\n";
+				return 0;
+			}
+			int dni = stoi(recvBuff);
+			if(recibirMensaje(comm_socket,recvBuff)!=OK){
+				cout<<"ERROR RECIBIENDO CONTRASEÑA PARA COMPROBACION\n";
+				return 0;
+			}
+			char contra[30];
+			strcpy(contra,recvBuff);
+
+			if (comprobarContra(bd,dni,contra)!=OK){
+				strcpy(sendBuff,"CONTRASEÑA INCORRECTA");
+				enviarMensaje(comm_socket,sendBuff);
+			}else{
+				strcpy(sendBuff,"CONTRASEÑA CORRECTA");
+				enviarMensaje(comm_socket,sendBuff);
 			}
 
 		}

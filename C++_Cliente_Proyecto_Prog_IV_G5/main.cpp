@@ -195,7 +195,11 @@ int main(int argc, char **argv) {
 			if (strcmp(opcion.c_str(),"1")==0){
 				//VISUALIZAR LISTA DE CLIENTES
 
-				arrayClientes = getListaClientes(s,server);
+				arrayClientes = getListaClientes(s);
+
+
+				cout<<"----------------------------\n";
+				cout<<"LISTA DE CLIENTES\n";
 
 				for (int var = 0; var < Cliente::numClientes; ++var) {
 					arrayClientes[var].imprimir();
@@ -211,7 +215,11 @@ int main(int argc, char **argv) {
 			}else if(strcmp(opcion.c_str(),"2")==0){
 				//VISUALIZAR RESERVAS
 
-				arrayReservas=getListaReservas(s,server);
+				arrayReservas=getListaReservas(s);
+
+
+				cout<<"----------------------------\n";
+				cout<<"LISTA DE RESERVAS\n";
 
 				for (int var = 0; var < Reserva::numReservas; ++var) {
 					arrayReservas[var].imprimirReserva();
@@ -226,6 +234,12 @@ int main(int argc, char **argv) {
 				//BORRAR RESERVA TODO
 			}else if(strcmp(opcion.c_str(),"4")==0){
 				//VER HABITACIONES TODO
+
+
+				cout<<"----------------------------\n";
+				cout<<"LISTA DE HABITACIONES\n";
+
+
 			}else if(strcmp(opcion.c_str(),"5")==0){
 				//AÑADIR HABITACIONES TODO
 			}else if(strcmp(opcion.c_str(),"6")==0){
