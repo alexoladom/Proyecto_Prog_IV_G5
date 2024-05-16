@@ -19,7 +19,7 @@ Reserva* getListaReservas(SOCKET& s);
 Habitacion* getListaHabitaciones(SOCKET& s);
 PlazaParking* getListaPlazasParking(SOCKET& s);
 
-
+int iniciarSesion(SOCKET& s);
 int comprobarDni(SOCKET& s,int dni);
 int comprobarContrasena(SOCKET& s,int dni,char* contrasena);
 enum tipoHabitacion stringToTipoHabi(char* s);

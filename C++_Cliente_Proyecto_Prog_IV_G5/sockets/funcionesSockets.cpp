@@ -322,5 +322,24 @@ int comprobarContrasena(SOCKET& s,int dni,char* contrasena){
 
 
 
+int iniciarSesion(SOCKET& s){//0 bien; 1 mal
+	int dni;
+	char dnic[20];
+	char contrasena[50];
+
+	cout <<"Introduce el dni de usuario: ";
+	cin >> dnic; //Falta hacerlo a tu manera en todos los cin
+	dni = stoi(dnic);
+	cout <<"\nIntroduce tu contraseña: ";
+	cin >> contrasena;
+
+	if(comprobarDni(s,dni)!=OK){
+		return NOT_OK;
+	}else if(comprobarContrasena(s,dni,contrasena)!=OK){
+		return OK;
+	}
+
+	return NOT_OK;
+}
 
 

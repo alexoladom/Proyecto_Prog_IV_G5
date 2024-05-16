@@ -19,6 +19,13 @@ int recibirMensaje(SOCKET& comm_socket,char recvBuff[]);
 int enviarMensaje(SOCKET& comm_socket,char sendBuff[]);
 
 int enviarListaReservas(SOCKET& comm_socket,sqlite3* bd);
+int enviarListaClientes(SOCKET& comm_socket,sqlite3* bd);
+int enviarListaHabitaciones(SOCKET& comm_socket,sqlite3* bd);
+
+
+
+int comprobarDni(SOCKET& comm_socket,sqlite3* bd);
+int comprobarContrasena(SOCKET& comm_socket,sqlite3* bd);
 
 void cerrarConexion(SOCKET& comm_socket);
 

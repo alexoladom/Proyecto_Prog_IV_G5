@@ -2,6 +2,10 @@
 #define MENUPRINCIPAL_H
 
 
+#include "../domain/cliente.h"
+#include "../domain/reserva.h"
+#include "../domain/habitacion.h"
+#include "../domain/plazaParking.h"
 
 void mostrarMenuPrincipal();
 
@@ -13,7 +17,6 @@ void mostrarMenuInicioAdmin();
 
 void mostrarMenuPrincipalAdmin();
 
-int iniciarSesion();
 Cliente registrarse();
 Habitacion anadirHabitacion();
 PlazaParking anadirPlazaParking();

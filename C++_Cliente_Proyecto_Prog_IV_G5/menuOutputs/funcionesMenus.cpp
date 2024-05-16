@@ -1,11 +1,14 @@
 #include "funcionesMenu.h"
 
 #include "iostream"
-#include "cliente.h"
-#include "habitacion.h"
-#include "reserva.h"
-#include "plazaParking.h"
+#include "../domain/cliente.h"
+#include "../domain/reserva.h"
+#include "../domain/habitacion.h"
+#include "../domain/plazaParking.h"
 using namespace std;
+
+#define OK 1;
+#define NOT_OK 0;
 
 
 void mostrarMenuPrincipal(){
@@ -73,40 +76,13 @@ void mostrarMenuPrincipalAdmin(){
 
 }
 
-int iniciarSesion(){//0 bien; 1 mal
-	int contra;
-	string nombreUser;
 
-	cout <<"Introduce el nombre de usuario: ";
-	cin >> nombreUser; //Falta hacerlo a tu manera en todos los cin
-	cout <<"\nIntroduce tu contraseña: ";
-	cin >> contra;
-
-	string nombreBD = nombreUser;//Falta comprobar de alguna manera
-	int contrasena = contra;
-
-	if (nombreUser != nombreBD) {//Parte sin acabar
-		if (contrasena(nombreBD) == contra) {
-			cout << "Inicio de sesión exitoso.\n";
-			return 0;
-		} else {
-			cout << "Contraseña incorrecta. Inténtalo de nuevo.\n";
-			return 1;
-		}
-	} else {
-		cout << "Usuario no encontrado. Inténtalo de nuevo.\n";
-		return 1;
-	}
-
-}
 
 Cliente registrarse() {
-    Cliente c;
 
     string nombre;
     string apellido;
     string nombreCompleto;
-    string nombreUser;
     string correo;
     int dni;
     int edad;
@@ -123,8 +99,6 @@ Cliente registrarse() {
     cin >> edad;
     cout << "\nIntroduce tu correo: ";
     cin >> correo;
-    cout << "\nIntroduce tu nombre de usuario: ";
-    cin >> nombreUser;
     cout << "\nIntroduce tu contraseña: ";
     cin >> contra;
     cout << "\nConfirma tu contraseña: ";
@@ -135,8 +109,9 @@ Cliente registrarse() {
         cin >> contra2;
     }
 
+
     nombreCompleto = nombre + " " + apellido;
-    c = new Cliente(dni, nombreCompleto, edad, correo);
+    Cliente c(dni, nombreCompleto.c_str(), edad, correo.c_str());
 //    c->setNombreUsuario(nombreUser);
 //    c->setContrasena(contra); Habra que hacer algo de esto para el nombre de user y la contra
 
@@ -181,7 +156,7 @@ Habitacion anadirHabitacion() {
     cout << "\nIntroduce si está ocupada (0 para no, 1 para sí): ";
     cin >> ocupado;
 
-    h = new Habitacion(numero, piso, tipoHab, capacidad, precio, ocupado);
+  //  h = new Habitacion(numero, piso, tipoHab, capacidad, precio, ocupado);
 
     return h;
 }
@@ -196,10 +171,10 @@ PlazaParking anadirPlazaParking(){
 	cin >> numero;
 	cout <<"Introduce la zona en la que estará la plaza de parking";
 	cin >> zona;
-	cout >>"Introduce la ocupación de la plaza de parking(Lo normal es que este libre)";
+	cout <<"Introduce la ocupación de la plaza de parking(Lo normal es que este libre)";
 	cin >> ocupado;
 
-	p = new PlazaParking(numero, zona, ocupado);
+//	p = new PlazaParking(numero, zona, ocupado);
 
 	return p;
 }
