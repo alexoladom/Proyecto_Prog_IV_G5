@@ -1,6 +1,10 @@
 #include "funcionesMenu.h"
 
 #include "iostream"
+#include "cliente.h"
+#include "habitacion.h"
+#include "reserva.h"
+#include "plazaParking.h"
 using namespace std;
 
 
@@ -96,8 +100,9 @@ int iniciarSesion(){//0 bien; 1 mal
 
 }
 
-Cliente registrarse(){ //Cliente: int dni;string nombre;int edad;string correo;
-	Cliente c = null;
+Cliente registrarse(){
+	Cliente c;
+	c = NULL;
 
 	string nombre;
 	string apellido;
@@ -141,18 +146,57 @@ Cliente registrarse(){ //Cliente: int dni;string nombre;int edad;string correo;
 //
 //}
 
-Habitacion anadirHabitacion(){ //Habitacion: int numero;int piso;enum tipoHabitacion tipo;int capacidad;float precio;bool ocupado;
-	habitacion h = null;
+Habitacion anadirHabitacion(){
+	Habitacion h;
+	h = NULL;
 
+	int numero;
+	int piso;
+	string tipo;//Luego hago casting a enum
+	int capacidad;
+	float precio;
+	bool ocupado;
+	tipoHabitacion tipoHab;
 
+	cout <<"Introduce el numero de la habitación: ";
+	cin >> numero;
+	cout <<"\nIntrocuce el piso de la habitación: ";
+	cin >> piso;
+	cout <<"\nIntroduce el tipo de habitacion(simple, doble, suite): ";
+	cin >> tipo;
+	if(tipo != "simple" || tipo != "doble" || tipo != "suite"){
+		cout << "Error metiendo el tipo de habitación\n";
+		anadirHabitacion();
+	}
+	tipoHab = (tipoHabitacion) tipo;//Ns si estara bien el casting
+	cout <<"\nIntroduce la capacidad de la habitacion: ";
+	cin >> capacidad;
+	cout <<"\nIntroduce el precio: ";
+	cin >> precio;
+	cout <<"\nIntroduce si esta ocupada(Lo normal es que no lo este): ";
+	cin >> ocupado;
+
+	h = new Habitacion(numero, piso, tipoHab, capacidad, precio, ocupado);
 
 	return h;
 }
 
-PlazaParking anadirPlazaParking(){ //Plaza: int numero;string zona;bool ocupado;
-	plazaParking p = null;
+PlazaParking anadirPlazaParking(){
+	PlazaParking p;
+	p = NULL;
 
+	int numero;
+	string zona;
+	bool ocupado;
 
+	cout <<"Introduce el numero de la plaza de parking: ";
+	cin >> numero;
+	cout <<"Introduce la zona en la que estará la plaza de parking";
+	cin >> zona;
+	cout >>"Introduce la ocupación de la plaza de parking(Lo normal es que este libre)";
+	cin >> ocupado;
+
+	p = new PlazaParking(numero, zona, ocupado);
 
 	return p;
 }
