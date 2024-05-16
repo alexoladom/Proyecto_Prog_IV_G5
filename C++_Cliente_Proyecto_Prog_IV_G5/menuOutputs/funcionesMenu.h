@@ -14,6 +14,8 @@ void mostrarMenuInicioAdmin();
 void mostrarMenuPrincipalAdmin();
 
 int iniciarSesion();
-
+Cliente registrarse();
+Habitacion anadirHabitacion();
+PlazaParking anadirPlazaParking();
 
 #endif

@@ -100,90 +100,93 @@ int iniciarSesion(){//0 bien; 1 mal
 
 }
 
-Cliente registrarse(){
-	Cliente c;
-	c = NULL;
+Cliente registrarse() {
+    Cliente c;
 
-	string nombre;
-	string apellido;
-	string nombreCompleto;
-	string nombreUser;
-	string correo;
-	int dni;
-	int edad;
-	int contra;
-	int contra2;
+    string nombre;
+    string apellido;
+    string nombreCompleto;
+    string nombreUser;
+    string correo;
+    int dni;
+    int edad;
+    string contra;
+    string contra2;
 
+    cout << "Introduce tu nombre: ";
+    cin >> nombre;
+    cout << "\nIntroduce tus apellidos: ";
+    cin >> apellido;
+    cout << "\nIntroduce tu dni: ";
+    cin >> dni;
+    cout << "\nIntroduce tu edad: ";
+    cin >> edad;
+    cout << "\nIntroduce tu correo: ";
+    cin >> correo;
+    cout << "\nIntroduce tu nombre de usuario: ";
+    cin >> nombreUser;
+    cout << "\nIntroduce tu contraseña: ";
+    cin >> contra;
+    cout << "\nConfirma tu contraseña: ";
+    cin >> contra2;
 
-	cout <<"Introduce tu nombre: ";
-	cin >> nombre;
-	cout <<"\nIntrocuce tus apellidos: ";
-	cin >> apellido;
-	cout <<"\nIntroduce tu dni: ";
-	cin >> dni;
-	cout <<"\nIntroduce tu edad: ";
-	cin >> edad;
-	cout <<"\nIntroduce tu correo: ";
-	cin >> correo;
-	cout <<"\nIntroduce tu nombre de usuario: ";
-	cin >> nombreUser;
-	cout <<"\nIntroduce tu contraseña: ";
-	cin >> contra;
-	cout <<"\nConfirma tu contraseña: ";
-	cin >> contra2;
-	if(contra != contra2){
-		cout << "Error confirmando la contraseña";
-		registrarse();
-	}
-	nombreCompleto = nombre + " " + apellido;
-	c = new Cliente(dni, nombreCompleto, edad, correo);
+    while (contra != contra2) {
+        cout << "Error confirmando la contraseña. Inténtalo de nuevo: ";
+        cin >> contra2;
+    }
 
+    nombreCompleto = nombre + " " + apellido;
+    c = new Cliente(dni, nombreCompleto, edad, correo);
+//    c->setNombreUsuario(nombreUser);
+//    c->setContrasena(contra); Habra que hacer algo de esto para el nombre de user y la contra
 
-	return c;
+    return c;
 }
 
 //Reserva crearReserva(){
 //
 //}
 
-Habitacion anadirHabitacion(){
-	Habitacion h;
-	h = NULL;
+Habitacion anadirHabitacion() {
+    Habitacion h;
 
-	int numero;
-	int piso;
-	string tipo;//Luego hago casting a enum
-	int capacidad;
-	float precio;
-	bool ocupado;
-	tipoHabitacion tipoHab;
+    int numero;
+    int piso;
+    string tipo;
+    int capacidad;
+    float precio;
+    bool ocupado;
+    tipoHabitacion tipoHab;
 
-	cout <<"Introduce el numero de la habitación: ";
-	cin >> numero;
-	cout <<"\nIntrocuce el piso de la habitación: ";
-	cin >> piso;
-	cout <<"\nIntroduce el tipo de habitacion(simple, doble, suite): ";
-	cin >> tipo;
-	if(tipo != "simple" || tipo != "doble" || tipo != "suite"){
-		cout << "Error metiendo el tipo de habitación\n";
-		anadirHabitacion();
-	}
-	tipoHab = (tipoHabitacion) tipo;//Ns si estara bien el casting
-	cout <<"\nIntroduce la capacidad de la habitacion: ";
-	cin >> capacidad;
-	cout <<"\nIntroduce el precio: ";
-	cin >> precio;
-	cout <<"\nIntroduce si esta ocupada(Lo normal es que no lo este): ";
-	cin >> ocupado;
+    cout << "Introduce el numero de la habitación: ";
+    cin >> numero;
+    cout << "\nIntroduce el piso de la habitación: ";
+    cin >> piso;
+    cout << "\nIntroduce el tipo de habitacion (simple, doble, suite): ";
+    cin >> tipo;
 
-	h = new Habitacion(numero, piso, tipoHab, capacidad, precio, ocupado);
+    while (tipo != "simple" && tipo != "doble" && tipo != "suite") {
+        cout << "Error al introducir el tipo de habitación. Inténtalo de nuevo: ";
+        cin >> tipo;
+    }
 
-	return h;
+    if (tipo == "simple") tipoHab = simple;
+    else if (tipo == "doble") tipoHab = doble;
+    else tipoHab = suite;
+
+    cout << "\nIntroduce la capacidad de la habitacion: ";
+    cin >> capacidad;
+    cout << "\nIntroduce el precio: ";
+    cin >> precio;
+    cout << "\nIntroduce si está ocupada (0 para no, 1 para sí): ";
+    cin >> ocupado;
+
+    h = new Habitacion(numero, piso, tipoHab, capacidad, precio, ocupado);
+
+    return h;
 }
-
 PlazaParking anadirPlazaParking(){
 	PlazaParking p;
-	p = NULL;
 
 	int numero;
 	string zona;
