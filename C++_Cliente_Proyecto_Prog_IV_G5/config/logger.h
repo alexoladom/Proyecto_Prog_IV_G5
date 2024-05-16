@@ -15,4 +15,4 @@ private:
     static std::ofstream logFile;
 };
 
-#endif // LOGGER_H
+#endif
