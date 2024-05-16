@@ -4,6 +4,7 @@
 #define NOT_OK 0;
 
 #include "iostream"
+
 using namespace std;
 
 #define SERVER_IP "127.0.0.3"
@@ -130,6 +131,119 @@ Cliente * getListaClientes(SOCKET& s){
 
 }
 
+PlazaParking* getListaPlazasParking(SOCKET& s){
+
+	char sendBuff[512], recvBuff[512];
+	strcpy(sendBuff,"ENVIAR LISTA PLAZAS PARKING");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD DE LISTA DE PLAZAS PARKING\n";
+		return 0;
+	}
+
+	if(recibirMensaje(s,recvBuff)!=OK){
+		cerr<<"ERROR RECIBIENDO LISTA DE PLAZAS PARKING\n";
+		return 0;
+	}
+
+
+	int numPlazasParking =stoi(recvBuff);
+	PlazaParking::numPlazaParkings=numPlazasParking;
+	PlazaParking* arrayPlazasParking =new PlazaParking[numPlazasParking];
+	int numero;
+	char zona;
+	string zonas;
+	boolean ocupado;
+
+	for (int var = 0; var < numPlazasParking; ++var) {
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO NUMERO DE PLAZA DE PARKING Nº"<<var<<"\n";
+			return 0;
+		}
+		numero=stoi(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO ZONA DE PLAZA DE PARKING Nº"<<var<<"\n";
+			return 0;
+		}
+		strcpy(&zona,recvBuff);
+		zonas=zona;
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO OCUPACION DE PLAZA DE PARKING Nº"<<var<<"\n";
+			return 0;
+		}
+		ocupado=stoi(recvBuff);
+
+		PlazaParking p(numero,zonas,ocupado);
+		arrayPlazasParking[var]=p;
+
+	}
+	return arrayPlazasParking;
+}
+
+Habitacion* getListaHabitaciones(SOCKET& s){
+
+	char sendBuff[512], recvBuff[512];
+	strcpy(sendBuff,"ENVIAR LISTA HABITACIONES");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD DE LISTA DE HABITACIONES\n";
+		return 0;
+	}
+
+	if(recibirMensaje(s,recvBuff)!=OK){
+		cerr<<"ERROR RECIBIENDO LISTA DE HABITACIONES\n";
+		return 0;
+	}
+
+
+	int numHabitaciones =stoi(recvBuff);
+	Habitacion::numHabitaciones=numHabitaciones;
+	Habitacion* arrayHabitaciones =new Habitacion[numHabitaciones];
+	int numero;
+	int piso;
+	enum tipoHabitacion tipo;
+	int capacidad;
+	float precio;
+	boolean ocupado;
+
+	for (int var = 0; var < numHabitaciones; ++var) {
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO NUMERO DE HABITACION Nº"<<var<<"\n";
+			return 0;
+		}
+		numero=stoi(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO PISO DE HABITACION Nº"<<var<<"\n";
+			return 0;
+		}
+		piso=stoi(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO TIPO DE HABITACION Nº"<<var<<"\n";
+			return 0;
+		}
+		tipo = stringToTipoHabi(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO CAPACIDAD DE HABITACION Nº"<<var<<"\n";
+			return 0;
+		}
+		capacidad=stoi(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO PRECIO DE HABITACION Nº"<<var<<"\n";
+			return 0;
+		}
+		precio=atof(recvBuff);
+		if(recibirMensaje(s,recvBuff)!=OK){
+			cerr<<"ERROR RECIBIENDO OCUPACION DE HABITACION Nº"<<var<<"\n";
+			return 0;
+		}
+		ocupado=stoi(recvBuff);
+
+		Habitacion c(numero,piso,tipo,capacidad,precio,ocupado);
+		arrayHabitaciones[var]=c;
+
+	}
+	return arrayHabitaciones;
+}
+
+
 Reserva* getListaReservas(SOCKET& s){
 	char sendBuff[512], recvBuff[512];
 
@@ -197,68 +311,6 @@ enum tipoHabitacion stringToTipoHabi(char* s){
 	}
 	return simple;
 }
-Habitacion* getListaHabitaciones(SOCKET& s){
-	char sendBuff[512], recvBuff[512];
-
-	strcpy(sendBuff,"ENVIAR LISTA HABITACIONES");
-	if (enviarMensaje(s,sendBuff)!=OK){
-		cerr<<"ERROR ENVIANDO SOLICITUD DE LISTA DE HABITACIONES\n";
-		return 0;
-	}
-
-	if(recibirMensaje(s,recvBuff)!=OK){
-		cerr<<"ERROR RECIBIENDO LISTA DE HABITACIONES\n";
-		return 0;
-	}
-
-	int numHabitaciones =stoi(recvBuff);
-	Habitacion::numHabitaciones=numHabitaciones;
-	Habitacion* arrayHabitaciones =new Habitacion[numHabitaciones];
-	int numero;
-	int piso;
-	enum tipoHabitacion tipo;
-	int capacidad;
-	float precio;
-	bool ocupado;
-
-	for (int var = 0; var < numHabitaciones; ++var) {
-		if(recibirMensaje(s,recvBuff)!=OK){
-			cerr<<"ERROR RECIBIENDO NUMERO DE LA HABITACION Nº"<<var<<"\n";
-			return 0;
-		}
-		numero=stoi(recvBuff);
-		if(recibirMensaje(s,recvBuff)!=OK){
-			cerr<<"ERROR RECIBIENDO PISO DE LA HABITACION Nº"<<var<<"\n";
-			return 0;
-		}
-		piso=stoi(recvBuff);
-		if(recibirMensaje(s,recvBuff)!=OK){
-			cerr<<"ERROR RECIBIENDO TIPO DE LA HABITACION Nº"<<var<<"\n";
-			return 0;
-		}
-		tipo=stringToTipoHabi(recvBuff);
-		if(recibirMensaje(s,recvBuff)!=OK){
-			cerr<<"ERROR RECIBIENDO CAPACIDAD DE LA HABITACION Nº"<<var<<"\n";
-			return 0;
-		}
-		capacidad=stoi(recvBuff);
-		if(recibirMensaje(s,recvBuff)!=OK){
-			cerr<<"ERROR RECIBIENDO PRECIO DE LA HABITACION Nº"<<var<<"\n";
-			return 0;
-		}
-		precio= atof(recvBuff);
-		if(recibirMensaje(s,recvBuff)!=OK){
-			cerr<<"ERROR RECIBIENDO OCUPACION DE LA HABITACION Nº"<<var<<"\n";
-			return 0;
-		}
-		ocupado=stoi(recvBuff);
-
-		Habitacion h(numero,piso,tipo,capacidad,precio,ocupado);
-		arrayHabitaciones[var]=h;
-
-	}
-	return arrayHabitaciones;
-}
 
 int comprobarDni(SOCKET& s,int dni){
 	char sendBuff[512], recvBuff[512];
@@ -324,22 +376,54 @@ int comprobarContrasena(SOCKET& s,int dni,char* contrasena){
 
 int iniciarSesion(SOCKET& s){//0 bien; 1 mal
 	int dni;
-	char dnic[20];
-	char contrasena[50];
+	string dnic;
+	char contrasena[20];
 
-	cout <<"Introduce el dni de usuario: ";
-	cin >> dnic; //Falta hacerlo a tu manera en todos los cin
-	dni = stoi(dnic);
-	cout <<"\nIntroduce tu contraseña: ";
-	cin >> contrasena;
 
-	if(comprobarDni(s,dni)!=OK){
-		return NOT_OK;
-	}else if(comprobarContrasena(s,dni,contrasena)!=OK){
-		return OK;
+	cout <<"Introduce el DNI de usuario: (introduzca 0 para salir)\n ";
+	getline(cin,dnic);
+
+	if(strcmp(dnic.c_str(),"0")==0){
+		return -1;
 	}
 
-	return NOT_OK;
+	dni = stoi(dnic);
+
+	while(comprobarDni(s,dni)!=OK){
+		cerr<<"¡No hay ningun cliente registrado con ese DNI!\n\n";
+		cout<<"Introduce el DNI de usuario: (introduzca 0 para salir)\n";
+		getline(cin,dnic);
+
+		if(strcmp(dnic.c_str(),"0")==0){
+			return -1;
+		}
+
+		dni = stoi(dnic);
+	}
+
+
+
+
+	cout <<"Introduce tu contraseña: (introduzca 0 para salir)\n ";
+
+	cin >> contrasena;
+
+	if(strcmp(contrasena,"0")==0){
+		return -1;
+	}
+	while(comprobarContrasena(s,dni,contrasena)!=OK){
+
+		cerr <<"¡Contraseña incorrecta!\n\n ";
+		cout <<"Introduce tu contraseña: (introduzca 0 para salir)\n";
+
+		cin >> contrasena;
+
+		if(strcmp(contrasena,"0")==0){
+			return -1;
+		}
+	}
+
+	return OK;
 }
 
 

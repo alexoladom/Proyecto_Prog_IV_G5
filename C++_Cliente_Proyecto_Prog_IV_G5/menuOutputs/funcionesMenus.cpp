@@ -38,12 +38,12 @@ void mostrarMenuPrincipalCliente(){
     cout<<"MENU CLIENTE\n";
     cout<<"1.- Crear una reserva\n";
     cout<<"2.- Modificar una reserva\n";
-    cout<<"3.- Volver al menú principal\n";
-    cout<<"4.- Cerrar\n";
+    cout<<"3.- Cancelar una reserva\n";
+    cout<<"4.- Volver al menú principal\n";
+    cout<<"5.- Cerrar\n";
     cout<<"SELECCIONE UNA OPCION:\n";
 
 }
-
 
 //Parde del Administrador
 void mostrarMenuInicioAdmin(){

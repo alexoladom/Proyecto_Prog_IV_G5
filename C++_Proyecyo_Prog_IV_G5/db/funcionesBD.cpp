@@ -647,7 +647,8 @@ PlazaParking* getListaPlazasParking(sqlite3*db){
 	}
 
 	int numero;
-	char zona[2];
+	char zona;
+	string zonas;
 	bool ocupado;
 	int pos=0;
 	do {
@@ -655,10 +656,11 @@ PlazaParking* getListaPlazasParking(sqlite3*db){
 		result = sqlite3_step(stmt2) ;// @suppress("Invalid arguments")
 		if (result == SQLITE_ROW) {
 			numero = sqlite3_column_int(stmt2, 0);// @suppress("Invalid arguments")
-			strcpy(zona, (char *) sqlite3_column_text(stmt2, 1));// @suppress("Invalid arguments")
+			strcpy(&zona, (char *) sqlite3_column_text(stmt2, 1));// @suppress("Invalid arguments")
 			ocupado = sqlite3_column_int(stmt2, 2);// @suppress("Invalid arguments")
 
-			PlazaParking p(numero,zona,ocupado);
+			zonas = zona;
+			PlazaParking p(numero,zonas,ocupado);
 			array[pos]=p;
 			pos++;
 		}

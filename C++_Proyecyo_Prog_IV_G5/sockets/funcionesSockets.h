@@ -21,6 +21,7 @@ int enviarMensaje(SOCKET& comm_socket,char sendBuff[]);
 int enviarListaReservas(SOCKET& comm_socket,sqlite3* bd);
 int enviarListaClientes(SOCKET& comm_socket,sqlite3* bd);
 int enviarListaHabitaciones(SOCKET& comm_socket,sqlite3* bd);
+int enviarListaPlazasParking(SOCKET& comm_socket,sqlite3* bd);
 
 
 

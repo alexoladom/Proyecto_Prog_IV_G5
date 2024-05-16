@@ -203,19 +203,59 @@ int enviarListaHabitaciones(SOCKET& comm_socket,sqlite3* bd){
 	return OK;
 }
 
+int enviarListaPlazasParking(SOCKET& comm_socket,sqlite3* bd){
+	char sendBuff[512];
+
+	getListaPlazasParking(bd);
+	PlazaParking * arrayPlazasParking= new PlazaParking[PlazaParking::numPlazaParkings];
+
+	arrayPlazasParking = getListaPlazasParking(bd);
+
+	//Primero se envia el numero de habitaciones que hay
+
+	strcpy(sendBuff,to_string(PlazaParking::numPlazaParkings).c_str());
+
+	if(enviarMensaje(comm_socket,sendBuff)!=OK){
+		return 0;
+	}
+
+	//Ahora se envian las habitaciones atributo por atributo
+
+	for (int var = 0; var < PlazaParking::numPlazaParkings; ++var) {
+		strcpy(sendBuff,to_string(arrayPlazasParking[var].getNumero()).c_str());
+		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			cerr<<"ERROR ENVIANDO NUMERO DE LA PLAZA DE PARKING Nº"<<var<<"\n";
+			return 0;
+		}
+		strcpy(sendBuff,arrayPlazasParking[var].getZona().c_str());
+		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			cerr<<"ERROR ENVIANDO ZONA DE LA PLAZA DE PARKING Nº"<<var<<"\n";
+			return 0;
+		}
+		strcpy(sendBuff,to_string(arrayPlazasParking[var].isOcupado()).c_str());
+		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			cerr<<"ERROR ENVIANDO OCUPACION DE LA PLAZA DE PARKING Nº"<<var<<"\n";
+			return 0;
+		}
+
+
+	}
+	return OK;
+}
+
 
 int enviarListaReservas(SOCKET& comm_socket,sqlite3* bd){
 	char sendBuff[512];
 
 	//Para actualizar el numero de clientes
-	getListaClientes(bd);
-	Cliente * arrayClientes= new Cliente[Cliente::numClientes];
+	getListaReservas(bd);
+	Reserva * arrayReservas= new Reserva[Reserva::numReservas];
 
-	arrayClientes = getListaClientes(bd);
+	arrayReservas = getListaReservas(bd);
 
 	//Primero se envia el numero de clientes que hay
 
-	strcpy(sendBuff,to_string(Cliente::numClientes).c_str());
+	strcpy(sendBuff,to_string(Reserva::numReservas).c_str());
 
 	if(enviarMensaje(comm_socket,sendBuff)!=OK){
 		return 0;
@@ -223,21 +263,31 @@ int enviarListaReservas(SOCKET& comm_socket,sqlite3* bd){
 
 	//Ahora se envian los clientes atributo por atributo
 
-	for (int var = 0; var < Cliente::numClientes; ++var) {
-		strcpy(sendBuff,to_string(arrayClientes[var].getDni()).c_str());
+	for (int var = 0; var < Reserva::numReservas; ++var) {
+		strcpy(sendBuff,to_string(arrayReservas[var].getId()).c_str());
 		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			cerr<<"ERROR ENVIANDO ID DE LA RESERVA Nº"<<var<<"\n";
 			return NOT_OK;
 		}
-		strcpy(sendBuff,arrayClientes[var].getNombre().c_str());
+
+		strcpy(sendBuff,arrayReservas[var].getFecha().c_str());
 		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			cerr<<"ERROR ENVIANDO FECHA DE LA RESERVA Nº"<<var<<"\n";
 			return NOT_OK;
 		}
-		strcpy(sendBuff,to_string(arrayClientes[var].getEdad()).c_str());
+		strcpy(sendBuff,to_string(arrayReservas[var].getDniCliente()).c_str());
 		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			cerr<<"ERROR ENVIANDO DNI DEL CLIENTE DE LA RESERVA Nº"<<var<<"\n";
 			return NOT_OK;
 		}
-		strcpy(sendBuff,arrayClientes[var].getCorreo().c_str());
+		strcpy(sendBuff,to_string(arrayReservas[var].getNumeroHabitacion()).c_str());
 		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			cerr<<"ERROR ENVIANDO NUMERO DE LA HABITACION DE LA RESERVA Nº"<<var<<"\n";
+			return NOT_OK;
+		}
+		strcpy(sendBuff,to_string(arrayReservas[var].getNumeroPlazaParking()).c_str());
+		if(enviarMensaje(comm_socket,sendBuff)!=OK){
+			cerr<<"ERROR ENVIANDO NUMERO DE LA PLAZA DE PARKING DE LA RESERVA Nº"<<var<<"\n";
 			return NOT_OK;
 		}
 
@@ -261,12 +311,11 @@ int comprobarDni(SOCKET& comm_socket,sqlite3 *bd){
 	if(comprobarDni(bd,dni)!=OK){
 		strcpy(sendBuff,"DNI NO EXISTENTE");
 		enviarMensaje(comm_socket,sendBuff);
-		return NOT_OK
 	}else{
 		strcpy(sendBuff,"DNI EXISTENTE");
 		enviarMensaje(comm_socket,sendBuff);
-		return OK;
 	}
+	return OK;
 
 }
 
@@ -289,12 +338,13 @@ int comprobarContrasena(SOCKET& comm_socket,sqlite3* bd){
 	if (comprobarContra(bd,dni,contra)!=OK){
 		strcpy(sendBuff,"CONTRASEÑA INCORRECTA");
 		enviarMensaje(comm_socket,sendBuff);
-		return NOT_OK;
+
 	}else{
 		strcpy(sendBuff,"CONTRASEÑA CORRECTA");
 		enviarMensaje(comm_socket,sendBuff);
-		return OK;
 	}
+
+	return OK;
 
 
 }
