@@ -7,7 +7,6 @@
 #include "menuOutputs/funcionesMenu.h"
 #include "config/logger.h"
 
-
 #define OK 1
 #define NOT_OK 0
 
@@ -77,6 +76,14 @@ int main(int argc, char **argv) {
 		cout<<"Opcion no valida, introduzca una opcion de nuevo:\n";
 		getline(cin,opcion);
 	}
+
+	//Parte del logger
+	Logger::init("archivo_log.txt");
+
+	Logger::logInfo("Inicio del programa");
+	Logger::logError("Error al procesar la reserva");
+
+	Logger::close();
 
 	//Cliente
 	if (strcmp(opcion.c_str(),"1")==0){
@@ -446,6 +453,7 @@ int main(int argc, char **argv) {
 	}while(1);
 
 	return 0;
+
 
 }
 
