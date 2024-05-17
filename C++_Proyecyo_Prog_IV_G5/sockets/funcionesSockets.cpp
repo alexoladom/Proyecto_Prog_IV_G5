@@ -296,6 +296,201 @@ int enviarListaReservas(SOCKET& comm_socket,sqlite3* bd){
 }
 
 
+int anadirCliente(SOCKET& comm_socket,sqlite3* bd){
+	char recvBuff[512];
+
+
+	int dni;
+	string nombre;
+	int edad;
+	string correo;
+
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO DNI PARA AÑADIR CLIENTE\n";
+		return 0;
+	}
+	dni = stoi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO NOMBRE PARA AÑADIR CLIENTE\n";
+		return 0;
+	}
+	nombre=recvBuff;
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO EDAD PARA AÑADIR CLIENTE\n";
+		return 0;
+	}
+	edad=stoi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO CORREO PARA AÑADIR CLIENTE\n";
+		return 0;
+	}
+	correo=recvBuff;
+
+	Cliente c(dni,nombre,edad,correo);
+
+	if(anadirCliente(c,bd)!=OK){
+		cerr<<"ERROR AÑADIENDO CLIENTE A LA BD\n\n";
+		return NOT_OK;
+	}
+
+	Cliente::numClientes++;
+	return OK;
+
+
+}
+
+enum tipoHabitacion stringToTipoHabi(char* s){
+	if(strcmp(s,"Simple")==0){
+		return simple;
+	}else if(strcmp(s,"Doble")==0){
+		return doble;
+	}else if(strcmp(s,"Suite")==0){
+		return suite;
+	}
+	return simple;
+}
+
+int anadirHabitacion(SOCKET& comm_socket,sqlite3* bd){
+	char recvBuff[512];
+
+
+	int numero;
+	int piso;
+	enum tipoHabitacion tipo;
+	int capacidad;
+	float precio;
+	boolean ocupado;
+
+
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO NUMERO PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	numero = stoi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO PISO PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	piso=stoi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO TIPO PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	tipo=stringToTipoHabi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO CAPACIDAD PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	capacidad=stoi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO PRECIO PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	precio=atoi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO OCUPACION PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	ocupado=stoi(recvBuff);
+
+
+	Habitacion h(numero,piso,tipo,capacidad,precio,ocupado);
+	if(anadirHabitacion(bd,h)!=OK){
+		cerr<<"ERROR AÑADIENDO HABTIACION A LA BD\n\n";
+		return NOT_OK;
+	}
+
+	Habitacion::numHabitaciones++;
+	return OK;
+
+
+}
+
+int anadirPlazaPaking(SOCKET& comm_socket,sqlite3* bd){
+	char recvBuff[512];
+
+
+	int numero;
+	string zona;
+	boolean ocupado;
+
+
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO NUMERO PARA AÑADIR PLAZAPARKING\n";
+		return 0;
+	}
+	numero = stoi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO ZONA PARA AÑADIR PLAZAPARKING\n";
+		return 0;
+	}
+	zona=recvBuff;
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO OCUPACION PARA AÑADIR PLAZAPARKING\n";
+		return 0;
+	}
+	ocupado = stoi(recvBuff);
+	PlazaParking p(numero,zona,ocupado);
+	if(anadirPlazaParking(bd,p)!=OK){
+		cerr<<"ERROR AÑADIENDO PLAZAPARKING A LA BD\n\n";
+		return NOT_OK;
+	}
+
+	PlazaParking::numPlazaParkings++;
+	return OK;
+}
+
+
+int anadirReserva(SOCKET& comm_socket,sqlite3* bd){
+
+	char recvBuff[512];
+
+
+	int id;
+	string fecha;
+	int dniCliente;
+	int numeroHab;
+	int numeroPlaza;
+
+
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO ID PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+	id = stoi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO FECHA PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+	fecha=recvBuff;
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO DNI DEL CLIENTE PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+	dniCliente=stoi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO NUMERO DE HABITACION PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+	numeroHab=stoi(recvBuff);
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO NUMERO DE PLAZAPARKING PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+	numeroPlaza=stoi(recvBuff);
+
+
+	Reserva s(id,fecha,dniCliente,numeroHab,numeroPlaza);
+	if(anadirReserva(s,bd)!=OK){
+		cerr<<"ERROR AÑADIENDO RESERVA A LA BD\n\n";
+		return NOT_OK;
+	}
+
+	Reserva::numReservas++;
+	return OK;
+}
+
+
 int comprobarDni(SOCKET& comm_socket,sqlite3 *bd){
 
 	char sendBuff[512], recvBuff[512];
@@ -347,6 +542,33 @@ int comprobarContrasena(SOCKET& comm_socket,sqlite3* bd){
 	return OK;
 
 
+}
+
+
+
+int anadirDniContrasena(SOCKET& comm_socket,sqlite3* bd){
+
+	char recvBuff[512];
+
+	int dni;
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO DNI PARA AÑADIRLO\n";
+		return 0;
+	}
+
+	dni=stoi(recvBuff);
+
+	char contra[40];
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO CONTRASEÑA PARA AÑADIRLO\n";
+		return 0;
+	}
+
+	strcpy(contra, recvBuff);
+
+	anadirDniContra(bd,dni,contra);
+
+	return OK;
 }
 
 void cerrarConexion(SOCKET& comm_socket){

@@ -300,7 +300,6 @@ Reserva* getListaReservas(SOCKET& s){
 	}
 	return arrayReservas;
 }
-
 enum tipoHabitacion stringToTipoHabi(char* s){
 	if(strcmp(s,"Simple")==0){
 		return simple;
@@ -311,6 +310,184 @@ enum tipoHabitacion stringToTipoHabi(char* s){
 	}
 	return simple;
 }
+
+
+
+int anadirCliente(SOCKET &s, Cliente& c){
+	char sendBuff[512];
+	strcpy(sendBuff,"AÑADIR CLIENTE");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD PARA AÑADIR CLIENTE\n";
+		return 0;
+	}
+
+	int dni = c.getDni();
+	char nombre[50];
+	strcpy(nombre,c.getNombre().c_str());
+
+	int edad = c.getEdad();
+	char correo[50];
+	strcpy(nombre,c.getCorreo().c_str());
+
+	strcpy(sendBuff,to_string(dni).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO DNI PARA AÑADIR CLIENTE\n";
+		return 0;
+	}
+	strcpy(sendBuff,nombre);
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO NOMBRE PARA AÑADIR CLIENTE\n";
+		return 0;
+	}
+	strcpy(sendBuff,to_string(edad).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO EDAD PARA AÑADIR CLIENTE\n";
+		return 0;
+	}
+
+	strcpy(sendBuff,correo);
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO CORREO PARA AÑADIR CLIENTE\n";
+		return 0;
+	}
+
+	Cliente::numClientes++;
+	return OK;
+
+}
+
+int anadirHabitacion(SOCKET &s, Habitacion& h){
+	char sendBuff[512];
+	strcpy(sendBuff,"AÑADIR HABITACION");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+
+	int numero = h.getNumero();
+	int piso = h.getPiso();
+	enum tipoHabitacion tipo = h.getTipo();
+	int capacidad= h.getCapacidad();
+	float precio=h.getPrecio();
+	boolean ocupado=h.isOcupado();
+
+	strcpy(sendBuff,to_string(numero).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO NUMERO PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	strcpy(sendBuff,to_string(piso).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO PISO PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	strcpy(sendBuff,to_string(tipo).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO TIPO PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+
+	strcpy(sendBuff,to_string(capacidad).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO CAPACIDAD PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	strcpy(sendBuff,to_string(precio).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO PRECIO PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	strcpy(sendBuff,to_string(ocupado).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO OCUPACION PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+
+	Habitacion::numHabitaciones++;
+	return OK;
+
+}
+
+int anadirPlazaParking(SOCKET &s, PlazaParking& p){
+	char sendBuff[512];
+	strcpy(sendBuff,"AÑADIR PLAZA PARKING");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD PARA AÑADIR PLAZA PARKING\n";
+		return 0;
+	}
+
+	int numero = p.getNumero();
+	string zona = p.getZona();
+	boolean ocupado =p.isOcupado();
+
+
+	strcpy(sendBuff,to_string(numero).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO NUMERO PARA AÑADIR PLAZA PARKING\n";
+		return 0;
+	}
+	strcpy(sendBuff,zona.c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO ZONA PARA AÑADIR PLAZA PARKING\n";
+		return 0;
+	}
+	strcpy(sendBuff,to_string(ocupado).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO OCUPACION PARA AÑADIR PLAZA PARKING\n";
+		return 0;
+	}
+
+	PlazaParking::numPlazaParkings++;
+	return OK;
+}
+
+int anadirReserva(SOCKET &s, Reserva& r){
+
+	char sendBuff[512];
+	strcpy(sendBuff,"AÑADIR PLAZA RESERVA");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+
+	int id = r.getId();
+	string fecha = r.getFecha();
+	int dniCliente =r.getDniCliente();
+	int numeroHabitacion = r.getNumeroHabitacion();
+	int numeroPlazaParking = r.getNumeroPlazaParking();
+
+
+	strcpy(sendBuff,to_string(id).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO ID PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+	strcpy(sendBuff,fecha.c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO FECHA PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+	strcpy(sendBuff,to_string(dniCliente).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO DNI DEL CLIENTE PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+	strcpy(sendBuff,to_string(numeroHabitacion).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO NUMERO DE HABITACION PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+	strcpy(sendBuff,to_string(numeroPlazaParking).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO NUMERO DE PLAZA PARKING PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+
+
+	Reserva::numReservas++;
+	return OK;
+}
+
 
 int comprobarDni(SOCKET& s,int dni){
 	char sendBuff[512], recvBuff[512];
@@ -425,5 +602,34 @@ int iniciarSesion(SOCKET& s){//0 bien; 1 mal
 
 	return OK;
 }
+
+int anadirDniContrasena(SOCKET &s,int dni, char* contrasena){
+
+	char sendBuff[512];
+
+	strcpy(sendBuff,"AÑADIR DNI CONTRASEÑA");
+
+	if(enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD PARA AÑADIR DNI Y CONTRASEÑA\n";
+		return NOT_OK;
+	}
+
+	strcpy(sendBuff,to_string(dni).c_str());
+	if(enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO DNI PARA AÑADIR DNI Y CONTRASEÑA\n";
+		return NOT_OK;
+	}
+
+	strcpy(sendBuff,contrasena);
+	if(enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO CONTRASEÑA PARA AÑADIR DNI Y CONTRASEÑA\n";
+		return NOT_OK;
+	}
+
+	return OK;
+
+
+}
+
 
 

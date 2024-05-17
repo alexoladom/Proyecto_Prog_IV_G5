@@ -1,5 +1,9 @@
 #include "funcionesMenu.h"
+#include "../sockets/funcionesSockets.h"
 
+
+#include <stdio.h>
+#include <winsock2.h>
 #include "iostream"
 #include "../domain/cliente.h"
 #include "../domain/reserva.h"
@@ -78,7 +82,7 @@ void mostrarMenuPrincipalAdmin(){
 
 
 
-Cliente registrarse() {
+Cliente registrarse(SOCKET & s) {
 
     string nombre;
     string apellido;
@@ -86,8 +90,8 @@ Cliente registrarse() {
     string correo;
     int dni;
     int edad;
-    string contra;
-    string contra2;
+    char contra[40];
+    char contra2[40];
 
     cout << "Introduce tu nombre: ";
     cin >> nombre;
@@ -95,6 +99,12 @@ Cliente registrarse() {
     cin >> apellido;
     cout << "\nIntroduce tu dni: ";
     cin >> dni;
+
+    while(comprobarDni(s,dni)==1){
+    	 cerr<<"¡El dni introducido ya esta en uso!\n\n";
+    	 cout << "\nIntroduce tu dni: ";
+    	 cin >> dni;
+    }
     cout << "\nIntroduce tu edad: ";
     cin >> edad;
     cout << "\nIntroduce tu correo: ";
@@ -105,16 +115,15 @@ Cliente registrarse() {
     cin >> contra2;
 
     while (contra != contra2) {
-        cout << "Error confirmando la contraseña. Inténtalo de nuevo: ";
+        cerr << "Error confirmando la contraseña. Inténtalo de nuevo: \n";
         cin >> contra2;
     }
 
 
+    anadirDniContrasena(s,dni,contra);
+
     nombreCompleto = nombre + " " + apellido;
     Cliente c(dni, nombreCompleto.c_str(), edad, correo.c_str());
-//    c->setNombreUsuario(nombreUser);
-//    c->setContrasena(contra); Habra que hacer algo de esto para el nombre de user y la contra
-
     return c;
 }
 

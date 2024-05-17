@@ -24,9 +24,15 @@ int enviarListaHabitaciones(SOCKET& comm_socket,sqlite3* bd);
 int enviarListaPlazasParking(SOCKET& comm_socket,sqlite3* bd);
 
 
+int anadirCliente(SOCKET& comm_socket,sqlite3* bd);
+int anadirHabitacion(SOCKET& comm_socket,sqlite3* bd);
+int anadirPlazaPaking(SOCKET& comm_socket,sqlite3* bd);
+int anadirReserva(SOCKET& comm_socket,sqlite3* bd);
+
 
 int comprobarDni(SOCKET& comm_socket,sqlite3* bd);
 int comprobarContrasena(SOCKET& comm_socket,sqlite3* bd);
+int anadirDniContrasena(SOCKET& comm_socket,sqlite3* bd);
 
 void cerrarConexion(SOCKET& comm_socket);
 

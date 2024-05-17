@@ -77,13 +77,6 @@ int main(int argc, char **argv) {
 		getline(cin,opcion);
 	}
 
-	//Parte del logger
-	Logger::init("archivo_log.txt");
-
-	Logger::logInfo("Inicio del programa");
-	Logger::logError("Error al procesar la reserva");
-
-	Logger::close();
 
 	//Cliente
 	if (strcmp(opcion.c_str(),"1")==0){
@@ -128,8 +121,6 @@ int main(int argc, char **argv) {
 					Logger::logInfo("Opcion 1 elegida");
 
 					//Crear una reserva TODO
-
-
 				}
 				if(strcmp(opcion.c_str(),"2")==0){
 					Logger::logInfo("Opcion 2 elegida");
@@ -251,7 +242,50 @@ int main(int argc, char **argv) {
 		if(strcmp(opcion.c_str(),"1")==0){
 			Logger::logInfo("Opcion 1 elegida");
 
-			//INICIAR SESION ADMIN TODO
+			//INICIAR SESION ADMIN
+
+
+			string dni;
+			cout<<"Introduzca el dni del administrador: (introduzca 0 para salir)\n";
+			getline(cin,dni);
+
+			if (strcmp(dni.c_str(),"0")==0){
+				break;
+			}
+
+			while(strcmp(dni.c_str(),"123")!=0){
+				cerr<<"¡DNI introducido incorrecto!\n\n";
+				cout<<"Introduzca el dni del administrador: (introduzca 0 para salir)\n";
+				getline(cin,dni);
+				if (stoi(dni)==0){
+					break;
+				}
+			}
+
+			if (strcmp(dni.c_str(),"0")==0){
+				break;
+			}
+
+
+			string clave;
+			cout<<"Introduzca la clave de administrador: (introduzca 0 para salir)\n";
+			getline(cin,clave);
+
+			if (strcmp(clave.c_str(),"0")==0){
+				break;
+			}
+			while(strcmp(clave.c_str(),"claveadmin")!=0){
+				cerr<<"¡Clave introducida incorrecta!\n\n";
+				cout<<"Introduzca la clave de administrador: (introduzca 0 para salir)\n";
+				getline(cin,clave);
+				if (strcmp(clave.c_str(),"0")==0){
+					break;
+				}
+			}
+
+			if (strcmp(clave.c_str(),"0")==0){
+				break;
+			}
 
 
 			mostrarMenuPrincipalAdmin();
@@ -365,7 +399,7 @@ int main(int argc, char **argv) {
 			}else if(strcmp(opcion.c_str(),"7")==0){
 				Logger::logInfo("Opcion 7 elegida");
 
-				//VER PLAZAS DE PARKING TODO
+				//VER PLAZAS DE PARKING
 
 				cout<<"----------------------------\n";
 				cout<<"LISTA DE PLAZAS DE PARKING\n";
@@ -400,7 +434,7 @@ int main(int argc, char **argv) {
 			}else if(strcmp(opcion.c_str(),"10")==0){
 				Logger::logInfo("Opcion 10 elegida");
 
-				//VOLVER AL MENU PRINCIPAL TODO
+				//VOLVER AL MENU PRINCIPAL
 				opcion="-1";
 				break;
 			}else if(strcmp(opcion.c_str(),"11")==0){

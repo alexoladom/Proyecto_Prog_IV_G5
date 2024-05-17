@@ -172,6 +172,19 @@ int main(int argc, char **argv) {
 			Logger::logInfo("Contraseña comprobada");
 
 
+		}else if(strcmp(recvBuff,"AÑADIR DNI CONTRASEÑA")==0){
+			if(anadirDniContrasena(comm_socket,bd)!=OK){
+				cerr<<"ERROR AÑADIENDO DNI Y CONTRASEÑA\n";
+					Logger::logError("Error añadiendo dni y contraseña");
+
+					cerrarConexion(comm_socket);
+					Logger::logInfo("SE CIERRA LA SESION");
+
+					return 0;
+			}
+
+			Logger::logInfo("Dni y contraseña añadida");
+
 		}
 
 
