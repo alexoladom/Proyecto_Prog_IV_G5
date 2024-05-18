@@ -5,7 +5,7 @@
 
 std::ofstream Logger::logFile;
 
-const std::string currentDateTime() {
+const std::string Logger::currentDateTime() {
     time_t     now = time(0);
     struct tm  tstruct;
     char       buf[80];

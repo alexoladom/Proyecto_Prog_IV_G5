@@ -327,7 +327,7 @@ int anadirCliente(SOCKET &s, Cliente& c){
 
 	int edad = c.getEdad();
 	char correo[50];
-	strcpy(nombre,c.getCorreo().c_str());
+	strcpy(correo,c.getCorreo().c_str());
 
 	strcpy(sendBuff,to_string(dni).c_str());
 	if (enviarMensaje(s,sendBuff)!=OK){
@@ -356,7 +356,7 @@ int anadirCliente(SOCKET &s, Cliente& c){
 
 }
 
-int anadirHabitacion(SOCKET &s, Habitacion& h){
+int anadirHabitacion(SOCKET &s, Habitacion& h, boolean mod){
 	char sendBuff[512];
 	strcpy(sendBuff,"AÑADIR HABITACION");
 	if (enviarMensaje(s,sendBuff)!=OK){
@@ -371,6 +371,11 @@ int anadirHabitacion(SOCKET &s, Habitacion& h){
 	float precio=h.getPrecio();
 	boolean ocupado=h.isOcupado();
 
+	strcpy(sendBuff,to_string(mod).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO MOD PARA AÑADIR HABITACION\n";
+		return 0;
+	}
 	strcpy(sendBuff,to_string(numero).c_str());
 	if (enviarMensaje(s,sendBuff)!=OK){
 		cerr<<"ERROR ENVIANDO NUMERO PARA AÑADIR HABITACION\n";
@@ -408,7 +413,7 @@ int anadirHabitacion(SOCKET &s, Habitacion& h){
 
 }
 
-int anadirPlazaParking(SOCKET &s, PlazaParking& p){
+int anadirPlazaParking(SOCKET &s, PlazaParking& p,boolean mod){
 	char sendBuff[512];
 	strcpy(sendBuff,"AÑADIR PLAZA PARKING");
 	if (enviarMensaje(s,sendBuff)!=OK){
@@ -421,6 +426,11 @@ int anadirPlazaParking(SOCKET &s, PlazaParking& p){
 	boolean ocupado =p.isOcupado();
 
 
+	strcpy(sendBuff,to_string(mod).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO MOD PARA AÑADIR PLAZA PARKING\n";
+		return 0;
+	}
 	strcpy(sendBuff,to_string(numero).c_str());
 	if (enviarMensaje(s,sendBuff)!=OK){
 		cerr<<"ERROR ENVIANDO NUMERO PARA AÑADIR PLAZA PARKING\n";
@@ -441,10 +451,10 @@ int anadirPlazaParking(SOCKET &s, PlazaParking& p){
 	return OK;
 }
 
-int anadirReserva(SOCKET &s, Reserva& r){
+int anadirReserva(SOCKET &s, Reserva& r, boolean mod){
 
 	char sendBuff[512];
-	strcpy(sendBuff,"AÑADIR PLAZA RESERVA");
+	strcpy(sendBuff,"AÑADIR RESERVA");
 	if (enviarMensaje(s,sendBuff)!=OK){
 		cerr<<"ERROR ENVIANDO SOLICITUD PARA AÑADIR RESERVA\n";
 		return 0;
@@ -457,6 +467,11 @@ int anadirReserva(SOCKET &s, Reserva& r){
 	int numeroPlazaParking = r.getNumeroPlazaParking();
 
 
+	strcpy(sendBuff,to_string(mod).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO MOD PARA AÑADIR RESERVA\n";
+		return 0;
+	}
 	strcpy(sendBuff,to_string(id).c_str());
 	if (enviarMensaje(s,sendBuff)!=OK){
 		cerr<<"ERROR ENVIANDO ID PARA AÑADIR RESERVA\n";
@@ -600,7 +615,7 @@ int iniciarSesion(SOCKET& s){//0 bien; 1 mal
 		}
 	}
 
-	return OK;
+	return dni;
 }
 
 int anadirDniContrasena(SOCKET &s,int dni, char* contrasena){

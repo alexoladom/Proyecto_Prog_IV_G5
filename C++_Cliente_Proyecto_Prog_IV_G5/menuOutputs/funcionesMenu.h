@@ -2,6 +2,9 @@
 #define MENUPRINCIPAL_H
 
 
+#include <stdio.h>
+#include <winsock2.h>
+
 #include "../domain/cliente.h"
 #include "../domain/reserva.h"
 #include "../domain/habitacion.h"
@@ -17,7 +20,7 @@ void mostrarMenuInicioAdmin();
 
 void mostrarMenuPrincipalAdmin();
 
-Cliente registrarse();
+Cliente registrarse(SOCKET & s);
 Habitacion anadirHabitacion();
 PlazaParking anadirPlazaParking();
 

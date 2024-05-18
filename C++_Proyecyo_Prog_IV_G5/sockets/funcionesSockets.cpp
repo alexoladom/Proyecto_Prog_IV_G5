@@ -336,7 +336,6 @@ int anadirCliente(SOCKET& comm_socket,sqlite3* bd){
 	Cliente::numClientes++;
 	return OK;
 
-
 }
 
 enum tipoHabitacion stringToTipoHabi(char* s){
@@ -360,7 +359,14 @@ int anadirHabitacion(SOCKET& comm_socket,sqlite3* bd){
 	int capacidad;
 	float precio;
 	boolean ocupado;
+	boolean mod;
 
+
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR MOD PARA AÑADIR HABITACION\n";
+		return 0;
+	}
+	mod = stoi(recvBuff);
 
 	if(recibirMensaje(comm_socket,recvBuff)!=OK){
 		cout<<"ERROR RECIBIENDO NUMERO PARA AÑADIR HABITACION\n";
@@ -395,7 +401,13 @@ int anadirHabitacion(SOCKET& comm_socket,sqlite3* bd){
 
 
 	Habitacion h(numero,piso,tipo,capacidad,precio,ocupado);
-	if(anadirHabitacion(bd,h)!=OK){
+
+	if(mod==true){
+		if(modificarHabitacion(bd,h)!=OK){
+			cerr<<"ERROR MODIFICANDO HABTIACION A LA BD\n\n";
+			return NOT_OK;
+		}
+	}else if(anadirHabitacion(bd,h)!=OK){
 		cerr<<"ERROR AÑADIENDO HABTIACION A LA BD\n\n";
 		return NOT_OK;
 	}
@@ -413,7 +425,14 @@ int anadirPlazaPaking(SOCKET& comm_socket,sqlite3* bd){
 	int numero;
 	string zona;
 	boolean ocupado;
+	boolean mod;
 
+
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO MOD PARA AÑADIR PLAZAPARKING\n";
+		return 0;
+	}
+	mod = stoi(recvBuff);
 
 	if(recibirMensaje(comm_socket,recvBuff)!=OK){
 		cout<<"ERROR RECIBIENDO NUMERO PARA AÑADIR PLAZAPARKING\n";
@@ -431,6 +450,13 @@ int anadirPlazaPaking(SOCKET& comm_socket,sqlite3* bd){
 	}
 	ocupado = stoi(recvBuff);
 	PlazaParking p(numero,zona,ocupado);
+
+	if(mod){
+		if(modificarPlazaParking(bd,p)!=OK){
+			cerr<<"ERROR MODIFICANDO PLAZAPARKING A LA BD\n\n";
+			return NOT_OK;
+		}
+	}else
 	if(anadirPlazaParking(bd,p)!=OK){
 		cerr<<"ERROR AÑADIENDO PLAZAPARKING A LA BD\n\n";
 		return NOT_OK;
@@ -451,8 +477,14 @@ int anadirReserva(SOCKET& comm_socket,sqlite3* bd){
 	int dniCliente;
 	int numeroHab;
 	int numeroPlaza;
+	boolean mod;
 
 
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO MOD PARA AÑADIR RESERVA\n";
+		return 0;
+	}
+	mod = stoi(recvBuff);
 	if(recibirMensaje(comm_socket,recvBuff)!=OK){
 		cout<<"ERROR RECIBIENDO ID PARA AÑADIR RESERVA\n";
 		return 0;
@@ -481,6 +513,13 @@ int anadirReserva(SOCKET& comm_socket,sqlite3* bd){
 
 
 	Reserva s(id,fecha,dniCliente,numeroHab,numeroPlaza);
+	if(mod){
+		if(modificarReserva(bd,s)!=OK){
+			cerr<<"ERROR MODIFICANDO RESERVA A LA BD\n\n";
+			return NOT_OK;
+		}
+	}else
+
 	if(anadirReserva(s,bd)!=OK){
 		cerr<<"ERROR AÑADIENDO RESERVA A LA BD\n\n";
 		return NOT_OK;

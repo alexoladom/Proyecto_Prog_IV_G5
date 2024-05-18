@@ -591,6 +591,39 @@ int anadirHabitacion(sqlite3*db,Habitacion &h){
 			return OK;
 
 }
+
+int modificarHabitacion(sqlite3*db,Habitacion &h){
+	sqlite3_stmt *stmt1;
+
+	char sql1[] = "update habitacion set ocupado=? where numero = ?";
+
+	int result = sqlite3_prepare_v2(db, sql1, -1, &stmt1, NULL) ;// @suppress("Invalid arguments")
+	sqlite3_bind_int(stmt1, 1,h.isOcupado());// @suppress("Invalid arguments")
+
+	sqlite3_bind_int(stmt1, 2,h.getNumero());// @suppress("Invalid arguments")
+
+	if (result != SQLITE_OK) {
+		printf("Error preparing statement (Update)\n");
+		printf("%s\n", sqlite3_errmsg(db));// @suppress("Invalid arguments")
+		return NOT_OK;
+	}
+	result = sqlite3_step(stmt1);// @suppress("Invalid arguments")
+	if (result != SQLITE_DONE) {
+		printf("Error actualizando habitacion %i table\n", h.getNumero());
+		return NOT_OK;
+	}
+
+	result = sqlite3_finalize(stmt1);// @suppress("Invalid arguments")
+	if (result != SQLITE_OK) {
+		printf("Error finalizing statement (Update)\n");
+		printf("%s\n", sqlite3_errmsg(db));// @suppress("Invalid arguments")
+		return NOT_OK;
+	}
+
+
+	return OK;
+}
+
 /*
  *
  *
@@ -743,4 +776,37 @@ int borrarPlazaParking(sqlite3*db, int numero){
 		return OK;
 
 }
+
+int modificarPlazaParking(sqlite3*db,PlazaParking &p){
+	sqlite3_stmt *stmt1;
+
+	char sql1[] = "update plazaparking set ocupado=? where numero = ?";
+
+	int result = sqlite3_prepare_v2(db, sql1, -1, &stmt1, NULL) ;// @suppress("Invalid arguments")
+	sqlite3_bind_int(stmt1, 1,p.isOcupado());// @suppress("Invalid arguments")
+
+	sqlite3_bind_int(stmt1, 2,p.getNumero());// @suppress("Invalid arguments")
+
+	if (result != SQLITE_OK) {
+		printf("Error preparing statement (Update)\n");
+		printf("%s\n", sqlite3_errmsg(db));// @suppress("Invalid arguments")
+		return NOT_OK;
+	}
+	result = sqlite3_step(stmt1);// @suppress("Invalid arguments")
+	if (result != SQLITE_DONE) {
+		printf("Error actualizando plazaparking %i table\n", p.getNumero());
+		return NOT_OK;
+	}
+
+	result = sqlite3_finalize(stmt1);// @suppress("Invalid arguments")
+	if (result != SQLITE_OK) {
+		printf("Error finalizing statement (Update)\n");
+		printf("%s\n", sqlite3_errmsg(db));// @suppress("Invalid arguments")
+		return NOT_OK;
+	}
+
+
+	return OK;
+}
+
 

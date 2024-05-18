@@ -21,9 +21,9 @@ PlazaParking* getListaPlazasParking(SOCKET& s);
 
 
 int anadirCliente(SOCKET &s, Cliente& c);
-int anadirHabitacion(SOCKET &s, Habitacion& h);
-int anadirPlazaParking(SOCKET &s, PlazaParking& p);
-int anadirReserva(SOCKET &s, Reserva& r);
+int anadirHabitacion(SOCKET &s, Habitacion& h,boolean mod);
+int anadirPlazaParking(SOCKET &s, PlazaParking& p,boolean mod);
+int anadirReserva(SOCKET &s, Reserva& r, boolean mod);
 
 
 

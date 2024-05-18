@@ -27,10 +27,12 @@ int modificarReserva(sqlite3* db, Reserva &r);
 Habitacion* getListaHabitaciones(sqlite3*db); //DONE	Checked
 int borrarHabitacion(sqlite3*db,int numero); //DONE	Checked
 int anadirHabitacion(sqlite3*db,Habitacion &h);//DONE	Checked
+int modificarHabitacion(sqlite3*db,Habitacion &h);
 
 PlazaParking* getListaPlazasParking(sqlite3*db);//DONE	Checked
 int anadirPlazaParking(sqlite3*db,PlazaParking &p);//DONE	Checked
 int borrarPlazaParking(sqlite3*db, int numero);//DONE	Checked
+int modificarPlazaParking(sqlite3*db,PlazaParking &p);
 
 
 

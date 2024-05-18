@@ -114,7 +114,7 @@ Cliente registrarse(SOCKET & s) {
     cout << "\nConfirma tu contraseña: ";
     cin >> contra2;
 
-    while (contra != contra2) {
+    while (strcmp(contra,contra2)!=0) {
         cerr << "Error confirmando la contraseña. Inténtalo de nuevo: \n";
         cin >> contra2;
     }
@@ -124,6 +124,8 @@ Cliente registrarse(SOCKET & s) {
 
     nombreCompleto = nombre + " " + apellido;
     Cliente c(dni, nombreCompleto.c_str(), edad, correo.c_str());
+
+    anadirCliente(s,c);
     return c;
 }
 

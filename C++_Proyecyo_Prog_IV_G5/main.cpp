@@ -145,6 +145,70 @@ int main(int argc, char **argv) {
 			Logger::logInfo("Lista de plazas de parking enviada");
 
 
+		}else if(strcmp(recvBuff,"AÑADIR CLIENTE")==0){
+
+			if(anadirCliente(comm_socket,bd)!=OK){
+				cerr<<"ERROR AÑADIENDO CLIENTE EN LA BD\n";
+				Logger::logError("Error añadiendo cliente en la bd");
+
+				cerrarConexion(comm_socket);
+				Logger::logInfo("SE CIERRA LA SESION");
+
+				return 0;
+			}
+
+			Logger::logInfo("Lista de plazas de parking enviada");
+
+
+
+		}else if(strcmp(recvBuff,"AÑADIR HABITACION")==0){
+
+			if(anadirHabitacion(comm_socket,bd)!=OK){
+				cerr<<"ERROR AÑADIENDO CLIENTE EN LA BD\n";
+				Logger::logError("Error añadiendo cliente en la bd");
+
+				cerrarConexion(comm_socket);
+				Logger::logInfo("SE CIERRA LA SESION");
+
+				return 0;
+			}
+
+			Logger::logInfo("Habitacion añadida a la bd");
+
+
+
+		}else if(strcmp(recvBuff,"AÑADIR PLAZA PARKING")==0){
+
+			if(anadirPlazaPaking(comm_socket,bd)!=OK){
+				cerr<<"ERROR AÑADIENDO PLAZA PARKING EN LA BD\n";
+				Logger::logError("Error añadiendo plaza parking en la bd");
+
+				cerrarConexion(comm_socket);
+				Logger::logInfo("SE CIERRA LA SESION");
+
+				return 0;
+			}
+
+			Logger::logInfo("Plaza parking añadida a la bd");
+
+
+
+		}else if(strcmp(recvBuff,"AÑADIR RESERVA")==0){
+
+			if(anadirReserva(comm_socket,bd)!=OK){
+				cerr<<"ERROR AÑADIENDO RESERVA EN LA BD\n";
+				Logger::logError("Error añadiendo reserva en la bd");
+
+				cerrarConexion(comm_socket);
+				Logger::logInfo("SE CIERRA LA SESION");
+
+				return 0;
+			}
+
+			Logger::logInfo("Reserva añadida a la bd");
+
+
+
 		}else if(strcmp(recvBuff, "COMPROBAR DNI") == 0){
 
 			if(comprobarDni(comm_socket,bd)!=OK){
