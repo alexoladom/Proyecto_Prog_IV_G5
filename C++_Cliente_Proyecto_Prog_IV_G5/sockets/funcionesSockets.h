@@ -24,6 +24,9 @@ int anadirCliente(SOCKET &s, Cliente& c);
 int anadirHabitacion(SOCKET &s, Habitacion& h,boolean mod);
 int anadirPlazaParking(SOCKET &s, PlazaParking& p,boolean mod);
 int anadirReserva(SOCKET &s, Reserva& r, boolean mod);
+int borrarReserva(SOCKET &s, Reserva& r);
+int borrarHabitacion(SOCKET &s,Habitacion &h);
+int borrarPlazaParking(SOCKET &s,PlazaParking &p);
 
 
 

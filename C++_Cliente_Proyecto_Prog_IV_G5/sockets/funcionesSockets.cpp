@@ -503,6 +503,62 @@ int anadirReserva(SOCKET &s, Reserva& r, boolean mod){
 	return OK;
 }
 
+int borrarReserva(SOCKET &s, Reserva& r){
+
+	char sendBuff[512];
+	strcpy(sendBuff,"BORRAR RESERVA");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD PARA BORRAR RESERVA\n";
+		return 0;
+	}
+
+
+	strcpy(sendBuff,to_string(r.getId()).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO ID PARA BORRAR RESERVA\n";
+		return 0;
+	}
+	return OK;
+
+}
+
+int borrarHabitacion(SOCKET &s, Habitacion& h){
+
+	char sendBuff[512];
+	strcpy(sendBuff,"BORRAR HABITACION");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD PARA BORRAR HABITACION\n";
+		return 0;
+	}
+
+
+	strcpy(sendBuff,to_string(h.getNumero()).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO NUMERO PARA BORRAR HABTIACION\n";
+		return 0;
+	}
+	return OK;
+
+}
+
+int borrarpPlazaParking(SOCKET &s, PlazaParking &p){
+
+	char sendBuff[512];
+	strcpy(sendBuff,"BORRAR PLAZA PARKING");
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO SOLICITUD PARA BORRAR PLAZA PARKING\n";
+		return 0;
+	}
+
+
+	strcpy(sendBuff,to_string(p.getNumero()).c_str());
+	if (enviarMensaje(s,sendBuff)!=OK){
+		cerr<<"ERROR ENVIANDO NUMERO PARA BORRAR HABTIACION\n";
+		return 0;
+	}
+	return OK;
+
+}
 
 int comprobarDni(SOCKET& s,int dni){
 	char sendBuff[512], recvBuff[512];

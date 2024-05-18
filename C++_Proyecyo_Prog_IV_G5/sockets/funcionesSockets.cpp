@@ -530,6 +530,63 @@ int anadirReserva(SOCKET& comm_socket,sqlite3* bd){
 }
 
 
+
+
+int borrarReserva(SOCKET& comm_socket,sqlite3* bd){
+	char recvBuff[512];
+
+	int idReserva;
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO ID PARA BORRAR RESERVA\n";
+		return 0;
+	}
+	idReserva = stoi(recvBuff);
+
+	if(borrarReserva(bd,idReserva)!=OK){
+		cout<<"ERROR BORRANDO RESERVA EN LA BD\n";
+		return 0;
+	}
+
+	return OK;
+}
+
+int borrarHabitacion(SOCKET& comm_socket,sqlite3* bd){
+	char recvBuff[512];
+
+	int numHab;
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO NUM PARA BORRAR HABITACION\n";
+		return 0;
+	}
+	numHab = stoi(recvBuff);
+
+	if(borrarHabitacion(bd,numHab)!=OK){
+		cout<<"ERROR BORRANDO HABITACION EN LA BD\n";
+		return 0;
+	}
+
+	return OK;
+}
+
+int borrarPlazaParking(SOCKET& comm_socket,sqlite3* bd){
+	char recvBuff[512];
+
+	int numPl;
+	if(recibirMensaje(comm_socket,recvBuff)!=OK){
+		cout<<"ERROR RECIBIENDO NUM PARA BORRAR PLAZA PARKING\n";
+		return 0;
+	}
+	numPl = stoi(recvBuff);
+
+	if(borrarPlazaParking(bd,numPl)!=OK){
+		cout<<"ERROR BORRANDO PLAZA PARKING EN LA BD\n";
+		return 0;
+	}
+
+	return OK;
+}
+
+
 int comprobarDni(SOCKET& comm_socket,sqlite3 *bd){
 
 	char sendBuff[512], recvBuff[512];

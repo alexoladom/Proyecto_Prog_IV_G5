@@ -28,7 +28,9 @@ int anadirCliente(SOCKET& comm_socket,sqlite3* bd);
 int anadirHabitacion(SOCKET& comm_socket,sqlite3* bd);
 int anadirPlazaPaking(SOCKET& comm_socket,sqlite3* bd);
 int anadirReserva(SOCKET& comm_socket,sqlite3* bd);
-
+int borrarReserva(SOCKET& comm_socket,sqlite3* bd);
+int borrarHabitacion(SOCKET& comm_socket,sqlite3* bd);
+int borrarPlazaParking(SOCKET& comm_socket,sqlite3* bd);
 
 int comprobarDni(SOCKET& comm_socket,sqlite3* bd);
 int comprobarContrasena(SOCKET& comm_socket,sqlite3* bd);

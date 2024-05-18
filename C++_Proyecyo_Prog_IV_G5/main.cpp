@@ -258,6 +258,54 @@ int main(int argc, char **argv) {
 
 
 
+		}else if(strcmp(recvBuff,"BORRAR RESERVA")==0){
+
+			if(borrarReserva(comm_socket,bd)!=OK){
+				cerr<<"ERROR BORRANDO RESERVA EN LA BD\n";
+				Logger::logError("Error borrando reserva en la bd");
+
+				cerrarConexion(comm_socket);
+				Logger::logInfo("SE CIERRA LA SESION");
+
+				return 0;
+			}
+
+			Logger::logInfo("Reserva borrada de la bd");
+
+
+
+		}else if(strcmp(recvBuff,"BORRAR HABITACION")==0){
+
+			if(borrarHabitacion(comm_socket,bd)!=OK){
+				cerr<<"ERROR BORRANDO HABITACION EN LA BD\n";
+				Logger::logError("Error borrando habitacion en la bd");
+
+				cerrarConexion(comm_socket);
+				Logger::logInfo("SE CIERRA LA SESION");
+
+				return 0;
+			}
+
+			Logger::logInfo("Habitacion borrada de la bd");
+
+
+
+		}else if(strcmp(recvBuff,"BORRAR PLAZA PARKING")==0){
+
+			if(borrarPlazaParking(comm_socket,bd)!=OK){
+				cerr<<"ERROR BORRANDO PLAZA PARKING EN LA BD\n";
+				Logger::logError("Error borrando plaza parking en la bd");
+
+				cerrarConexion(comm_socket);
+				Logger::logInfo("SE CIERRA LA SESION");
+
+				return 0;
+			}
+
+			Logger::logInfo("Plaza parking borrada de la bd");
+
+
+
 		}else if(strcmp(recvBuff, "COMPROBAR DNI") == 0){
 
 			if(comprobarDni(comm_socket,bd)!=OK){
