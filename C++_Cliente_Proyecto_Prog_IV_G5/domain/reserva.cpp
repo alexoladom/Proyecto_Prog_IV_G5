@@ -2,12 +2,32 @@
 
 
 int Reserva::numReservas=0;
+
 Reserva::Reserva(){
 	this->id=-1;
 	this->fecha="";
 	this->dniCliente=0;
 	this->numeroHabitacion=0;
 	this->numeroPlazaParking=0;
+}
+
+Reserva::Reserva(int id,string fecha, int dniCliente, int numeroHabitacion, int numeroPlazaParking){
+	this->id=id;
+	this->fecha=fecha;
+	this->dniCliente=dniCliente;
+	this->numeroHabitacion=numeroHabitacion;
+	this->numeroPlazaParking=numeroPlazaParking;
+}
+
+Reserva::Reserva(const Reserva &other) {
+	this->id=other.id;
+	this->fecha=other.fecha;
+	this->dniCliente=other.dniCliente;
+	this->numeroHabitacion=other.numeroHabitacion;
+	this->numeroPlazaParking=other.numeroPlazaParking;
+}
+
+Reserva::~Reserva() {
 }
 
 int Reserva::getDniCliente()  {
@@ -49,16 +69,6 @@ int Reserva::getNumeroPlazaParking()  {
 void Reserva::setNumeroPlazaParking(int numeroPlazaParking) {
 	this->numeroPlazaParking = numeroPlazaParking;
 }
-
-Reserva::Reserva(int id,string fecha, int dniCliente,int numeroHabitacion,int numeroPlazaParking){
-
-	this->id=id;
-	this->fecha=fecha;
-	this->dniCliente=dniCliente;
-	this->numeroHabitacion=numeroHabitacion;
-	this->numeroPlazaParking=numeroPlazaParking;
-}
-
 
 void Reserva::imprimirReserva(){
 	cout<<"Reserva("<<id<<", "<<fecha

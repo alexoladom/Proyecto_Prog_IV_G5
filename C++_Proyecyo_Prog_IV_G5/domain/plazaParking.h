@@ -17,6 +17,9 @@ public:
 	static int numPlazaParkings;
 	PlazaParking();
 	PlazaParking(int numero, string zona, bool ocupado);
+	PlazaParking(const PlazaParking &other);
+	~PlazaParking();
+
 	void imprimirPlazaParking();
 	int getNumero() ;
 	void setNumero(int numero);

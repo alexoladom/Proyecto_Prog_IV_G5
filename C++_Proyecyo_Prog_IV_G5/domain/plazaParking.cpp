@@ -15,6 +15,15 @@ PlazaParking::PlazaParking(int numero,string zona,bool ocupado){
 	this->ocupado=ocupado;
 }
 
+PlazaParking::PlazaParking(const PlazaParking &other) {
+	this->numero=other.numero;
+	this->zona=other.zona;
+	this->ocupado=other.ocupado;
+}
+
+PlazaParking::~PlazaParking() {
+}
+
 int PlazaParking::getNumero()  {
 	return numero;
 }
