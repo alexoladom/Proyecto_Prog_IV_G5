@@ -9,8 +9,6 @@ Reserva::Reserva(){
 	this->dniCliente=0;
 	this->numeroHabitacion=0;
 	this->numeroPlazaParking=0;
-
-	++numReservas;
 }
 
 Reserva::Reserva(int id,string fecha, int dniCliente, int numeroHabitacion, int numeroPlazaParking){
@@ -19,8 +17,6 @@ Reserva::Reserva(int id,string fecha, int dniCliente, int numeroHabitacion, int 
 	this->dniCliente=dniCliente;
 	this->numeroHabitacion=numeroHabitacion;
 	this->numeroPlazaParking=numeroPlazaParking;
-
-	++numReservas;
 }
 
 Reserva::Reserva(const Reserva &other) {
@@ -29,12 +25,9 @@ Reserva::Reserva(const Reserva &other) {
 	this->dniCliente=other.dniCliente;
 	this->numeroHabitacion=other.numeroHabitacion;
 	this->numeroPlazaParking=other.numeroPlazaParking;
-
-    ++numReservas;//Ns si lo quieres poner
 }
 
 Reserva::~Reserva() {
-    --numReservas;
 }
 
 int Reserva::getDniCliente()  {

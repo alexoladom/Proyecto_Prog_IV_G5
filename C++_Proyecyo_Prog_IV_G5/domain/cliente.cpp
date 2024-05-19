@@ -25,8 +25,6 @@
 		this->edad=other.edad;
 		this->correo=other.correo;
 
-		++numClientes;//Quitalo si no lo ves bien
-
 	}
 
 	void Cliente::setNombre(string nombre){
@@ -60,7 +58,6 @@
 	}
 
 	Cliente::~Cliente() {
-		--numClientes;
 	}
 
 	void Cliente::imprimir(){

@@ -7,28 +7,21 @@ PlazaParking::PlazaParking(){
 	this->numero=-1;
 	this->zona="A";
 	this->ocupado=false;
-
-	++numPlazaParkings;
 }
 
 PlazaParking::PlazaParking(int numero,string zona,bool ocupado){
 	this->numero=numero;
 	this->zona=zona;
 	this->ocupado=ocupado;
-
-	++numPlazaParkings;
 }
 
 PlazaParking::PlazaParking(const PlazaParking &other) {
 	this->numero=other.numero;
 	this->zona=other.zona;
 	this->ocupado=other.ocupado;
-
-    ++numPlazaParkings;//Ns si lo querras
 }
 
 PlazaParking::~PlazaParking() {
-    --numPlazaParkings;
 }
 
 int PlazaParking::getNumero()  {
