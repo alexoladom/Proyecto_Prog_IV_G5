@@ -2,6 +2,7 @@
 
 
 int Reserva::numReservas=0;
+
 Reserva::Reserva(){
 	this->id=-1;
 	this->fecha="";
@@ -12,7 +13,15 @@ Reserva::Reserva(){
 	++numReservas;
 }
 
-//Falta constructor con argumentos?
+Reserva::Reserva(int id,string fecha, int dniCliente, int numeroHabitacion, int numeroPlazaParking){
+	this->id=id;
+	this->fecha=fecha;
+	this->dniCliente=dniCliente;
+	this->numeroHabitacion=numeroHabitacion;
+	this->numeroPlazaParking=numeroPlazaParking;
+
+	++numReservas;
+}
 
 Reserva::Reserva(const Reserva &other) {
 	this->id=other.id;
@@ -24,7 +33,7 @@ Reserva::Reserva(const Reserva &other) {
     ++numReservas;//Ns si lo quieres poner
 }
 
-Reserva::Reserva() {
+Reserva::~Reserva() {
     --numReservas;
 }
 
@@ -67,16 +76,6 @@ int Reserva::getNumeroPlazaParking()  {
 void Reserva::setNumeroPlazaParking(int numeroPlazaParking) {
 	this->numeroPlazaParking = numeroPlazaParking;
 }
-
-Reserva::Reserva(int id,string fecha, int dniCliente,int numeroHabitacion,int numeroPlazaParking){
-
-	this->id=id;
-	this->fecha=fecha;
-	this->dniCliente=dniCliente;
-	this->numeroHabitacion=numeroHabitacion;
-	this->numeroPlazaParking=numeroPlazaParking;
-}
-
 
 void Reserva::imprimirReserva(){
 	cout<<"Reserva("<<id<<", "<<fecha
