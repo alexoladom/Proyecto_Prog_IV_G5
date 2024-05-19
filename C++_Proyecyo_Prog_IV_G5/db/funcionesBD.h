@@ -6,6 +6,7 @@
 #include "../domain/habitacion.h"
 #include "../domain/plazaParking.h"
 #include "../domain/cliente.h"
+#include "../config/config.h"
 extern "C" {
 #include "sqlite3.h"
 }

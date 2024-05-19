@@ -8,6 +8,8 @@
 #include "../domain/reserva.h"
 #include "../domain/habitacion.h"
 #include "../domain/plazaParking.h"
+#include "../config/config.h"
+
 
 int inicializarWinsock( WSADATA& wsa);
 int crearSocket(SOCKET& s,struct sockaddr_in &server);

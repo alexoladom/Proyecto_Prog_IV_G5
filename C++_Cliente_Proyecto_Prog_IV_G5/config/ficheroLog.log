@@ -358,3 +358,54 @@
 2024-05-18.17:36:50 - [INFO] Se muestra el menu principal
 2024-05-18.17:36:59 - [INFO] Opcion 3 elegida
 2024-05-18.17:36:59 - [INFO] SE CIERRA LA SESION
+2024-05-19.12:35:21 - [INFO] NUEVA SESION
+2024-05-19.12:35:21 - [INFO] Winsock inicializado
+2024-05-19.12:35:21 - [INFO] Socket creado
+2024-05-19.12:35:21 - [INFO] Cliente conectado
+2024-05-19.12:35:21 - [INFO] Se muestra el menu principal
+2024-05-19.12:35:27 - [INFO] Opcion 2 elegida
+2024-05-19.12:35:27 - [INFO] Se muestra el menu del inicio de administrador
+2024-05-19.12:35:28 - [INFO] Opcion 1 elegida
+2024-05-19.12:35:33 - [INFO] Se muestra el menu principal de administrador
+2024-05-19.12:35:35 - [INFO] Opcion 1 elegida
+2024-05-19.12:35:35 - [INFO] Se visualizan los clientes
+2024-05-19.12:35:35 - [INFO] Se muestra el menu principal de administrador
+2024-05-19.12:35:42 - [INFO] Opcion 2 elegida
+2024-05-19.12:35:42 - [INFO] Se muestra la lista de reservas
+2024-05-19.12:35:42 - [INFO] Se muestra el menu principal de administrador
+2024-05-19.12:39:33 - [INFO] NUEVA SESION
+2024-05-19.12:39:33 - [INFO] Winsock inicializado
+2024-05-19.12:39:33 - [INFO] Socket creado
+2024-05-19.12:39:35 - [ERROR] Error conectando cliente
+2024-05-19.12:39:35 - [INFO] NUEVA SESION
+2024-05-19.12:39:35 - [INFO] Winsock inicializado
+2024-05-19.12:39:35 - [INFO] Socket creado
+2024-05-19.12:39:37 - [ERROR] Error conectando cliente
+2024-05-19.12:39:44 - [INFO] NUEVA SESION
+2024-05-19.12:39:44 - [INFO] Winsock inicializado
+2024-05-19.12:39:44 - [INFO] Socket creado
+2024-05-19.12:39:44 - [INFO] Cliente conectado
+2024-05-19.12:39:44 - [INFO] Se muestra el menu principal
+2024-05-19.12:39:46 - [INFO] Opcion 2 elegida
+2024-05-19.12:39:46 - [INFO] Se muestra el menu del inicio de administrador
+2024-05-19.12:39:47 - [INFO] Opcion 1 elegida
+2024-05-19.12:39:52 - [INFO] Se muestra el menu principal de administrador
+2024-05-19.12:39:54 - [INFO] Opcion 1 elegida
+2024-05-19.12:39:54 - [INFO] Se visualizan los clientes
+2024-05-19.12:39:54 - [INFO] Se muestra el menu principal de administrador
+2024-05-19.12:39:57 - [INFO] Opcion 11 elegida
+2024-05-19.12:39:57 - [INFO] SE CIERRA LA SESION
+2024-05-19.12:42:35 - [INFO] NUEVA SESION
+2024-05-19.12:42:35 - [INFO] Winsock inicializado
+2024-05-19.12:42:35 - [INFO] Socket creado
+2024-05-19.12:42:35 - [INFO] Cliente conectado
+2024-05-19.12:42:35 - [INFO] Se muestra el menu principal
+2024-05-19.12:42:37 - [INFO] Opcion 2 elegida
+2024-05-19.12:42:37 - [INFO] Se muestra el menu del inicio de administrador
+2024-05-19.12:42:37 - [INFO] Opcion 1 elegida
+2024-05-19.12:42:41 - [INFO] Se muestra el menu principal de administrador
+2024-05-19.12:42:42 - [INFO] Opcion 1 elegida
+2024-05-19.12:42:42 - [INFO] Se visualizan los clientes
+2024-05-19.12:42:42 - [INFO] Se muestra el menu principal de administrador
+2024-05-19.12:42:52 - [INFO] Opcion 11 elegida
+2024-05-19.12:42:52 - [INFO] SE CIERRA LA SESION

@@ -8,8 +8,10 @@
 
 
 sqlite3* conectarDB(){
+	Config datos = readConfig("config/config.h");
 	sqlite3 * db;
 	int result1 = sqlite3_open("db/C++dbProgIV.sqlite", &db);
+	cout<<datos.db_address;
 	if (result1 != SQLITE_OK) {
 		printf("Error opening database\n");
 	}else{

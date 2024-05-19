@@ -462,3 +462,35 @@
 2024-05-18.17:36:50 - [INFO] Conexion aceptada
 2024-05-18.17:36:59 - [INFO] Mensaje recibido
 2024-05-18.17:36:59 - [INFO] SE CIERRA LA SESION
+2024-05-19.12:35:18 - [INFO] NUEVA SESION
+2024-05-19.12:35:18 - [INFO] WinSock inicializado
+2024-05-19.12:35:18 - [INFO] Socket creado
+2024-05-19.12:35:18 - [INFO] Bind hecho
+2024-05-19.12:35:18 - [INFO] Esperando conexion...
+2024-05-19.12:35:21 - [INFO] Conexion aceptada
+2024-05-19.12:35:35 - [INFO] Mensaje recibido
+2024-05-19.12:35:35 - [INFO] Lista de clientes enviada
+2024-05-19.12:35:42 - [INFO] Mensaje recibido
+2024-05-19.12:35:42 - [INFO] Lista de reservas enviada
+2024-05-19.12:35:48 - [ERROR] Error recibiendo el mensaje
+2024-05-19.12:35:48 - [INFO] SE CIERRA LA SESION
+2024-05-19.12:39:42 - [INFO] NUEVA SESION
+2024-05-19.12:39:42 - [INFO] WinSock inicializado
+2024-05-19.12:39:42 - [INFO] Socket creado
+2024-05-19.12:39:42 - [INFO] Bind hecho
+2024-05-19.12:39:42 - [INFO] Esperando conexion...
+2024-05-19.12:39:44 - [INFO] Conexion aceptada
+2024-05-19.12:39:54 - [INFO] Mensaje recibido
+2024-05-19.12:39:54 - [INFO] Lista de clientes enviada
+2024-05-19.12:39:57 - [INFO] Mensaje recibido
+2024-05-19.12:39:57 - [INFO] SE CIERRA LA SESION
+2024-05-19.12:42:33 - [INFO] NUEVA SESION
+2024-05-19.12:42:33 - [INFO] WinSock inicializado
+2024-05-19.12:42:33 - [INFO] Socket creado
+2024-05-19.12:42:33 - [INFO] Bind hecho
+2024-05-19.12:42:33 - [INFO] Esperando conexion...
+2024-05-19.12:42:35 - [INFO] Conexion aceptada
+2024-05-19.12:42:42 - [INFO] Mensaje recibido
+2024-05-19.12:42:42 - [INFO] Lista de clientes enviada
+2024-05-19.12:42:52 - [INFO] Mensaje recibido
+2024-05-19.12:42:52 - [INFO] SE CIERRA LA SESION

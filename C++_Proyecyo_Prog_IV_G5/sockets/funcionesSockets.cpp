@@ -24,6 +24,8 @@ int inicializarWinsock( WSADATA & wsa){
 
 int crearSocket(SOCKET& conn_socket, struct sockaddr_in &server){
 
+
+	Config datos = readConfig("config/config.txt");
 	if ((conn_socket = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET) {
 			printf("Could not create socket : %d", WSAGetLastError());
 			WSACleanup();
@@ -32,9 +34,9 @@ int crearSocket(SOCKET& conn_socket, struct sockaddr_in &server){
 
 		printf("Socket created.\n");
 
-		server.sin_addr.s_addr = inet_addr(SERVER_IP);
+		server.sin_addr.s_addr = inet_addr(datos.ip);
 		server.sin_family = AF_INET;
-		server.sin_port = htons(SERVER_PORT);
+		server.sin_port = htons(datos.port);
 		return OK;
 }
 
