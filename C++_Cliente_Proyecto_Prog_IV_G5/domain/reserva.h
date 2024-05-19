@@ -16,6 +16,9 @@ public:
 	static int numReservas;
 	Reserva();
 	Reserva(int id, string fecha, int dniCliente, int numeroHabitacion, int numeroPlazaParking);
+	Reserva(const Reserva &other);
+	~Reserva();
+
 	void imprimirReserva();
 
 	int getDniCliente() ;

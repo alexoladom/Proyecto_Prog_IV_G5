@@ -2,12 +2,31 @@
 
 
 int Reserva::numReservas=0;
+
 Reserva::Reserva(){
 	this->id=-1;
 	this->fecha="";
 	this->dniCliente=0;
 	this->numeroHabitacion=0;
 	this->numeroPlazaParking=0;
+
+	++numReservas;
+}
+
+//Falta constructor con argumentos?
+
+Reserva::Reserva(const Reserva &other) {
+	this->id=other.id;
+	this->fecha=other.fecha;
+	this->dniCliente=other.dniCliente;
+	this->numeroHabitacion=other.numeroHabitacion;
+	this->numeroPlazaParking=other.numeroPlazaParking;
+
+    ++numReservas;//Ns si lo quieres poner
+}
+
+Reserva::Reserva() {
+    --numReservas;
 }
 
 int Reserva::getDniCliente()  {

@@ -2,6 +2,7 @@
 
 
 int Habitacion::numHabitaciones=0;
+
 Habitacion::Habitacion(){
 	this->numero=-1;
 	this->piso=0;
@@ -9,6 +10,8 @@ Habitacion::Habitacion(){
 	this->capacidad=0;
 	this->precio=0;
 	this->ocupado=false;
+
+	++numHabitaciones;
 }
 
 Habitacion::Habitacion(int numero,
@@ -23,6 +26,23 @@ Habitacion::Habitacion(int numero,
 	this->capacidad=capacidad;
 	this->precio=precio;
 	this->ocupado=ocupado;
+
+	++numHabitaciones;
+}
+
+Habitacion::Habitacion(const Habitacion &other) {
+	this->numero=other.numero;
+	this->piso=other.piso;
+	this->tipo=other.tipo;
+	this->capacidad=other.capacidad;
+	this->precio=other.precio;
+	this->ocupado=other.ocupado;
+
+	++numHabitaciones;//Ns si lo querras poner
+}
+
+Habitacion::~Habitacion() {
+    --numHabitaciones;
 }
 
 int Habitacion::getCapacidad()  {

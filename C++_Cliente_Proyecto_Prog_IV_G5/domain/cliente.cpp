@@ -1,12 +1,15 @@
 #include "cliente.h"
 
 	int Cliente::numClientes=0;
+
 	Cliente::Cliente(){
 
 		this->dni=-1;
 		this->nombre="";
 		this->edad=0;
 		this->correo="";
+
+		++numClientes;
 
 	}
 
@@ -16,8 +19,19 @@
 		this->nombre=nombre;
 		this->edad=edad;
 		this->correo=correo;
+
+		++numClientes;
 	}
 
+	Cliente::Cliente(const Cliente &other) {
+		this->dni=other.dni;
+		this->nombre=other.nombre;
+		this->edad=other.edad;
+		this->correo=other.correo;
+
+		++numClientes;//Quitalo si no lo ves bien
+
+	}
 
 	void Cliente::setNombre(string nombre){
 		this->nombre=nombre;
@@ -49,6 +63,9 @@
 		return this->correo;
 	}
 
+	Cliente::~Cliente() {
+	    --numClientes;
+	}
 
 	void Cliente::imprimir(){
 

@@ -26,6 +26,8 @@ public:
 	int capacidad,
 	float precio,
 	bool ocupado);
+	Habitacion(const Habitacion &other);
+	~Habitacion();
 
 
 

@@ -18,6 +18,8 @@ public:
 	static int numClientes;
 	Cliente();
 	Cliente(int dni, string nombre, int edad, string correo);
+	Cliente(const Cliente &other);
+
 
 	void setNombre(string nombre);
 	void setEdad(int edad);
@@ -28,6 +30,7 @@ public:
 	int getEdad();
 	string getCorreo();
 
+	~Cliente();
 
 	void imprimir();
 
