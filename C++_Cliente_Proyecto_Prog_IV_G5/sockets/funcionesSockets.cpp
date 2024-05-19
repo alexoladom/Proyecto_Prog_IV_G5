@@ -410,7 +410,9 @@ int anadirHabitacion(SOCKET &s, Habitacion& h, boolean mod){
 		return 0;
 	}
 
-	Habitacion::numHabitaciones++;
+	if(!mod){
+		Habitacion::numHabitaciones++;
+	}
 	return OK;
 
 }
@@ -449,7 +451,10 @@ int anadirPlazaParking(SOCKET &s, PlazaParking& p,boolean mod){
 		return 0;
 	}
 
-	PlazaParking::numPlazaParkings++;
+	if(!mod){
+		PlazaParking::numPlazaParkings++;
+
+	}
 	return OK;
 }
 
@@ -501,7 +506,9 @@ int anadirReserva(SOCKET &s, Reserva& r, boolean mod){
 	}
 
 
-	Reserva::numReservas++;
+	if(!mod){
+		Reserva::numReservas++;
+	}
 	return OK;
 }
 

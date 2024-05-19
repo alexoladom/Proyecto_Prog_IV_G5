@@ -121,7 +121,6 @@ Cliente registrarse(SOCKET & s) {
 
 
     anadirDniContrasena(s,dni,contra);
-
     nombreCompleto = nombre + " " + apellido;
     Cliente c(dni, nombreCompleto.c_str(), edad, correo.c_str());
 
