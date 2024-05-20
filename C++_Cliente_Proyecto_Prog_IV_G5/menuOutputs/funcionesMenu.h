@@ -21,7 +21,7 @@ void mostrarMenuInicioAdmin();
 void mostrarMenuPrincipalAdmin();
 
 Cliente registrarse(SOCKET & s);
-Habitacion anadirHabitacion();
-PlazaParking anadirPlazaParking();
+Habitacion anadirHabitacion(SOCKET & s);
+PlazaParking anadirPlazaParking(SOCKET & s);
 
 #endif

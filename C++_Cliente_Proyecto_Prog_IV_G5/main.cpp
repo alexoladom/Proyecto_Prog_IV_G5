@@ -89,6 +89,8 @@ int main(int argc, char **argv) {
 
 
 	//Cliente
+
+
 	if (strcmp(opcion.c_str(),"1")==0){
 		Logger::logInfo("Opcion 1 elegida");
 
@@ -124,20 +126,49 @@ int main(int argc, char **argv) {
 			//MENU PRINCIPAL CLIENTE
 			do{
 				while(strcmp(opcion.c_str(),"1")!=0&&strcmp(opcion.c_str(),"2")!=0
-				&&strcmp(opcion.c_str(),"3")!=0&&strcmp(opcion.c_str(),"4")!=0&&strcmp(opcion.c_str(),"5")!=0)
+				&&strcmp(opcion.c_str(),"3")!=0&&strcmp(opcion.c_str(),"4")!=0&&strcmp(opcion.c_str(),"5")!=0
+				&&strcmp(opcion.c_str(),"6")!=0)
 				{
 					cout<<opcion<<"Opcion no valida, introduzca una opcion de nuevo:\n";
 					getline(cin,opcion);
+				}if(strcmp(opcion.c_str(),"1")==0){
+					//
+
+					Logger::logInfo("Opcion 1 elegida");
+
+					cout<<"LISTA DE RESERVAS:\n";
+
+					arrayReservas=getListaReservas(s);
+					arrayReservasInicializado=true;
+					boolean vacio = true;
+
+					for (int var = 0; var < Reserva::numReservas; ++var) {
+						if(arrayReservas[var].getDniCliente()==dniCliente){
+							arrayReservas[var].imprimirReserva();
+							vacio=false;
+						}
+
+					}
+					if(vacio){
+						cout<<"NO TIENES RESERVAS A TU NOMBRE\n\n";
+					}
+
+					mostrarMenuPrincipalCliente();
+					Logger::logInfo("Se muestra menu de principal de cliente");
+
+					getline(cin,opcion);
+
 				}
 
-				if(strcmp(opcion.c_str(),"1")==0){
-					Logger::logInfo("Opcion 1 elegida");
+				if(strcmp(opcion.c_str(),"2")==0){
+					Logger::logInfo("Opcion 2 elegida");
 
 	/**
 	 *
 	 * Crear reserva
 	 *
 	 */
+
 					cout<<"CREANDO RESERVA...\n";
 					if(arrayHabitacionesInicializado==false){
 						arrayHabitaciones=getListaHabitaciones(s);
@@ -253,20 +284,23 @@ int main(int argc, char **argv) {
 						return 0;
 					}
 
-					//Actualizar la lista de reservas
+					//Actualizar las listas
 
 					arrayReservas=getListaReservas(s);
+					arrayHabitaciones=getListaHabitaciones(s);
+					arrayPlazaParking=getListaPlazasParking(s);
 
 
 					cout<<"RESERVA CREADA CON ÉXITO\n";
 					mostrarMenuPrincipalCliente();
+					Logger::logInfo("Se muestra el menu principal de cliente");
 					getline(cin,opcion);
 
 
 
 				}
-				if(strcmp(opcion.c_str(),"2")==0){
-					Logger::logInfo("Opcion 2 elegida");
+				if(strcmp(opcion.c_str(),"3")==0){
+					Logger::logInfo("Opcion 3 elegida");
 
 	/*
 	 *
@@ -287,6 +321,7 @@ int main(int argc, char **argv) {
 					int numReserva;
 					boolean existeReserva=false;
 					Reserva r;
+					boolean vacio=true;
 
 					if(arrayReservasInicializado==false){
 						arrayReservas=getListaReservas(s);
@@ -294,8 +329,18 @@ int main(int argc, char **argv) {
 					for (int var = 0; var < Reserva::numReservas; ++var) {
 						if(arrayReservas[var].getDniCliente()==dniCliente){
 							arrayReservas[var].imprimirReserva();
+							vacio=false;
 						}
 					}
+					if(vacio){
+						cout<<"NO TIENES RESERVAS A TU NOMBRE\n\n";
+						mostrarMenuPrincipalCliente();
+						Logger::logInfo("Se muestra el menu principal de cliente");
+						getline(cin,opcion);
+
+					}else{
+
+
 
 					cout<<"INTRODUZCA EL ID DE LA RESERVA QUE DESEA MODIFICAR:\n";
 					getline(cin,numReservastr);
@@ -481,11 +526,15 @@ int main(int argc, char **argv) {
 
 					cout<<"RESERVA MODIFICADA CON ÉXITO\n";
 
+					//Actualizar las listas
+
 					arrayReservas=getListaReservas(s);
+					arrayHabitaciones=getListaHabitaciones(s);
+					arrayPlazaParking=getListaPlazasParking(s);
 
 					mostrarMenuPrincipalCliente();
 					getline(cin,opcion);
-
+					}
 				}
 
 		/*
@@ -497,8 +546,8 @@ int main(int argc, char **argv) {
 
 
 
-				if(strcmp(opcion.c_str(),"3")==0){
-					Logger::logInfo("Opcion 3 elegida");
+				if(strcmp(opcion.c_str(),"4")==0){
+					Logger::logInfo("Opcion 4 elegida");
 
 					//Cancelar una reserva
 					cout<<"CANCELANDO RESERVA...\n";
@@ -506,6 +555,7 @@ int main(int argc, char **argv) {
 					int numReserva;
 					boolean existeReserva=false;
 					Reserva r;
+					boolean vacio=true;
 
 					if(arrayReservasInicializado==false){
 						arrayReservas=getListaReservas(s);
@@ -513,8 +563,17 @@ int main(int argc, char **argv) {
 					for (int var = 0; var < Reserva::numReservas; ++var) {
 						if(arrayReservas[var].getDniCliente()==dniCliente){
 							arrayReservas[var].imprimirReserva();
+							vacio=false;
 						}
 					}
+					if(vacio){
+						cout<<"NO TIENES RESERVAS A TU NOMBRE\n\n";
+						mostrarMenuPrincipalCliente();
+						Logger::logInfo("Se muestra el menu principal de cliente");
+						getline(cin,opcion);
+					}else{
+
+
 
 					cout<<"INTRODUZCA EL ID DE LA RESERVA QUE DESEA CANCELAR:\n";
 					getline(cin,numReservastr);
@@ -555,6 +614,8 @@ int main(int argc, char **argv) {
 						return 0;
 					}
 
+					arrayHabitaciones=getListaHabitaciones(s);
+
 					for (int var = 0; var < Habitacion::numHabitaciones; ++var) {
 						if(arrayHabitaciones[var].getNumero()==r.getNumeroHabitacion()){
 							arrayHabitaciones[var].setOcupado(false);
@@ -565,6 +626,9 @@ int main(int argc, char **argv) {
 							}
 						}
 					}
+
+					arrayPlazaParking=getListaPlazasParking(s);
+
 					for (int var = 0; var < PlazaParking::numPlazaParkings; ++var) {
 						if(arrayPlazaParking[var].getNumero()==r.getNumeroPlazaParking()){
 							arrayPlazaParking[var].setOcupado(false);
@@ -578,22 +642,28 @@ int main(int argc, char **argv) {
 
 					cout<<"RESERVA BORRADA CON ÉXITO\n";
 
-					arrayReservas=getListaReservas(s);
+					//Actualizar las listas
 
+					arrayReservas=getListaReservas(s);
+					arrayHabitaciones=getListaHabitaciones(s);
+					arrayPlazaParking=getListaPlazasParking(s);
 
 					mostrarMenuPrincipalCliente();
+
+					Logger::logInfo("Se muestra el menu principal de cliente");
 					getline(cin,opcion);
+					}
 
-				}
-				if(strcmp(opcion.c_str(),"4")==0){
-					Logger::logInfo("Opcion 4 elegida");
-
-					//Volver al menu principal
-					opcion="-1";
-					break;
 				}
 				if(strcmp(opcion.c_str(),"5")==0){
 					Logger::logInfo("Opcion 5 elegida");
+
+					//Vuelta al menu principal
+
+					break;
+				}
+				if(strcmp(opcion.c_str(),"6")==0){
+					Logger::logInfo("Opcion 6 elegida");
 
 					//Cerrar
 					strcpy(sendBuff,"BYE");
@@ -640,7 +710,34 @@ int main(int argc, char **argv) {
 				}
 
 				if(strcmp(opcion.c_str(),"1")==0){
+								//
+
 					Logger::logInfo("Opcion 1 elegida");
+					cout<<"LISTA DE RESERVAS:\n";
+
+					arrayReservas=getListaReservas(s);
+					arrayReservasInicializado=true;
+
+					boolean vacio =true;
+					for (int var = 0; var < Reserva::numReservas; ++var) {
+						if(arrayReservas[var].getDniCliente()==dniCliente){
+							arrayReservas[var].imprimirReserva();
+							vacio=false;
+						}
+					}
+
+					if(vacio){
+						cout<<"NO TIENES RESERRVAS A TU NOMBRE\n\n";
+					}
+					mostrarMenuPrincipalCliente();
+					Logger::logInfo("Se muestra menu principal del cliente");
+
+					getline(cin,opcion);
+
+				}
+
+				if(strcmp(opcion.c_str(),"2")==0){
+					Logger::logInfo("Opcion 2 elegida");
 
 	/**
 	 *
@@ -762,9 +859,11 @@ int main(int argc, char **argv) {
 						return 0;
 					}
 
-					//Actualizar la lista de reservas
+					//Actualizar las listas
 
 					arrayReservas=getListaReservas(s);
+					arrayHabitaciones=getListaHabitaciones(s);
+					arrayPlazaParking=getListaPlazasParking(s);
 
 					cout<<"RESERVA CREADA CON ÉXITO\n";
 					mostrarMenuPrincipalCliente();
@@ -773,8 +872,8 @@ int main(int argc, char **argv) {
 
 
 				}
-				if(strcmp(opcion.c_str(),"2")==0){
-					Logger::logInfo("Opcion 2 elegida");
+				if(strcmp(opcion.c_str(),"3")==0){
+					Logger::logInfo("Opcion 3 elegida");
 
 	/*
 	 *
@@ -795,6 +894,7 @@ int main(int argc, char **argv) {
 					int numReserva;
 					boolean existeReserva=false;
 					Reserva r;
+					boolean vacio= true;
 
 					if(arrayReservasInicializado==false){
 						arrayReservas=getListaReservas(s);
@@ -802,8 +902,17 @@ int main(int argc, char **argv) {
 					for (int var = 0; var < Reserva::numReservas; ++var) {
 						if(arrayReservas[var].getDniCliente()==dniCliente){
 							arrayReservas[var].imprimirReserva();
+							vacio=false;
 						}
 					}
+
+					if(vacio){
+						cout<<"NO TIENES RESERVAS A TU NOMBRE\n\n";
+						mostrarMenuPrincipalCliente();
+						Logger::logInfo("Se muestra el menu principal de cliente");
+						getline(cin,opcion);
+					}else{
+
 
 					cout<<"INTRODUZCA EL ID DE LA RESERVA QUE DESEA MODIFICAR:\n";
 					getline(cin,numReservastr);
@@ -837,6 +946,8 @@ int main(int argc, char **argv) {
 						}
 					}
 
+					arrayHabitaciones=getListaHabitaciones(s);
+
 					for (int var = 0; var < Habitacion::numHabitaciones; ++var) {
 						if(arrayHabitaciones[var].getNumero()==r.getNumeroHabitacion()){
 							arrayHabitaciones[var].setOcupado(false);
@@ -847,6 +958,8 @@ int main(int argc, char **argv) {
 							}
 						}
 					}
+					arrayPlazaParking=getListaPlazasParking(s);
+
 					for (int var = 0; var < PlazaParking::numPlazaParkings; ++var) {
 						if(arrayPlazaParking[var].getNumero()==r.getNumeroPlazaParking()){
 							arrayPlazaParking[var].setOcupado(false);
@@ -990,11 +1103,15 @@ int main(int argc, char **argv) {
 
 					cout<<"RESERVA MODIFICADA CON ÉXITO\n";
 
+					//Actualizar las listas
+
 					arrayReservas=getListaReservas(s);
+					arrayHabitaciones=getListaHabitaciones(s);
+					arrayPlazaParking=getListaPlazasParking(s);
 
 					mostrarMenuPrincipalCliente();
 					getline(cin,opcion);
-
+					}
 				}
 
 		/*
@@ -1006,7 +1123,7 @@ int main(int argc, char **argv) {
 
 
 
-				if(strcmp(opcion.c_str(),"3")==0){
+				if(strcmp(opcion.c_str(),"4")==0){
 					Logger::logInfo("Opcion 3 elegida");
 
 					//Cancelar una reserva
@@ -1015,6 +1132,7 @@ int main(int argc, char **argv) {
 					int numReserva;
 					boolean existeReserva=false;
 					Reserva r;
+					boolean vacio =true;
 
 					if(arrayReservasInicializado==false){
 						arrayReservas=getListaReservas(s);
@@ -1022,8 +1140,17 @@ int main(int argc, char **argv) {
 					for (int var = 0; var < Reserva::numReservas; ++var) {
 						if(arrayReservas[var].getDniCliente()==dniCliente){
 							arrayReservas[var].imprimirReserva();
+							vacio=false;
 						}
 					}
+					if(vacio){
+						cout<<"NO TIENES RESERVAS A TU NOMBRE\n\n";
+						mostrarMenuPrincipalCliente();
+						Logger::logInfo("Se muestra el menu principal de cliente");
+						getline(cin,opcion);
+					}else{
+
+
 
 					cout<<"INTRODUZCA EL ID DE LA RESERVA QUE DESEA CANCELAR:\n";
 					getline(cin,numReservastr);
@@ -1064,6 +1191,8 @@ int main(int argc, char **argv) {
 						return 0;
 					}
 
+					arrayHabitaciones=getListaHabitaciones(s);
+
 					for (int var = 0; var < Habitacion::numHabitaciones; ++var) {
 						if(arrayHabitaciones[var].getNumero()==r.getNumeroHabitacion()){
 							arrayHabitaciones[var].setOcupado(false);
@@ -1074,6 +1203,8 @@ int main(int argc, char **argv) {
 							}
 						}
 					}
+					arrayPlazaParking=getListaPlazasParking(s);
+
 					for (int var = 0; var < PlazaParking::numPlazaParkings; ++var) {
 						if(arrayPlazaParking[var].getNumero()==r.getNumeroPlazaParking()){
 							arrayPlazaParking[var].setOcupado(false);
@@ -1087,22 +1218,29 @@ int main(int argc, char **argv) {
 
 					cout<<"RESERVA BORRADA CON ÉXITO\n";
 
+					//Actualizar las listas
+
 					arrayReservas=getListaReservas(s);
+					arrayHabitaciones=getListaHabitaciones(s);
+					arrayPlazaParking=getListaPlazasParking(s);
 
 
 					mostrarMenuPrincipalCliente();
+
+					Logger::logInfo("Se muestra el menu principal de cliente");
+
 					getline(cin,opcion);
+					}
 
-				}
-				if(strcmp(opcion.c_str(),"4")==0){
-					Logger::logInfo("Opcion 4 elegida");
-
-					//Volver al menu principal
-					opcion="-1";
-					break;
 				}
 				if(strcmp(opcion.c_str(),"5")==0){
 					Logger::logInfo("Opcion 5 elegida");
+
+					//Vuelta al menu principal
+					break;
+				}
+				if(strcmp(opcion.c_str(),"6")==0){
+					Logger::logInfo("Opcion 6 elegida");
 
 					//Cerrar
 					strcpy(sendBuff,"BYE");
@@ -1371,11 +1509,85 @@ int main(int argc, char **argv) {
 			}else if(strcmp(opcion.c_str(),"5")==0){
 				Logger::logInfo("Opcion 5 elegida");
 
-				//AÑADIR HABITACIONES TODO
+				//AÑADIR HABITACIONES
+
+				cout<<"AÑADIENDO HABITACION...\n";
+
+				anadirHabitacion(s);
+
+				cout<<"HABITACIÓN AÑADIDA CON ÉXITO\n";
+
+				Logger::logInfo("Añadida nueva habitacion");
+
+				arrayHabitaciones=getListaHabitaciones(s);
+
+				mostrarMenuPrincipalAdmin();
+				Logger::logInfo("Se muestra el menu principal de administrador");
+
+				getline(cin,opcion);
+				continue;
+
+
 			}else if(strcmp(opcion.c_str(),"6")==0){
 				Logger::logInfo("Opcion 6 elegida");
 
-				//BORRAR HABITACIONES TODO
+				//BORRAR HABITACIONES
+
+				cout<<"BORRANDO HABITACION...\n";
+
+				if(arrayHabitacionesInicializado==false){
+					arrayHabitaciones=getListaHabitaciones(s);
+				}
+				for (int var = 0; var < Habitacion::numHabitaciones; ++var) {
+						arrayHabitaciones[var].imprimirHabitacion();
+
+				}
+				cout<<"\nSELECCIONE LA HABITACION QUE DESEA BORRAR\n";
+				string numHabs;
+				int numHab;
+				Habitacion h;
+				getline(cin,numHabs);
+
+				numHab=stoi(numHabs);
+
+				boolean existeHab=false;
+
+				for (int var = 0; var < Habitacion::numHabitaciones; ++var) {
+					if(arrayHabitaciones[var].getNumero()==numHab){
+							h=arrayHabitaciones[var];
+							existeHab=true;
+					}
+				}
+
+
+				while(existeHab==false){
+					cerr<<"LA HABITACION SELECIONADA NO ESTÁ DISPONIBLE\n";
+					cout<<"\nSELECCIONE LA HABITACION QUE DESEA BORRAR\n";
+					getline(cin,numHabs);
+					numHab=stoi(numHabs);
+					for (int var = 0; var < Habitacion::numHabitaciones; ++var) {
+						if(arrayHabitaciones[var].getNumero()==numHab){
+								h=arrayHabitaciones[var];
+								existeHab=true;
+						}
+					}
+				}
+
+				if(borrarHabitacion(s,h)!=OK){
+					cerr<<"ERROR BORRANDO LA HABITACION\n";
+					Logger::logError("Error borrando la habitacion");
+					return 0;
+				}
+
+				Logger::logInfo("Se ha borrado una habitacion");
+
+				arrayHabitaciones=getListaHabitaciones(s);
+
+				mostrarMenuPrincipalAdmin();
+				Logger::logInfo("Se muestra el menu principal de administrador");
+
+				getline(cin,opcion);
+
 			}else if(strcmp(opcion.c_str(),"7")==0){
 				Logger::logInfo("Opcion 7 elegida");
 
@@ -1406,11 +1618,88 @@ int main(int argc, char **argv) {
 			}else if(strcmp(opcion.c_str(),"8")==0){
 				Logger::logInfo("Opcion 8 elegida");
 
-				//AÑADIR PLAZAS DE PARKING TODO
+				//AÑADIR PLAZAS DE PARKING
+
+				cout<<"AÑADIENDO PLAZA DE PARKING\n";
+
+				anadirPlazaParking(s);
+
+				cout<<"SE HA AÑADIDO LA PLAZA DE PARKING CORRECTAMENTE\n";
+
+				Logger::logInfo("Se ha añadido plaza de parking");
+
+				arrayPlazaParking=getListaPlazasParking(s);
+				arrayPlazaParkingInicializado=true;
+
+
+				mostrarMenuPrincipalAdmin();
+
+				Logger::logInfo("Se muestra el menu principal de administrador");
+
+				getline(cin,opcion);
+				continue;
+
+
+
+
 			}else if(strcmp(opcion.c_str(),"9")==0){
 				Logger::logInfo("Opcion 9 elegida");
 
-				//BORRAR PLAZAS DE PARKING TODO
+				//BORRAR PLAZAS DE PARKING
+
+				if(arrayPlazaParkingInicializado==false){
+					arrayPlazaParking=getListaPlazasParking(s);
+				}
+				for (int var = 0; var < PlazaParking::numPlazaParkings; ++var) {
+						arrayPlazaParking[var].imprimirPlazaParking();
+
+				}
+
+				cout<<"\nSELECCIONE LA PLAZA DE PARKING QUE DESEA BORRAR\n";
+				string numPls;
+				int numPl;
+				getline(cin,numPls);
+				numPl=stoi(numPls);
+				boolean existePl=false;
+				PlazaParking p;
+
+
+				for (int var = 0; var < PlazaParking::numPlazaParkings; ++var) {
+					if(arrayPlazaParking[var].getNumero()==numPl){
+							existePl=true;
+							p=arrayPlazaParking[var];
+					}
+				}
+
+				while(existePl==false){
+					cerr<<"LA PLAZA DE PARKING SELECIONADA NO ESTÁ DISPONIBLE\n";
+					cout<<"\nSELECCIONE LA PLAZA DE PARKING QUE DESEA BORRAR\n";
+					getline(cin,numPls);
+					numPl=stoi(numPls);
+					for (int var = 0; var < PlazaParking::numPlazaParkings; ++var) {
+						if(arrayPlazaParking[var].getNumero()==numPl){
+								p=arrayPlazaParking[var];
+								existePl=true;
+						}
+					}
+				}
+
+				if(borrarPlazaParking(s,p)!=OK){
+					cerr<<"ERROR BORRANDO LA PLAZA DE PARKING\n";
+					Logger::logError("Error borrando la plaza de parking");
+					return 0;
+				}
+
+
+				cout<<"SE HA BORRADO PLAZA DE PARKING\n";
+				arrayPlazaParking=getListaPlazasParking(s);
+				mostrarMenuPrincipalAdmin();
+
+				Logger::logInfo("Se muestra el menu principal de administrador");
+
+				getline(cin,opcion);
+				continue;
+
 			}else if(strcmp(opcion.c_str(),"10")==0){
 				Logger::logInfo("Opcion 10 elegida");
 

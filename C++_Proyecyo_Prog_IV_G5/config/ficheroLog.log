@@ -816,3 +816,564 @@
 2024-05-19.16:17:06 - [INFO] Lista de reservas enviada
 2024-05-19.16:17:08 - [ERROR] Error recibiendo el mensaje
 2024-05-19.16:17:08 - [INFO] SE CIERRA LA SESION
+2024-05-19.16:28:03 - [INFO] NUEVA SESION
+2024-05-19.16:28:03 - [INFO] WinSock inicializado
+2024-05-19.16:28:03 - [INFO] Socket creado
+2024-05-19.16:28:03 - [INFO] Bind hecho
+2024-05-19.16:28:03 - [INFO] Esperando conexion...
+2024-05-19.16:28:08 - [INFO] Conexion aceptada
+2024-05-19.16:28:20 - [INFO] Mensaje recibido
+2024-05-19.16:28:20 - [INFO] Lista de habitaciones enviada
+2024-05-19.16:28:53 - [INFO] Mensaje recibido
+2024-05-19.16:28:53 - [INFO] Habitacion añadida a la bd
+2024-05-19.16:28:53 - [INFO] Mensaje recibido
+2024-05-19.16:28:53 - [INFO] Lista de habitaciones enviada
+2024-05-19.16:28:58 - [ERROR] Error recibiendo el mensaje
+2024-05-19.16:28:58 - [INFO] SE CIERRA LA SESION
+2024-05-19.16:42:11 - [INFO] NUEVA SESION
+2024-05-19.16:42:11 - [INFO] WinSock inicializado
+2024-05-19.16:42:11 - [INFO] Socket creado
+2024-05-19.16:42:11 - [INFO] Bind hecho
+2024-05-19.16:42:11 - [INFO] Esperando conexion...
+2024-05-19.16:42:13 - [INFO] Conexion aceptada
+2024-05-19.16:42:46 - [INFO] Mensaje recibido
+2024-05-19.16:42:46 - [INFO] Habitacion añadida a la bd
+2024-05-19.16:42:46 - [INFO] Mensaje recibido
+2024-05-19.16:42:46 - [INFO] Lista de habitaciones enviada
+2024-05-19.16:43:24 - [ERROR] Error recibiendo el mensaje
+2024-05-19.16:43:24 - [INFO] SE CIERRA LA SESION
+2024-05-19.16:43:51 - [INFO] NUEVA SESION
+2024-05-19.16:43:51 - [INFO] WinSock inicializado
+2024-05-19.16:43:51 - [INFO] Socket creado
+2024-05-19.16:43:51 - [INFO] Bind hecho
+2024-05-19.16:43:51 - [INFO] Esperando conexion...
+2024-05-19.16:43:52 - [INFO] Conexion aceptada
+2024-05-19.16:44:01 - [INFO] Mensaje recibido
+2024-05-19.16:44:01 - [INFO] Lista de habitaciones enviada
+2024-05-19.16:44:06 - [INFO] Mensaje recibido
+2024-05-19.16:44:06 - [INFO] Habitacion borrada de la bd
+2024-05-19.16:44:06 - [INFO] Mensaje recibido
+2024-05-19.16:44:06 - [INFO] Lista de habitaciones enviada
+2024-05-19.16:44:11 - [ERROR] Error recibiendo el mensaje
+2024-05-19.16:44:11 - [INFO] SE CIERRA LA SESION
+2024-05-19.16:52:26 - [INFO] NUEVA SESION
+2024-05-19.16:52:26 - [INFO] WinSock inicializado
+2024-05-19.16:52:26 - [INFO] Socket creado
+2024-05-19.16:52:26 - [INFO] Bind hecho
+2024-05-19.16:52:26 - [INFO] Esperando conexion...
+2024-05-19.16:52:28 - [INFO] Conexion aceptada
+2024-05-19.16:52:37 - [INFO] Mensaje recibido
+2024-05-19.16:52:37 - [INFO] Lista de plazas de parking enviada
+2024-05-19.16:52:57 - [INFO] Mensaje recibido
+2024-05-19.16:52:57 - [ERROR] Error añadiendo plaza parking en la bd
+2024-05-19.16:52:57 - [INFO] SE CIERRA LA SESION
+2024-05-19.17:44:52 - [INFO] NUEVA SESION
+2024-05-19.17:44:52 - [INFO] WinSock inicializado
+2024-05-19.17:44:52 - [INFO] Socket creado
+2024-05-19.17:44:52 - [INFO] Bind hecho
+2024-05-19.17:44:52 - [INFO] Esperando conexion...
+2024-05-19.17:44:54 - [INFO] Conexion aceptada
+2024-05-19.17:45:18 - [INFO] Mensaje recibido
+2024-05-19.17:45:18 - [INFO] Plaza parking añadida a la bd
+2024-05-19.17:45:18 - [INFO] Mensaje recibido
+2024-05-19.17:45:18 - [INFO] Lista de plazas de parking enviada
+2024-05-19.17:45:21 - [INFO] Mensaje recibido
+2024-05-19.17:45:21 - [INFO] Lista de plazas de parking enviada
+2024-05-19.17:45:33 - [INFO] Mensaje recibido
+2024-05-19.17:45:33 - [INFO] Plaza parking borrada de la bd
+2024-05-19.17:45:33 - [INFO] Mensaje recibido
+2024-05-19.17:45:33 - [INFO] Lista de plazas de parking enviada
+2024-05-19.17:46:07 - [ERROR] Error recibiendo el mensaje
+2024-05-19.17:46:07 - [INFO] SE CIERRA LA SESION
+2024-05-19.17:46:13 - [INFO] NUEVA SESION
+2024-05-19.17:46:13 - [INFO] WinSock inicializado
+2024-05-19.17:46:13 - [INFO] Socket creado
+2024-05-19.17:46:13 - [INFO] Bind hecho
+2024-05-19.17:46:13 - [INFO] Esperando conexion...
+2024-05-19.17:46:15 - [INFO] Conexion aceptada
+2024-05-19.17:46:28 - [INFO] Mensaje recibido
+2024-05-19.17:46:28 - [INFO] Lista de plazas de parking enviada
+2024-05-19.17:46:37 - [INFO] Mensaje recibido
+2024-05-19.17:46:37 - [INFO] Plaza parking añadida a la bd
+2024-05-19.17:46:37 - [INFO] Mensaje recibido
+2024-05-19.17:46:37 - [INFO] Lista de plazas de parking enviada
+2024-05-19.17:47:55 - [INFO] Mensaje recibido
+2024-05-19.17:47:55 - [INFO] Plaza parking borrada de la bd
+2024-05-19.17:47:55 - [INFO] Mensaje recibido
+2024-05-19.17:47:55 - [INFO] Lista de plazas de parking enviada
+2024-05-19.17:48:00 - [INFO] Mensaje recibido
+2024-05-19.17:48:00 - [INFO] SE CIERRA LA SESION
+2024-05-19.17:56:10 - [INFO] NUEVA SESION
+2024-05-19.17:56:10 - [INFO] WinSock inicializado
+2024-05-19.17:56:10 - [INFO] Socket creado
+2024-05-19.17:56:10 - [INFO] Bind hecho
+2024-05-19.17:56:10 - [INFO] Esperando conexion...
+2024-05-19.17:56:12 - [INFO] Conexion aceptada
+2024-05-19.17:56:14 - [INFO] Mensaje recibido
+2024-05-19.17:56:14 - [INFO] Lista de reservas enviada
+2024-05-19.17:56:19 - [INFO] Mensaje recibido
+2024-05-19.17:56:19 - [INFO] Lista de reservas enviada
+2024-05-19.17:56:21 - [INFO] Mensaje recibido
+2024-05-19.17:56:21 - [INFO] Lista de reservas enviada
+2024-05-19.17:58:44 - [ERROR] Error recibiendo el mensaje
+2024-05-19.17:58:44 - [INFO] SE CIERRA LA SESION
+2024-05-19.17:58:47 - [INFO] NUEVA SESION
+2024-05-19.17:58:47 - [INFO] WinSock inicializado
+2024-05-19.17:58:47 - [INFO] Socket creado
+2024-05-19.17:58:47 - [INFO] Bind hecho
+2024-05-19.17:58:47 - [INFO] Esperando conexion...
+2024-05-19.17:58:52 - [INFO] Conexion aceptada
+2024-05-19.17:59:14 - [INFO] Mensaje recibido
+2024-05-19.17:59:14 - [INFO] DNI comprobado
+2024-05-19.17:59:15 - [INFO] Mensaje recibido
+2024-05-19.17:59:15 - [INFO] Contraseña comprobada
+2024-05-19.17:59:16 - [INFO] Mensaje recibido
+2024-05-19.17:59:16 - [INFO] Lista de reservas enviada
+2024-05-19.17:59:23 - [ERROR] Error recibiendo el mensaje
+2024-05-19.17:59:23 - [INFO] SE CIERRA LA SESION
+2024-05-20.10:38:23 - [INFO] NUEVA SESION
+2024-05-20.10:38:23 - [INFO] WinSock inicializado
+2024-05-20.10:38:23 - [INFO] Socket creado
+2024-05-20.10:38:23 - [INFO] Bind hecho
+2024-05-20.10:38:23 - [INFO] Esperando conexion...
+2024-05-20.10:38:24 - [INFO] Conexion aceptada
+2024-05-20.10:38:43 - [INFO] Mensaje recibido
+2024-05-20.10:38:43 - [INFO] DNI comprobado
+2024-05-20.10:38:47 - [INFO] Mensaje recibido
+2024-05-20.10:38:47 - [INFO] DNI comprobado
+2024-05-20.10:38:51 - [INFO] Mensaje recibido
+2024-05-20.10:38:51 - [INFO] Dni y contraseña añadida
+2024-05-20.10:38:51 - [INFO] Mensaje recibido
+2024-05-20.10:38:51 - [INFO] Lista de plazas de parking enviada
+2024-05-20.10:38:51 - [INFO] Mensaje recibido
+2024-05-20.10:38:51 - [INFO] Lista de clientes enviada
+2024-05-20.10:38:54 - [INFO] Mensaje recibido
+2024-05-20.10:38:54 - [INFO] SE CIERRA LA SESION
+2024-05-20.10:44:01 - [INFO] NUEVA SESION
+2024-05-20.10:44:01 - [INFO] WinSock inicializado
+2024-05-20.10:44:01 - [INFO] Socket creado
+2024-05-20.10:44:01 - [INFO] Bind hecho
+2024-05-20.10:44:01 - [INFO] Esperando conexion...
+2024-05-20.10:44:03 - [INFO] Conexion aceptada
+2024-05-20.10:44:09 - [INFO] Mensaje recibido
+2024-05-20.10:44:09 - [INFO] DNI comprobado
+2024-05-20.10:44:10 - [INFO] Mensaje recibido
+2024-05-20.10:44:10 - [INFO] Contraseña comprobada
+2024-05-20.10:52:58 - [ERROR] Error recibiendo el mensaje
+2024-05-20.10:52:58 - [INFO] SE CIERRA LA SESION
+2024-05-20.10:53:11 - [INFO] NUEVA SESION
+2024-05-20.10:53:11 - [INFO] WinSock inicializado
+2024-05-20.10:53:11 - [INFO] Socket creado
+2024-05-20.10:53:11 - [INFO] Bind hecho
+2024-05-20.10:53:11 - [INFO] Esperando conexion...
+2024-05-20.10:53:13 - [INFO] Conexion aceptada
+2024-05-20.10:53:17 - [INFO] Mensaje recibido
+2024-05-20.10:53:17 - [INFO] DNI comprobado
+2024-05-20.10:53:17 - [INFO] Mensaje recibido
+2024-05-20.10:53:17 - [INFO] Contraseña comprobada
+2024-05-20.10:53:28 - [INFO] Mensaje recibido
+2024-05-20.10:53:28 - [INFO] DNI comprobado
+2024-05-20.10:53:36 - [INFO] Mensaje recibido
+2024-05-20.10:53:36 - [INFO] Dni y contraseña añadida
+2024-05-20.10:53:36 - [INFO] Mensaje recibido
+2024-05-20.10:53:36 - [INFO] Lista de plazas de parking enviada
+2024-05-20.10:53:36 - [INFO] Mensaje recibido
+2024-05-20.10:53:36 - [INFO] Lista de clientes enviada
+2024-05-20.10:53:38 - [INFO] Mensaje recibido
+2024-05-20.10:53:38 - [INFO] SE CIERRA LA SESION
+2024-05-20.10:59:19 - [INFO] NUEVA SESION
+2024-05-20.10:59:19 - [INFO] WinSock inicializado
+2024-05-20.10:59:19 - [INFO] Socket creado
+2024-05-20.10:59:19 - [INFO] Bind hecho
+2024-05-20.10:59:19 - [INFO] Esperando conexion...
+2024-05-20.10:59:21 - [INFO] Conexion aceptada
+2024-05-20.10:59:34 - [INFO] Mensaje recibido
+2024-05-20.10:59:34 - [INFO] DNI comprobado
+2024-05-20.10:59:37 - [INFO] Mensaje recibido
+2024-05-20.10:59:37 - [INFO] Dni y contraseña añadida
+2024-05-20.10:59:37 - [INFO] Mensaje recibido
+2024-05-20.10:59:37 - [INFO] Lista de plazas de parking enviada
+2024-05-20.10:59:37 - [INFO] Mensaje recibido
+2024-05-20.10:59:37 - [INFO] Lista de clientes enviada
+2024-05-20.10:59:39 - [INFO] Mensaje recibido
+2024-05-20.10:59:39 - [INFO] Lista de reservas enviada
+2024-05-20.11:00:45 - [ERROR] Error recibiendo el mensaje
+2024-05-20.11:00:45 - [INFO] SE CIERRA LA SESION
+2024-05-20.11:05:40 - [INFO] NUEVA SESION
+2024-05-20.11:05:40 - [INFO] WinSock inicializado
+2024-05-20.11:05:40 - [INFO] Socket creado
+2024-05-20.11:05:40 - [INFO] Bind hecho
+2024-05-20.11:05:40 - [INFO] Esperando conexion...
+2024-05-20.11:05:42 - [INFO] Conexion aceptada
+2024-05-20.11:05:47 - [INFO] Mensaje recibido
+2024-05-20.11:05:47 - [INFO] DNI comprobado
+2024-05-20.11:05:47 - [INFO] Mensaje recibido
+2024-05-20.11:05:47 - [INFO] Contraseña comprobada
+2024-05-20.11:05:49 - [INFO] Mensaje recibido
+2024-05-20.11:05:49 - [INFO] Lista de reservas enviada
+2024-05-20.11:05:53 - [INFO] Mensaje recibido
+2024-05-20.11:05:53 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:05:56 - [INFO] Mensaje recibido
+2024-05-20.11:05:56 - [INFO] Habitacion añadida a la bd
+2024-05-20.11:05:56 - [INFO] Mensaje recibido
+2024-05-20.11:05:56 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:05:58 - [INFO] Mensaje recibido
+2024-05-20.11:05:58 - [INFO] Plaza parking añadida a la bd
+2024-05-20.11:05:58 - [INFO] Mensaje recibido
+2024-05-20.11:05:58 - [INFO] Reserva añadida a la bd
+2024-05-20.11:05:58 - [INFO] Mensaje recibido
+2024-05-20.11:05:58 - [INFO] Lista de reservas enviada
+2024-05-20.11:06:01 - [INFO] Mensaje recibido
+2024-05-20.11:06:01 - [INFO] Lista de reservas enviada
+2024-05-20.11:06:08 - [INFO] Mensaje recibido
+2024-05-20.11:06:08 - [INFO] Habitacion añadida a la bd
+2024-05-20.11:06:08 - [INFO] Mensaje recibido
+2024-05-20.11:06:08 - [INFO] Plaza parking añadida a la bd
+2024-05-20.11:06:08 - [INFO] Mensaje recibido
+2024-05-20.11:06:08 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:06:33 - [INFO] Mensaje recibido
+2024-05-20.11:06:33 - [INFO] Habitacion añadida a la bd
+2024-05-20.11:06:33 - [INFO] Mensaje recibido
+2024-05-20.11:06:33 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:06:35 - [INFO] Mensaje recibido
+2024-05-20.11:06:35 - [INFO] Plaza parking añadida a la bd
+2024-05-20.11:06:35 - [INFO] Mensaje recibido
+2024-05-20.11:06:35 - [INFO] Reserva añadida a la bd
+2024-05-20.11:06:35 - [INFO] Mensaje recibido
+2024-05-20.11:06:35 - [INFO] Lista de reservas enviada
+2024-05-20.11:06:37 - [INFO] Mensaje recibido
+2024-05-20.11:06:37 - [INFO] Lista de reservas enviada
+2024-05-20.11:06:42 - [INFO] Mensaje recibido
+2024-05-20.11:06:42 - [INFO] SE CIERRA LA SESION
+2024-05-20.11:12:27 - [INFO] NUEVA SESION
+2024-05-20.11:12:27 - [INFO] WinSock inicializado
+2024-05-20.11:12:27 - [INFO] Socket creado
+2024-05-20.11:12:27 - [INFO] Bind hecho
+2024-05-20.11:12:27 - [INFO] Esperando conexion...
+2024-05-20.11:12:30 - [INFO] Conexion aceptada
+2024-05-20.11:12:34 - [INFO] Mensaje recibido
+2024-05-20.11:12:34 - [INFO] DNI comprobado
+2024-05-20.11:12:35 - [INFO] Mensaje recibido
+2024-05-20.11:12:35 - [INFO] Contraseña comprobada
+2024-05-20.11:12:36 - [INFO] Mensaje recibido
+2024-05-20.11:12:36 - [INFO] Lista de reservas enviada
+2024-05-20.11:12:44 - [INFO] Mensaje recibido
+2024-05-20.11:12:44 - [INFO] Reserva borrada de la bd
+2024-05-20.11:12:44 - [INFO] Mensaje recibido
+2024-05-20.11:12:44 - [INFO] Lista de reservas enviada
+2024-05-20.11:12:44 - [INFO] Mensaje recibido
+2024-05-20.11:12:44 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:12:44 - [INFO] Mensaje recibido
+2024-05-20.11:12:44 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:12:49 - [INFO] Mensaje recibido
+2024-05-20.11:12:49 - [INFO] Lista de reservas enviada
+2024-05-20.11:13:10 - [INFO] Mensaje recibido
+2024-05-20.11:13:10 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:15:40 - [ERROR] Error recibiendo el mensaje
+2024-05-20.11:15:40 - [INFO] SE CIERRA LA SESION
+2024-05-20.11:16:58 - [INFO] NUEVA SESION
+2024-05-20.11:16:58 - [INFO] WinSock inicializado
+2024-05-20.11:16:58 - [INFO] Socket creado
+2024-05-20.11:16:58 - [INFO] Bind hecho
+2024-05-20.11:16:58 - [INFO] Esperando conexion...
+2024-05-20.11:17:01 - [INFO] Conexion aceptada
+2024-05-20.11:17:07 - [INFO] Mensaje recibido
+2024-05-20.11:17:07 - [INFO] DNI comprobado
+2024-05-20.11:17:08 - [INFO] Mensaje recibido
+2024-05-20.11:17:08 - [INFO] Contraseña comprobada
+2024-05-20.11:17:09 - [INFO] Mensaje recibido
+2024-05-20.11:17:09 - [INFO] Lista de reservas enviada
+2024-05-20.11:17:11 - [INFO] Mensaje recibido
+2024-05-20.11:17:11 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:17:15 - [INFO] Mensaje recibido
+2024-05-20.11:17:15 - [INFO] Habitacion añadida a la bd
+2024-05-20.11:17:15 - [INFO] Mensaje recibido
+2024-05-20.11:17:15 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:17:17 - [INFO] Mensaje recibido
+2024-05-20.11:17:17 - [INFO] Plaza parking añadida a la bd
+2024-05-20.11:17:17 - [INFO] Mensaje recibido
+2024-05-20.11:17:17 - [INFO] Reserva añadida a la bd
+2024-05-20.11:17:17 - [INFO] Mensaje recibido
+2024-05-20.11:17:17 - [INFO] Lista de reservas enviada
+2024-05-20.11:17:17 - [INFO] Mensaje recibido
+2024-05-20.11:17:17 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:17:17 - [INFO] Mensaje recibido
+2024-05-20.11:17:17 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:17:18 - [INFO] Mensaje recibido
+2024-05-20.11:17:18 - [INFO] Lista de reservas enviada
+2024-05-20.11:17:33 - [INFO] Mensaje recibido
+2024-05-20.11:17:33 - [INFO] Reserva borrada de la bd
+2024-05-20.11:17:33 - [INFO] Mensaje recibido
+2024-05-20.11:17:33 - [INFO] Habitacion añadida a la bd
+2024-05-20.11:17:33 - [INFO] Mensaje recibido
+2024-05-20.11:17:33 - [INFO] Plaza parking añadida a la bd
+2024-05-20.11:17:33 - [INFO] Mensaje recibido
+2024-05-20.11:17:33 - [INFO] Lista de reservas enviada
+2024-05-20.11:17:33 - [INFO] Mensaje recibido
+2024-05-20.11:17:33 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:17:33 - [INFO] Mensaje recibido
+2024-05-20.11:17:33 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:17:56 - [INFO] Mensaje recibido
+2024-05-20.11:17:56 - [INFO] Lista de reservas enviada
+2024-05-20.11:17:57 - [INFO] Mensaje recibido
+2024-05-20.11:17:57 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:18:24 - [INFO] Mensaje recibido
+2024-05-20.11:18:24 - [INFO] Habitacion añadida a la bd
+2024-05-20.11:18:24 - [INFO] Mensaje recibido
+2024-05-20.11:18:24 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:18:25 - [INFO] Mensaje recibido
+2024-05-20.11:18:25 - [INFO] Plaza parking añadida a la bd
+2024-05-20.11:18:25 - [INFO] Mensaje recibido
+2024-05-20.11:18:25 - [INFO] Reserva añadida a la bd
+2024-05-20.11:18:25 - [INFO] Mensaje recibido
+2024-05-20.11:18:25 - [INFO] Lista de reservas enviada
+2024-05-20.11:18:25 - [INFO] Mensaje recibido
+2024-05-20.11:18:25 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:18:25 - [INFO] Mensaje recibido
+2024-05-20.11:18:25 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:18:34 - [INFO] Mensaje recibido
+2024-05-20.11:18:34 - [INFO] SE CIERRA LA SESION
+2024-05-20.11:20:26 - [INFO] NUEVA SESION
+2024-05-20.11:20:26 - [INFO] WinSock inicializado
+2024-05-20.11:20:26 - [INFO] Socket creado
+2024-05-20.11:20:26 - [INFO] Bind hecho
+2024-05-20.11:20:26 - [INFO] Esperando conexion...
+2024-05-20.11:20:28 - [INFO] Conexion aceptada
+2024-05-20.11:20:31 - [INFO] Mensaje recibido
+2024-05-20.11:20:31 - [INFO] DNI comprobado
+2024-05-20.11:20:31 - [INFO] Mensaje recibido
+2024-05-20.11:20:31 - [INFO] Contraseña comprobada
+2024-05-20.11:20:33 - [INFO] Mensaje recibido
+2024-05-20.11:20:33 - [INFO] Lista de reservas enviada
+2024-05-20.11:20:42 - [INFO] Mensaje recibido
+2024-05-20.11:20:42 - [INFO] Reserva borrada de la bd
+2024-05-20.11:20:42 - [INFO] Mensaje recibido
+2024-05-20.11:20:42 - [INFO] Lista de reservas enviada
+2024-05-20.11:20:42 - [INFO] Mensaje recibido
+2024-05-20.11:20:42 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:20:42 - [INFO] Mensaje recibido
+2024-05-20.11:20:42 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:20:44 - [INFO] Mensaje recibido
+2024-05-20.11:20:44 - [INFO] Lista de reservas enviada
+2024-05-20.11:20:46 - [INFO] Mensaje recibido
+2024-05-20.11:20:46 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:22:04 - [INFO] Mensaje recibido
+2024-05-20.11:22:04 - [INFO] Habitacion añadida a la bd
+2024-05-20.11:22:04 - [INFO] Mensaje recibido
+2024-05-20.11:22:04 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:22:06 - [INFO] Mensaje recibido
+2024-05-20.11:22:06 - [INFO] Plaza parking añadida a la bd
+2024-05-20.11:22:06 - [INFO] Mensaje recibido
+2024-05-20.11:22:06 - [INFO] Reserva añadida a la bd
+2024-05-20.11:22:06 - [INFO] Mensaje recibido
+2024-05-20.11:22:06 - [INFO] Lista de reservas enviada
+2024-05-20.11:22:06 - [INFO] Mensaje recibido
+2024-05-20.11:22:06 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:22:06 - [INFO] Mensaje recibido
+2024-05-20.11:22:06 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:22:12 - [INFO] Mensaje recibido
+2024-05-20.11:22:12 - [INFO] SE CIERRA LA SESION
+2024-05-20.11:23:03 - [INFO] NUEVA SESION
+2024-05-20.11:23:03 - [INFO] WinSock inicializado
+2024-05-20.11:23:03 - [INFO] Socket creado
+2024-05-20.11:23:03 - [INFO] Bind hecho
+2024-05-20.11:23:03 - [INFO] Esperando conexion...
+2024-05-20.11:23:05 - [INFO] Conexion aceptada
+2024-05-20.11:23:08 - [INFO] Mensaje recibido
+2024-05-20.11:23:08 - [INFO] DNI comprobado
+2024-05-20.11:23:08 - [INFO] Mensaje recibido
+2024-05-20.11:23:08 - [INFO] Contraseña comprobada
+2024-05-20.11:23:09 - [INFO] Mensaje recibido
+2024-05-20.11:23:09 - [INFO] Lista de reservas enviada
+2024-05-20.11:23:15 - [INFO] Mensaje recibido
+2024-05-20.11:23:15 - [INFO] Reserva borrada de la bd
+2024-05-20.11:23:15 - [INFO] Mensaje recibido
+2024-05-20.11:23:15 - [INFO] Lista de reservas enviada
+2024-05-20.11:23:15 - [INFO] Mensaje recibido
+2024-05-20.11:23:15 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:23:15 - [INFO] Mensaje recibido
+2024-05-20.11:23:15 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:25:17 - [ERROR] Error recibiendo el mensaje
+2024-05-20.11:25:17 - [INFO] SE CIERRA LA SESION
+2024-05-20.11:25:24 - [INFO] NUEVA SESION
+2024-05-20.11:25:24 - [INFO] WinSock inicializado
+2024-05-20.11:25:24 - [INFO] Socket creado
+2024-05-20.11:25:24 - [INFO] Bind hecho
+2024-05-20.11:25:24 - [INFO] Esperando conexion...
+2024-05-20.11:25:27 - [INFO] Conexion aceptada
+2024-05-20.11:25:31 - [INFO] Mensaje recibido
+2024-05-20.11:25:31 - [INFO] DNI comprobado
+2024-05-20.11:25:32 - [INFO] Mensaje recibido
+2024-05-20.11:25:32 - [INFO] Contraseña comprobada
+2024-05-20.11:25:34 - [INFO] Mensaje recibido
+2024-05-20.11:25:34 - [INFO] Lista de reservas enviada
+2024-05-20.11:25:36 - [INFO] Mensaje recibido
+2024-05-20.11:25:36 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:25:39 - [INFO] Mensaje recibido
+2024-05-20.11:25:39 - [INFO] Habitacion añadida a la bd
+2024-05-20.11:25:39 - [INFO] Mensaje recibido
+2024-05-20.11:25:39 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:25:40 - [INFO] Mensaje recibido
+2024-05-20.11:25:40 - [INFO] Plaza parking añadida a la bd
+2024-05-20.11:25:40 - [INFO] Mensaje recibido
+2024-05-20.11:25:40 - [INFO] Reserva añadida a la bd
+2024-05-20.11:25:40 - [INFO] Mensaje recibido
+2024-05-20.11:25:40 - [INFO] Lista de reservas enviada
+2024-05-20.11:25:40 - [INFO] Mensaje recibido
+2024-05-20.11:25:40 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:25:40 - [INFO] Mensaje recibido
+2024-05-20.11:25:40 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:25:42 - [INFO] Mensaje recibido
+2024-05-20.11:25:42 - [INFO] SE CIERRA LA SESION
+2024-05-20.11:25:47 - [INFO] NUEVA SESION
+2024-05-20.11:25:47 - [INFO] WinSock inicializado
+2024-05-20.11:25:47 - [INFO] Socket creado
+2024-05-20.11:25:47 - [INFO] Bind hecho
+2024-05-20.11:25:47 - [INFO] Esperando conexion...
+2024-05-20.11:25:49 - [INFO] Conexion aceptada
+2024-05-20.11:25:55 - [INFO] Mensaje recibido
+2024-05-20.11:25:55 - [INFO] DNI comprobado
+2024-05-20.11:25:57 - [INFO] Mensaje recibido
+2024-05-20.11:25:57 - [INFO] Contraseña comprobada
+2024-05-20.11:25:58 - [INFO] Mensaje recibido
+2024-05-20.11:25:58 - [INFO] Lista de reservas enviada
+2024-05-20.11:26:08 - [INFO] Mensaje recibido
+2024-05-20.11:26:08 - [INFO] Reserva borrada de la bd
+2024-05-20.11:26:08 - [INFO] Mensaje recibido
+2024-05-20.11:26:08 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:26:08 - [INFO] Mensaje recibido
+2024-05-20.11:26:08 - [INFO] Habitacion añadida a la bd
+2024-05-20.11:26:08 - [INFO] Mensaje recibido
+2024-05-20.11:26:08 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:26:08 - [INFO] Mensaje recibido
+2024-05-20.11:26:08 - [INFO] Plaza parking añadida a la bd
+2024-05-20.11:26:08 - [INFO] Mensaje recibido
+2024-05-20.11:26:08 - [INFO] Lista de reservas enviada
+2024-05-20.11:26:08 - [INFO] Mensaje recibido
+2024-05-20.11:26:08 - [INFO] Lista de habitaciones enviada
+2024-05-20.11:26:08 - [INFO] Mensaje recibido
+2024-05-20.11:26:08 - [INFO] Lista de plazas de parking enviada
+2024-05-20.11:26:20 - [INFO] Mensaje recibido
+2024-05-20.11:26:20 - [INFO] SE CIERRA LA SESION
+2024-05-20.12:09:18 - [INFO] NUEVA SESION
+2024-05-20.12:09:18 - [INFO] WinSock inicializado
+2024-05-20.12:09:18 - [INFO] Socket creado
+2024-05-20.12:09:18 - [INFO] Bind hecho
+2024-05-20.12:09:18 - [INFO] Esperando conexion...
+2024-05-20.12:09:20 - [INFO] Conexion aceptada
+2024-05-20.12:09:23 - [INFO] Mensaje recibido
+2024-05-20.12:09:23 - [INFO] DNI comprobado
+2024-05-20.12:09:24 - [INFO] Mensaje recibido
+2024-05-20.12:09:24 - [INFO] Contraseña comprobada
+2024-05-20.12:09:25 - [INFO] Mensaje recibido
+2024-05-20.12:09:25 - [INFO] Lista de reservas enviada
+2024-05-20.12:09:43 - [ERROR] Error recibiendo el mensaje
+2024-05-20.12:09:43 - [INFO] SE CIERRA LA SESION
+2024-05-20.12:24:51 - [INFO] NUEVA SESION
+2024-05-20.12:24:51 - [INFO] WinSock inicializado
+2024-05-20.12:24:51 - [INFO] Socket creado
+2024-05-20.12:24:51 - [INFO] Bind hecho
+2024-05-20.12:24:51 - [INFO] Esperando conexion...
+2024-05-20.12:24:55 - [INFO] Conexion aceptada
+2024-05-20.12:24:58 - [INFO] Mensaje recibido
+2024-05-20.12:24:58 - [INFO] DNI comprobado
+2024-05-20.12:24:59 - [INFO] Mensaje recibido
+2024-05-20.12:24:59 - [INFO] Contraseña comprobada
+2024-05-20.12:25:00 - [INFO] Mensaje recibido
+2024-05-20.12:25:00 - [INFO] Lista de reservas enviada
+2024-05-20.12:29:39 - [ERROR] Error recibiendo el mensaje
+2024-05-20.12:29:39 - [INFO] SE CIERRA LA SESION
+2024-05-20.12:29:45 - [INFO] NUEVA SESION
+2024-05-20.12:29:45 - [INFO] WinSock inicializado
+2024-05-20.12:29:45 - [INFO] Socket creado
+2024-05-20.12:29:45 - [INFO] Bind hecho
+2024-05-20.12:29:45 - [INFO] Esperando conexion...
+2024-05-20.12:29:47 - [INFO] Conexion aceptada
+2024-05-20.12:29:52 - [INFO] Mensaje recibido
+2024-05-20.12:29:52 - [INFO] DNI comprobado
+2024-05-20.12:29:53 - [INFO] Mensaje recibido
+2024-05-20.12:29:53 - [INFO] Contraseña comprobada
+2024-05-20.12:29:54 - [INFO] Mensaje recibido
+2024-05-20.12:29:54 - [INFO] Lista de reservas enviada
+2024-05-20.12:30:10 - [INFO] Mensaje recibido
+2024-05-20.12:30:10 - [INFO] Lista de habitaciones enviada
+2024-05-20.12:30:15 - [INFO] Mensaje recibido
+2024-05-20.12:30:15 - [INFO] Habitacion añadida a la bd
+2024-05-20.12:30:15 - [INFO] Mensaje recibido
+2024-05-20.12:30:15 - [INFO] Lista de plazas de parking enviada
+2024-05-20.12:30:16 - [INFO] Mensaje recibido
+2024-05-20.12:30:16 - [INFO] Plaza parking añadida a la bd
+2024-05-20.12:30:16 - [INFO] Mensaje recibido
+2024-05-20.12:30:16 - [INFO] Reserva añadida a la bd
+2024-05-20.12:30:16 - [INFO] Mensaje recibido
+2024-05-20.12:30:16 - [INFO] Lista de reservas enviada
+2024-05-20.12:30:16 - [INFO] Mensaje recibido
+2024-05-20.12:30:16 - [INFO] Lista de habitaciones enviada
+2024-05-20.12:30:16 - [INFO] Mensaje recibido
+2024-05-20.12:30:16 - [INFO] Lista de plazas de parking enviada
+2024-05-20.12:30:27 - [INFO] Mensaje recibido
+2024-05-20.12:30:27 - [INFO] Lista de reservas enviada
+2024-05-20.12:30:49 - [INFO] Mensaje recibido
+2024-05-20.12:30:49 - [INFO] Lista de clientes enviada
+2024-05-20.12:30:56 - [INFO] Mensaje recibido
+2024-05-20.12:30:56 - [INFO] Lista de reservas enviada
+2024-05-20.12:31:02 - [INFO] Mensaje recibido
+2024-05-20.12:31:02 - [INFO] Lista de habitaciones enviada
+2024-05-20.12:31:26 - [INFO] Mensaje recibido
+2024-05-20.12:31:26 - [INFO] Lista de plazas de parking enviada
+2024-05-20.12:32:10 - [INFO] Mensaje recibido
+2024-05-20.12:32:10 - [INFO] Habitacion añadida a la bd
+2024-05-20.12:32:10 - [INFO] Mensaje recibido
+2024-05-20.12:32:10 - [INFO] Lista de habitaciones enviada
+2024-05-20.12:32:21 - [INFO] Mensaje recibido
+2024-05-20.12:32:21 - [INFO] Lista de habitaciones enviada
+2024-05-20.12:32:36 - [INFO] Mensaje recibido
+2024-05-20.12:32:36 - [INFO] Habitacion borrada de la bd
+2024-05-20.12:32:36 - [INFO] Mensaje recibido
+2024-05-20.12:32:36 - [INFO] Lista de habitaciones enviada
+2024-05-20.12:32:41 - [INFO] Mensaje recibido
+2024-05-20.12:32:41 - [INFO] Lista de habitaciones enviada
+2024-05-20.12:33:24 - [INFO] Mensaje recibido
+2024-05-20.12:33:24 - [INFO] Lista de clientes enviada
+2024-05-20.12:33:37 - [INFO] Mensaje recibido
+2024-05-20.12:33:37 - [INFO] DNI comprobado
+2024-05-20.12:33:38 - [INFO] Mensaje recibido
+2024-05-20.12:33:38 - [INFO] Contraseña comprobada
+2024-05-20.12:33:41 - [INFO] Mensaje recibido
+2024-05-20.12:33:41 - [INFO] Lista de reservas enviada
+2024-05-20.12:33:48 - [INFO] Mensaje recibido
+2024-05-20.12:33:48 - [INFO] Habitacion añadida a la bd
+2024-05-20.12:33:50 - [INFO] Mensaje recibido
+2024-05-20.12:33:50 - [INFO] Plaza parking añadida a la bd
+2024-05-20.12:33:50 - [INFO] Mensaje recibido
+2024-05-20.12:33:50 - [INFO] Reserva añadida a la bd
+2024-05-20.12:33:50 - [INFO] Mensaje recibido
+2024-05-20.12:33:50 - [INFO] Lista de reservas enviada
+2024-05-20.12:33:50 - [INFO] Mensaje recibido
+2024-05-20.12:33:50 - [INFO] Lista de habitaciones enviada
+2024-05-20.12:33:50 - [INFO] Mensaje recibido
+2024-05-20.12:33:50 - [INFO] Lista de plazas de parking enviada
+2024-05-20.12:34:01 - [INFO] Mensaje recibido
+2024-05-20.12:34:01 - [INFO] DNI comprobado
+2024-05-20.12:34:02 - [INFO] Mensaje recibido
+2024-05-20.12:34:02 - [INFO] Contraseña comprobada
+2024-05-20.12:34:03 - [INFO] Mensaje recibido
+2024-05-20.12:34:03 - [INFO] Lista de reservas enviada
+2024-05-20.12:34:29 - [INFO] Mensaje recibido
+2024-05-20.12:34:29 - [INFO] Lista de reservas enviada
+2024-05-20.12:34:53 - [INFO] Mensaje recibido
+2024-05-20.12:34:53 - [INFO] Reserva borrada de la bd
+2024-05-20.12:34:53 - [INFO] Mensaje recibido
+2024-05-20.12:34:53 - [INFO] Habitacion añadida a la bd
+2024-05-20.12:34:53 - [INFO] Mensaje recibido
+2024-05-20.12:34:53 - [INFO] Plaza parking añadida a la bd
+2024-05-20.12:34:53 - [INFO] Mensaje recibido
+2024-05-20.12:34:53 - [INFO] Lista de reservas enviada
+2024-05-20.12:35:00 - [INFO] Mensaje recibido
+2024-05-20.12:35:00 - [INFO] Lista de reservas enviada
+2024-05-20.12:35:04 - [INFO] Mensaje recibido
+2024-05-20.12:35:04 - [INFO] Lista de habitaciones enviada
+2024-05-20.12:35:13 - [INFO] Mensaje recibido
+2024-05-20.12:35:13 - [INFO] Lista de plazas de parking enviada
+2024-05-20.12:35:18 - [INFO] Mensaje recibido
+2024-05-20.12:35:18 - [INFO] SE CIERRA LA SESION

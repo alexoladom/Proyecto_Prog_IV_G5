@@ -335,7 +335,6 @@ int anadirCliente(SOCKET& comm_socket,sqlite3* bd){
 		return NOT_OK;
 	}
 
-	Cliente::numClientes++;
 	return OK;
 
 }
@@ -414,7 +413,6 @@ int anadirHabitacion(SOCKET& comm_socket,sqlite3* bd){
 		return NOT_OK;
 	}
 
-	Habitacion::numHabitaciones++;
 	return OK;
 
 
@@ -464,7 +462,6 @@ int anadirPlazaPaking(SOCKET& comm_socket,sqlite3* bd){
 		return NOT_OK;
 	}
 
-	PlazaParking::numPlazaParkings++;
 	return OK;
 }
 
@@ -527,7 +524,6 @@ int anadirReserva(SOCKET& comm_socket,sqlite3* bd){
 		return NOT_OK;
 	}
 
-	Reserva::numReservas++;
 	return OK;
 }
 

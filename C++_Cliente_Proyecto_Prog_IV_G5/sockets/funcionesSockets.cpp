@@ -527,6 +527,7 @@ int borrarReserva(SOCKET &s, Reserva& r){
 		cerr<<"ERROR ENVIANDO ID PARA BORRAR RESERVA\n";
 		return 0;
 	}
+	Reserva::numReservas--;
 	return OK;
 
 }
@@ -546,11 +547,12 @@ int borrarHabitacion(SOCKET &s, Habitacion& h){
 		cerr<<"ERROR ENVIANDO NUMERO PARA BORRAR HABTIACION\n";
 		return 0;
 	}
+	Habitacion::numHabitaciones--;
 	return OK;
 
 }
 
-int borrarpPlazaParking(SOCKET &s, PlazaParking &p){
+int borrarPlazaParking(SOCKET &s, PlazaParking &p){
 
 	char sendBuff[512];
 	strcpy(sendBuff,"BORRAR PLAZA PARKING");
@@ -565,6 +567,7 @@ int borrarpPlazaParking(SOCKET &s, PlazaParking &p){
 		cerr<<"ERROR ENVIANDO NUMERO PARA BORRAR HABTIACION\n";
 		return 0;
 	}
+	PlazaParking::numPlazaParkings--;
 	return OK;
 
 }

@@ -40,11 +40,12 @@ void mostrarMenuInicioCliente(){
 void mostrarMenuPrincipalCliente(){
     cout<<"------------------------------\n";
     cout<<"MENU CLIENTE\n";
-    cout<<"1.- Crear una reserva\n";
-    cout<<"2.- Modificar una reserva\n";
-    cout<<"3.- Cancelar una reserva\n";
-    cout<<"4.- Volver al menú principal\n";
-    cout<<"5.- Cerrar\n";
+    cout<<"1.- Ver mis reservas\n";
+    cout<<"2.- Crear una reserva\n";
+    cout<<"3.- Modificar una reserva\n";
+    cout<<"4.- Cancelar una reserva\n";
+    cout<<"5.- Volver al menú principal\n";
+    cout<<"6.- Cerrar\n";
     cout<<"SELECCIONE UNA OPCION:\n";
 
 }
@@ -128,12 +129,9 @@ Cliente registrarse(SOCKET & s) {
     return c;
 }
 
-//Reserva crearReserva(){
-//
-//}
 
-Habitacion anadirHabitacion() {
-    Habitacion h;
+
+Habitacion anadirHabitacion(SOCKET & s) {
 
     int numero;
     int piso;
@@ -166,12 +164,13 @@ Habitacion anadirHabitacion() {
     cout << "\nIntroduce si está ocupada (0 para no, 1 para sí): ";
     cin >> ocupado;
 
-  //  h = new Habitacion(numero, piso, tipoHab, capacidad, precio, ocupado);
+    Habitacion h(numero, piso, tipoHab, capacidad, precio, ocupado);
 
+
+    anadirHabitacion(s,h,false);
     return h;
 }
-PlazaParking anadirPlazaParking(){
-	PlazaParking p;
+PlazaParking anadirPlazaParking(SOCKET & s){
 
 	int numero;
 	string zona;
@@ -184,7 +183,8 @@ PlazaParking anadirPlazaParking(){
 	cout <<"Introduce la ocupación de la plaza de parking(Lo normal es que este libre)";
 	cin >> ocupado;
 
-//	p = new PlazaParking(numero, zona, ocupado);
+	PlazaParking p(numero, zona, ocupado);
+	anadirPlazaParking(s,p,false);
 
 	return p;
 }

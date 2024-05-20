@@ -230,9 +230,7 @@ int anadirCliente(Cliente &c, sqlite3*db){
 			printf("%s\n", sqlite3_errmsg(db));// @suppress("Invalid arguments")
 			return NOT_OK;
 		}
-		int num =Cliente::numClientes;
-		num++;
-		Cliente::numClientes=num;
+		Cliente::numClientes++;
 		return OK;
 }
 
