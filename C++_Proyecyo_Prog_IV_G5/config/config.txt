@@ -1,3 +1,0 @@
-ip = 127.0.0.3
-port = 6000
-db_address = db/C++dbProgIV.sqlite

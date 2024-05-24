@@ -2,9 +2,42 @@
 #include "iostream"
 #include <string.h>
 #include <stdio.h>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
+
+Config2 readConfig2(const char* fileName){
+	    ifstream file(fileName);
+	    if (!file.is_open()) {
+	        cerr << "Error abriendo archivo config: " << fileName <<endl;
+	    }
+
+	    string linea;
+
+	    Config2 conf;
+
+	    while (getline(file, linea)) {
+	        istringstream iss(linea);
+	        if (linea.find("Dni admin:") != string::npos) {
+				iss.ignore(11); // Ignore "Dni admin: "
+				iss >> conf.dni;
+			} else if (linea.find("Contraseña admin:") != string::npos) {
+				iss.ignore(18); // Ignore "Contraseña admin: "
+				iss >> conf.password;
+			}else if (linea.find("IP:") != string::npos) {
+	            iss.ignore(4);
+	            iss >> conf.ip;
+	        } else if (linea.find("Port:") != string::npos) {
+	            iss.ignore(6);
+	            iss >> conf.port;
+	        }
+	    }
+
+	    file.close();
+	    return conf;
+}
 
 
 Config readConfig(const char* filename) {

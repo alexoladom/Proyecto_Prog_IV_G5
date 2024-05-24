@@ -5,6 +5,7 @@
 #include "domain/reserva.h"
 #include "menuOutputs/funcionesMenu.h"
 #include "config/logger.h"
+#include "config/config.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,13 +26,13 @@ int main(int argc, char **argv) {
 
 
 
+	Config2 datos = readConfig2("config/config.txt");
 
 	WSADATA wsa;
 	SOCKET s;
 	struct sockaddr_in server;
-	char sendBuff[512], recvBuff[512];
+	char sendBuff[512];
 	Cliente* arrayClientes;
-	boolean arrayClientesInicializado=false;
 	Reserva* arrayReservas;
 	boolean arrayReservasInicializado=false;
 	Habitacion* arrayHabitaciones;
@@ -291,7 +292,7 @@ int main(int argc, char **argv) {
 					arrayPlazaParking=getListaPlazasParking(s);
 
 
-					cout<<"RESERVA CREADA CON ÉXITO\n";
+					cout<<"RESERVA CREADA CON EXITO\n";
 					mostrarMenuPrincipalCliente();
 					Logger::logInfo("Se muestra el menu principal de cliente");
 					getline(cin,opcion);
@@ -359,7 +360,7 @@ int main(int argc, char **argv) {
 
 
 					while(existeReserva==false){
-						cerr<<"LA RESERVA SELECIONADA NO ESTÁ DISPONIBLE\n";
+						cerr<<"LA RESERVA SELECIONADA NO ESTA DISPONIBLE\n";
 						cout<<"\nSELECCIONE LA RESERVA QUE DESEA MODIFICAR\n";
 						getline(cin,numReservastr);
 						numReserva=stoi(numReservastr);
@@ -433,7 +434,7 @@ int main(int argc, char **argv) {
 
 
 					while(existeHab==false){
-						cerr<<"LA HABITACION SELECIONADA NO ESTÁ DISPONIBLE\n";
+						cerr<<"LA HABITACION SELECIONADA NO ESTA DISPONIBLE\n";
 						cout<<"\nSELECCIONE LA HABITACION QUE DESEA RESERVAR\n";
 						getline(cin,numHabs);
 						numHab=stoi(numHabs);
@@ -491,7 +492,7 @@ int main(int argc, char **argv) {
 					}
 
 					while(existePl==false){
-						cerr<<"LA PLAZA DE PARKING SELECIONADA NO ESTÁ DISPONIBLE\n";
+						cerr<<"LA PLAZA DE PARKING SELECIONADA NO ESTA DISPONIBLE\n";
 						cout<<"\nSELECCIONE LA PLAZA DE PARKING QUE DESEA RESERVAR\n";
 						getline(cin,numPls);
 						numPl=stoi(numPls);
@@ -524,7 +525,7 @@ int main(int argc, char **argv) {
 						return 0;
 					}
 
-					cout<<"RESERVA MODIFICADA CON ÉXITO\n";
+					cout<<"RESERVA MODIFICADA CON EXITO\n";
 
 					//Actualizar las listas
 
@@ -592,7 +593,7 @@ int main(int argc, char **argv) {
 
 
 					while(existeReserva==false){
-						cerr<<"LA RESERVA SELECIONADA NO ESTÁ DISPONIBLE\n";
+						cerr<<"LA RESERVA SELECIONADA NO ESTA DISPONIBLE\n";
 						cout<<"\nSELECCIONE LA RESERVA QUE DESEA CANCELAR\n";
 						getline(cin,numReservastr);
 						numReserva=stoi(numReservastr);
@@ -640,7 +641,7 @@ int main(int argc, char **argv) {
 						}
 					}
 
-					cout<<"RESERVA BORRADA CON ÉXITO\n";
+					cout<<"RESERVA BORRADA CON EXITO\n";
 
 					//Actualizar las listas
 
@@ -828,7 +829,7 @@ int main(int argc, char **argv) {
 					}
 
 					while(existePl==false){
-						cerr<<"LA PLAZA DE PARKING SELECIONADA NO ESTÁ DISPONIBLE\n";
+						cerr<<"LA PLAZA DE PARKING SELECIONADA NO ESTA DISPONIBLE\n";
 						cout<<"\nSELECCIONE LA PLAZA DE PARKING QUE DESEA RESERVAR\n";
 						getline(cin,numPls);
 						numPl=stoi(numPls);
@@ -865,7 +866,7 @@ int main(int argc, char **argv) {
 					arrayHabitaciones=getListaHabitaciones(s);
 					arrayPlazaParking=getListaPlazasParking(s);
 
-					cout<<"RESERVA CREADA CON ÉXITO\n";
+					cout<<"RESERVA CREADA CON EXITO\n";
 					mostrarMenuPrincipalCliente();
 					getline(cin,opcion);
 
@@ -1101,7 +1102,7 @@ int main(int argc, char **argv) {
 					}
 
 
-					cout<<"RESERVA MODIFICADA CON ÉXITO\n";
+					cout<<"RESERVA MODIFICADA CON EXITO\n";
 
 					//Actualizar las listas
 
@@ -1216,7 +1217,7 @@ int main(int argc, char **argv) {
 						}
 					}
 
-					cout<<"RESERVA BORRADA CON ÉXITO\n";
+					cout<<"RESERVA BORRADA CON EXITO\n";
 
 					//Actualizar las listas
 
@@ -1297,7 +1298,7 @@ int main(int argc, char **argv) {
 				break;
 			}
 
-			while(strcmp(dni.c_str(),"123")!=0){
+			while(strcmp(dni.c_str(),to_string(datos.dni).c_str())!=0){
 				cerr<<"¡DNI introducido incorrecto!\n\n";
 				cout<<"Introduzca el dni del administrador: (introduzca 0 para salir)\n";
 				getline(cin,dni);
@@ -1318,7 +1319,7 @@ int main(int argc, char **argv) {
 			if (strcmp(clave.c_str(),"0")==0){
 				break;
 			}
-			while(strcmp(clave.c_str(),"claveadmin")!=0){
+			while(strcmp(clave.c_str(),datos.password.c_str())!=0){
 				cerr<<"¡Clave introducida incorrecta!\n\n";
 				cout<<"Introduzca la clave de administrador: (introduzca 0 para salir)\n";
 				getline(cin,clave);
@@ -1359,7 +1360,6 @@ int main(int argc, char **argv) {
 				//VISUALIZAR LISTA DE CLIENTES
 
 				arrayClientes = getListaClientes(s);
-				arrayClientesInicializado=true;
 
 
 				cout<<"----------------------------\n";
@@ -1434,7 +1434,7 @@ int main(int argc, char **argv) {
 				}
 
 				while(existeReserva==false){
-					cerr<<"LA RESERVA SELECIONADA NO ESTÁ DISPONIBLE\n";
+					cerr<<"LA RESERVA SELECIONADA NO ESTA DISPONIBLE\n";
 					cout<<"\nSELECCIONE LA RESERVA QUE DESEA CANCELAR\n";
 					getline(cin,numReservastr);
 					numReserva=stoi(numReservastr);
@@ -1474,7 +1474,7 @@ int main(int argc, char **argv) {
 					}
 				}
 
-				cout<<"RESERVA BORRADA CON ÉXITO\n";
+				cout<<"RESERVA BORRADA CON EXITO\n";
 
 				arrayReservas=getListaReservas(s);
 				mostrarMenuPrincipalAdmin();
@@ -1515,7 +1515,7 @@ int main(int argc, char **argv) {
 
 				anadirHabitacion(s);
 
-				cout<<"HABITACIÓN AÑADIDA CON ÉXITO\n";
+				cout<<"HABITACIÓN AÑADIDA CON EXITO\n";
 
 				Logger::logInfo("Añadida nueva habitacion");
 

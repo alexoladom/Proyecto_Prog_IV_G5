@@ -1,0 +1,3 @@
+IP: 127.0.0.3
+Port: 6000
+Base de datos: db/C++dbProgIV.sqlite
